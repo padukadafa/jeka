@@ -28,9 +28,11 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     OnBoardingRoute.name: (routeData) {
+      final args = routeData.argsAs<OnBoardingRouteArgs>(
+          orElse: () => const OnBoardingRouteArgs());
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const OnBoardingPage(),
+        child: OnBoardingPage(key: args.key),
       );
     },
   };
@@ -66,14 +68,29 @@ class LoadingRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [OnBoardingPage]
-class OnBoardingRoute extends PageRouteInfo<void> {
-  const OnBoardingRoute({List<PageRouteInfo>? children})
-      : super(
+class OnBoardingRoute extends PageRouteInfo<OnBoardingRouteArgs> {
+  OnBoardingRoute({
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
           OnBoardingRoute.name,
+          args: OnBoardingRouteArgs(key: key),
           initialChildren: children,
         );
 
   static const String name = 'OnBoardingRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<OnBoardingRouteArgs> page =
+      PageInfo<OnBoardingRouteArgs>(name);
+}
+
+class OnBoardingRouteArgs {
+  const OnBoardingRouteArgs({this.key});
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'OnBoardingRouteArgs{key: $key}';
+  }
 }
