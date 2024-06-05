@@ -1,16 +1,24 @@
-abstract class Error {
+abstract class Failure {
   final String message;
-  const Error(this.message);
+  const Failure(this.message);
 }
 
-class ServerError extends Error {
-  const ServerError(super.message);
+class ServerFailure extends Failure {
+  const ServerFailure(super.message);
 }
 
-class CacheError extends Error {
-  const CacheError(super.message);
+class CacheFailure extends Failure {
+  const CacheFailure(super.message);
 }
 
-class UnknownError extends Error {
-  const UnknownError() : super("Something went wrong!");
+class AuthFailure extends Failure {
+  const AuthFailure(super.message);
+}
+
+class UnknownFailure extends Failure {
+  const UnknownFailure() : super("Something went wrong!");
+}
+
+class AbortedFailure extends Failure {
+  AbortedFailure() : super("");
 }

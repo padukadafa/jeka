@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:jeka/common/pages/onboarding/cubit/cubit/onboarding_cubit.dart';
+import 'package:jeka/common/pages/onboarding/cubit/onboarding_cubit.dart';
 import 'package:jeka/core/router/app_router.dart';
 
 class OnboardingController {
@@ -19,7 +19,7 @@ class OnboardingController {
 
   nextPage(BuildContext context) {
     if (context.read<OnboardingCubit>().state.pageIndex == 2) {
-      context.router.replaceAll([const HomeRoute()]);
+      context.router.replaceAll([HomeRoute()]);
     } else {
       pageController.nextPage(
           duration: const Duration(milliseconds: 300), curve: Curves.easeInOut);

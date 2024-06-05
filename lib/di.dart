@@ -1,8 +1,13 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
 import 'package:get_it/get_it.dart';
 import 'package:jeka/common/blocs/bloc/settings_bloc.dart';
+import 'package:jeka/features/auth/presentation/blocs/bloc/auth_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'di.config.dart';
@@ -13,6 +18,14 @@ Future<void> configureDependencies() async => await getIt.init();
 
 @module
 abstract class RegisterModule {
+  @singleton
+  FirebaseAuth get firebaseAuth => FirebaseAuth.instance;
+  @singleton
+  FirebaseFirestore get firebaseFirestore => FirebaseFirestore.instance;
+  @singleton
+  FirebaseMessaging get firebaseMessaging => FirebaseMessaging.instance;
+  @singleton
+  GoogleSignIn get googleSignin => GoogleSignIn(scopes: ['email', 'profile']);
   @preResolve
   Future<SharedPreferences> get sharedPreferences =>
       SharedPreferences.getInstance();
@@ -28,6 +41,9 @@ class GlobalBlocProviders extends StatelessWidget {
       providers: [
         BlocProvider<SettingsBloc>(
           create: (_) => getIt.get<SettingsBloc>(),
+        ),
+        BlocProvider<AuthBloc>(
+          create: (context) => getIt.get<AuthBloc>(),
         ),
       ],
       child: child,

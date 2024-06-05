@@ -11,7 +11,7 @@ class SettingsRepositoryImpl extends SettingsRepository {
   final SharedPreferences _sharedPreferences;
   SettingsRepositoryImpl(this._sharedPreferences);
   @override
-  Either<Error, ThemeMode> getThemeMode() {
+  Either<Failure, ThemeMode> getThemeMode() {
     try {
       final response = _sharedPreferences.getString(AppConstants.THEME_MODE);
       if (response == null) {
@@ -21,18 +21,18 @@ class SettingsRepositoryImpl extends SettingsRepository {
       return Right(result);
     } catch (e) {
       return const Left(
-          CacheError("Failed to get current theme mode from local"));
+          CacheFailure("Failed to get current theme mode from local"));
     }
   }
 
   @override
-  Future<Either<Error, ThemeMode>> setThemeMode(
+  Future<Either<Failure, ThemeMode>> setThemeMode(
       String key, ThemeMode themeMode) async {
     try {
       await _sharedPreferences.setString(key, themeMode.name);
       return Right(themeMode);
     } catch (e) {
-      return const Left(CacheError("Failed to save thememode"));
+      return const Left(CacheFailure("Failed to save thememode"));
     }
   }
 }

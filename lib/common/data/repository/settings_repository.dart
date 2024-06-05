@@ -5,7 +5,7 @@ import 'package:jeka/core/error.dart';
 abstract class SettingsRepository {
   const SettingsRepository();
 
-  Either<Error, ThemeMode> getThemeMode();
-  Future<Either<Error, ThemeMode>> setThemeMode(
+  Either<Failure, ThemeMode> getThemeMode();
+  Future<Either<Failure, ThemeMode>> setThemeMode(
       String key, ThemeMode themeMode);
 }

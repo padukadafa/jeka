@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:jeka/common/blocs/bloc/settings_selector.dart';
 import 'package:jeka/core/router/app_router.dart';
 import 'package:jeka/core/theme/theme.dark.dart';
 import 'package:jeka/core/theme/theme.light.dart';
 import 'package:jeka/di.dart';
+import 'package:jeka/init.dart';
 
 void main() async {
-  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
-  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
-  await Future.delayed(const Duration(seconds: 3));
-  await configureDependencies();
-  FlutterNativeSplash.remove();
+  await init();
   runApp(MainApp());
 }
 
@@ -30,6 +27,7 @@ class MainApp extends StatelessWidget {
             darkTheme: darkTheme,
             themeMode: theme,
             routerConfig: _appRouter.config(),
+            builder: EasyLoading.init(),
           );
         },
       ),
