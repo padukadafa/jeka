@@ -6,6 +6,7 @@ AppBar ReuseableAppBar({
   required BuildContext context,
   Widget? title,
   bool showBackButton = false,
+  Color? backgroundColor,
 }) {
   return AppBar(
     leading: showBackButton
@@ -15,5 +16,6 @@ AppBar ReuseableAppBar({
           )
         : null,
     title: title,
+    backgroundColor: backgroundColor,
   );
 }

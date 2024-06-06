@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
 import 'package:get_it/get_it.dart';
-import 'package:jeka/common/blocs/bloc/settings_bloc.dart';
+import 'package:jeka/features/settings/presentation/blocs/bloc/settings_bloc.dart';
 import 'package:jeka/features/auth/presentation/blocs/bloc/auth_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

@@ -5,6 +5,9 @@ import 'package:jeka/common/models/onboarding.dart';
 class AppConstants {
   static const THEME_MODE = "theme-mode";
   static const ONBOARDING_STATUS = "onboarding-status";
+  static const IS_SHOW_NOTIFICATION = 'is-show-notification';
+  static const LANGUAGE = 'language';
+  static const IS_PRIVATE = 'is-private';
   static const List<Onboarding> onBoardings = [
     Onboarding(
       imagePath: "assets/images/onboarding/first.svg",

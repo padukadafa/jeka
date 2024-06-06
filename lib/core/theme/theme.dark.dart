@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 
 ThemeData darkTheme = ThemeData(
   brightness: Brightness.dark,
+  colorScheme: const ColorScheme.dark(
+    surfaceBright: Color(0xff121212),
+  ),
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
       shape: RoundedRectangleBorder(

@@ -14,10 +14,6 @@ import 'package:firebase_messaging/firebase_messaging.dart' as _i6;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:google_sign_in/google_sign_in.dart' as _i7;
 import 'package:injectable/injectable.dart' as _i2;
-import 'package:jeka/common/blocs/bloc/settings_bloc.dart' as _i14;
-import 'package:jeka/common/data/repository/settings_repository.dart' as _i8;
-import 'package:jeka/common/data/repository/settings_repository_impl.dart'
-    as _i9;
 import 'package:jeka/di.dart' as _i18;
 import 'package:jeka/features/auth/data/data_source/remote/auth_data_remote.dart'
     as _i12;
@@ -33,6 +29,12 @@ import 'package:jeka/features/auth/data/repository/auth_repository_impl.dart'
     as _i16;
 import 'package:jeka/features/auth/presentation/blocs/bloc/auth_bloc.dart'
     as _i17;
+import 'package:jeka/features/settings/data/repository/settings_repository.dart'
+    as _i8;
+import 'package:jeka/features/settings/data/repository/settings_repository_impl.dart'
+    as _i9;
+import 'package:jeka/features/settings/presentation/blocs/bloc/settings_bloc.dart'
+    as _i14;
 import 'package:shared_preferences/shared_preferences.dart' as _i3;
 
 extension GetItInjectableX on _i1.GetIt {

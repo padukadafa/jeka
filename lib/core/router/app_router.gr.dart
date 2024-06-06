@@ -15,6 +15,32 @@ abstract class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
+    AboutRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const AboutPage(),
+      );
+    },
+    ChangePasswordRoute.name: (routeData) {
+      final args = routeData.argsAs<ChangePasswordRouteArgs>(
+          orElse: () => const ChangePasswordRouteArgs());
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: ChangePasswordPage(key: args.key),
+      );
+    },
+    CommunityGuidelinesRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const CommunityGuidelinesPage(),
+      );
+    },
+    FAQRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const FAQPage(),
+      );
+    },
     ForgotPasswordRoute.name: (routeData) {
       final args = routeData.argsAs<ForgotPasswordRouteArgs>(
           orElse: () => const ForgotPasswordRouteArgs());
@@ -61,7 +87,90 @@ abstract class _$AppRouter extends RootStackRouter {
         child: RegisterPage(key: args.key),
       );
     },
+    RulesAndAgreementRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const RulesAndAgreementPage(),
+      );
+    },
+    SettingsRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const SettingsPage(),
+      );
+    },
   };
+}
+
+/// generated route for
+/// [AboutPage]
+class AboutRoute extends PageRouteInfo<void> {
+  const AboutRoute({List<PageRouteInfo>? children})
+      : super(
+          AboutRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'AboutRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [ChangePasswordPage]
+class ChangePasswordRoute extends PageRouteInfo<ChangePasswordRouteArgs> {
+  ChangePasswordRoute({
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
+          ChangePasswordRoute.name,
+          args: ChangePasswordRouteArgs(key: key),
+          initialChildren: children,
+        );
+
+  static const String name = 'ChangePasswordRoute';
+
+  static const PageInfo<ChangePasswordRouteArgs> page =
+      PageInfo<ChangePasswordRouteArgs>(name);
+}
+
+class ChangePasswordRouteArgs {
+  const ChangePasswordRouteArgs({this.key});
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'ChangePasswordRouteArgs{key: $key}';
+  }
+}
+
+/// generated route for
+/// [CommunityGuidelinesPage]
+class CommunityGuidelinesRoute extends PageRouteInfo<void> {
+  const CommunityGuidelinesRoute({List<PageRouteInfo>? children})
+      : super(
+          CommunityGuidelinesRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'CommunityGuidelinesRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [FAQPage]
+class FAQRoute extends PageRouteInfo<void> {
+  const FAQRoute({List<PageRouteInfo>? children})
+      : super(
+          FAQRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'FAQRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for
@@ -219,4 +328,32 @@ class RegisterRouteArgs {
   String toString() {
     return 'RegisterRouteArgs{key: $key}';
   }
+}
+
+/// generated route for
+/// [RulesAndAgreementPage]
+class RulesAndAgreementRoute extends PageRouteInfo<void> {
+  const RulesAndAgreementRoute({List<PageRouteInfo>? children})
+      : super(
+          RulesAndAgreementRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'RulesAndAgreementRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [SettingsPage]
+class SettingsRoute extends PageRouteInfo<void> {
+  const SettingsRoute({List<PageRouteInfo>? children})
+      : super(
+          SettingsRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'SettingsRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }

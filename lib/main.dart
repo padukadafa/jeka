@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:jeka/common/blocs/bloc/settings_selector.dart';
+import 'package:jeka/features/settings/presentation/blocs/bloc/settings_selector.dart';
 import 'package:jeka/core/router/app_router.dart';
 import 'package:jeka/core/theme/theme.dark.dart';
 import 'package:jeka/core/theme/theme.light.dart';

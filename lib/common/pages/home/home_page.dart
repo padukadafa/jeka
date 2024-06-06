@@ -5,6 +5,7 @@ import 'package:jeka/common/pages/home/controller/home_controller.dart';
 import 'package:jeka/common/pages/home/cubit/home_cubit.dart';
 import 'package:jeka/common/pages/home/cubit/home_state_wrapper.dart';
 import 'package:jeka/common/widgets/app_layout.dart';
+import 'package:jeka/common/widgets/menu_drawer.dart';
 
 @RoutePage()
 class HomePage extends StatelessWidget {
@@ -17,22 +18,27 @@ class HomePage extends StatelessWidget {
       child: HomeStateWrapper(
         controller: controller,
         child: Scaffold(
+          key: controller.scaffoldKey,
           bottomNavigationBar: BlocBuilder<HomeCubit, HomeState>(
             builder: (context, state) {
               return BottomNavigationBar(
                 items: controller.bottomNavbarItems,
                 currentIndex: state.pageIndex,
-                onTap: controller.onPageChange,
+                onTap: controller.changePage,
+                showSelectedLabels: false,
                 unselectedItemColor: Theme.of(context).colorScheme.onSurface,
                 selectedItemColor: Theme.of(context).colorScheme.primary,
+                type: BottomNavigationBarType.fixed,
+                showUnselectedLabels: false,
               );
             },
           ),
           body: PageView(
             controller: controller.pageController,
-            onPageChanged: controller.onPageChange,
+            physics: const NeverScrollableScrollPhysics(),
             children: controller.pages,
           ),
+          drawer: const MenuDrawer(),
         ),
       ),
     );

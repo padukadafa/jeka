@@ -11,6 +11,7 @@ import 'package:jeka/features/user/presentation/pages/user/user_page.dart';
 class HomeController {
   late BuildContext context;
   final pageController = PageController();
+  final scaffoldKey = GlobalKey<ScaffoldState>();
   late HomeCubit cubit;
 
   final List<BottomNavigationBarItem> bottomNavbarItems = [
@@ -45,13 +46,15 @@ class HomeController {
       activeIcon: FaIcon(FontAwesomeIcons.solidUser),
     ),
   ];
-  final pages = [
-    const CommunityPage(),
-    const ChatPage(),
-    const SearchPage(),
-    const Notificationpage(),
-    const UserPage(),
-  ];
+  List<Widget> get pages => [
+        CommunityPage(
+          onOpenDrawer: onOpenDrawer,
+        ),
+        const ChatPage(),
+        const SearchPage(),
+        const Notificationpage(),
+        const UserPage(),
+      ];
   updateContext(BuildContext context) {
     this.context = context;
     cubit = context.read<HomeCubit>();
@@ -59,5 +62,15 @@ class HomeController {
 
   onPageChange(int index) {
     cubit.changePage(index);
+  }
+
+  changePage(int index) async {
+    pageController.animateToPage(index,
+        duration: const Duration(milliseconds: 300), curve: Curves.easeInOut);
+    onPageChange(index);
+  }
+
+  onOpenDrawer() {
+    scaffoldKey.currentState!.openDrawer();
   }
 }
