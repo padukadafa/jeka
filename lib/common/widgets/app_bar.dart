@@ -11,7 +11,7 @@ AppBar ReuseableAppBar({
   return AppBar(
     leading: showBackButton
         ? IconButton(
-            onPressed: () => context.router.back(),
+            onPressed: () => context.router.maybePop(),
             icon: const FaIcon(FontAwesomeIcons.chevronLeft),
           )
         : null,

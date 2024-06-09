@@ -20,6 +20,7 @@ _$UserModelImpl _$$UserModelImplFromJson(Map<String, dynamic> json) =>
       createdAt: json['createdAt'] == null
           ? null
           : DateTime.parse(json['createdAt'] as String),
+      imageProfileUrl: json['imageProfileUrl'] as String?,
     );
 
 Map<String, dynamic> _$$UserModelImplToJson(_$UserModelImpl instance) =>
@@ -34,4 +35,5 @@ Map<String, dynamic> _$$UserModelImplToJson(_$UserModelImpl instance) =>
       'follower': instance.follower,
       'following': instance.following,
       'createdAt': instance.createdAt?.toIso8601String(),
+      'imageProfileUrl': instance.imageProfileUrl,
     };

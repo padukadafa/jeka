@@ -4,7 +4,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
 import 'package:jeka/core/exception.dart';
 import 'package:jeka/features/auth/data/data_source/remote/auth_data_remote.dart';
-import 'package:jeka/features/auth/data/data_source/remote/user_data_remote.dart';
+import 'package:jeka/features/user/data/remote/user_data_remote.dart';
 import 'package:jeka/features/auth/data/models/user_model.dart';
 
 @Singleton(as: AuthDataRemote)

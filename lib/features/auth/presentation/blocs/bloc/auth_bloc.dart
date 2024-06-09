@@ -9,9 +9,9 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:jeka/core/error.dart';
 import 'package:jeka/core/router/app_router.dart';
-import 'package:jeka/features/auth/data/data_source/remote/user_data_remote.dart';
 import 'package:jeka/features/auth/data/models/user_model.dart';
 import 'package:jeka/features/auth/data/repository/auth_repository.dart';
+import 'package:jeka/features/user/data/repository/user_repository.dart';
 
 part 'auth_event.dart';
 part 'auth_state.dart';
@@ -20,10 +20,13 @@ part 'auth_bloc.freezed.dart';
 @injectable
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final AuthRepository _authRepository;
-  final UserDataRemote _userDataRemote;
+  final UserRepository _userRepository;
   final FirebaseAuth _firebaseAuth;
-  AuthBloc(this._authRepository, this._userDataRemote, this._firebaseAuth)
-      : super(const _Initial()) {
+  AuthBloc(
+    this._authRepository,
+    this._firebaseAuth,
+    this._userRepository,
+  ) : super(const _Initial()) {
     on<Register>(_onRegisterHandler);
     on<LoginWithEmailAndPassword>(_onLoginWithEmailAndPasswordHandler);
     on<LoginWithGoogle>(_loginWithGoogleHandler);
@@ -91,8 +94,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   _updateUserhandler(UpdateUser event, Emitter<AuthState> emit) async {
     if (_firebaseAuth.currentUser != null) {
       final result =
-          await _userDataRemote.getUser(_firebaseAuth.currentUser!.uid);
-      emit(state.copyWith(user: result));
+          await _userRepository.getUser(_firebaseAuth.currentUser!.uid);
+      result.fold((l) {}, (r) {
+        emit(state.copyWith(user: r));
+      });
     }
   }
 

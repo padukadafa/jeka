@@ -10,6 +10,7 @@ class ReuseableTextForm extends StatefulWidget {
   final TextEditingController? controller;
   final String? Function(String? val)? validator;
   final TextInputType? textInputType;
+  final int maxLines;
   const ReuseableTextForm({
     super.key,
     this.title,
@@ -18,6 +19,7 @@ class ReuseableTextForm extends StatefulWidget {
     this.controller,
     this.validator,
     this.textInputType,
+    this.maxLines = 1,
   });
 
   @override
@@ -58,6 +60,7 @@ class _ReuseableTextFormState extends State<ReuseableTextForm> {
                   onTapOutside: (_) => focus.unfocus(),
                   style: GoogleFonts.lato(fontSize: 14),
                   cursorHeight: 20,
+                  maxLines: widget.maxLines,
                   decoration: InputDecoration(
                     border: InputBorder.none,
                     hintText: widget.hintText,

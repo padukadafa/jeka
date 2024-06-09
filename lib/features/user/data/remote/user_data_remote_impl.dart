@@ -1,16 +1,27 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import 'package:jeka/core/exception.dart';
-import 'package:jeka/features/auth/data/data_source/remote/user_data_remote.dart';
+import 'package:jeka/features/user/data/remote/user_data_remote.dart';
 import 'package:jeka/features/auth/data/models/user_model.dart';
+import 'package:jeka/utils/uploud_service.dart';
 
 @Singleton(as: UserDataRemote)
 class UserDataRemoteImpl extends UserDataRemote {
   final FirebaseFirestore _firebaseFirestore;
   final FirebaseMessaging _firebaseMessaging;
-  UserDataRemoteImpl(this._firebaseFirestore, this._firebaseMessaging);
+  final FirebaseAuth _auth;
+  final UploadService _uploadService;
+  UserDataRemoteImpl(
+    this._firebaseFirestore,
+    this._firebaseMessaging,
+    this._auth,
+    this._uploadService,
+  );
   @override
   Future<UserModel> getUser(String uid) async {
     try {
@@ -35,10 +46,10 @@ class UserDataRemoteImpl extends UserDataRemote {
   Future<UserModel> updateUser(UserModel user) async {
     try {
       final token = await getToken();
-      await _firebaseFirestore
-          .collection("users")
-          .doc(user.uid)
-          .set(user.copyWith(fcmToken: token).toJson());
+      await _firebaseFirestore.collection("users").doc(user.uid).set(
+            user.copyWith(fcmToken: token).toJson(),
+            SetOptions(merge: true),
+          );
       return user.copyWith(fcmToken: token);
     } on FirebaseException {
       throw ServerError("Server error");
@@ -49,5 +60,22 @@ class UserDataRemoteImpl extends UserDataRemote {
 
   Future<String?> getToken() async {
     return await _firebaseMessaging.getToken();
+  }
+
+  @override
+  Future<UserModel> updateImageProfile(File image) async {
+    try {
+      final uid = _auth.currentUser?.uid;
+      if (uid != null) {
+        final user = await getUser(uid);
+        final response = await _uploadService.uploadFile(image,
+            "/images/users/$uid.${image.path.split("/").last.split(".").last}");
+        await updateUser(user.copyWith(imageProfileUrl: response));
+        return user.copyWith(imageProfileUrl: response);
+      }
+      throw ServerError("Failed to uploud image");
+    } catch (e) {
+      throw ServerError("Failed to uploud image");
+    }
   }
 }

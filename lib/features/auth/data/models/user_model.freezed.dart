@@ -30,6 +30,7 @@ mixin _$UserModel {
   int? get follower => throw _privateConstructorUsedError;
   int? get following => throw _privateConstructorUsedError;
   DateTime? get createdAt => throw _privateConstructorUsedError;
+  String? get imageProfileUrl => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -52,7 +53,8 @@ abstract class $UserModelCopyWith<$Res> {
       String? website,
       int? follower,
       int? following,
-      DateTime? createdAt});
+      DateTime? createdAt,
+      String? imageProfileUrl});
 }
 
 /// @nodoc
@@ -78,6 +80,7 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
     Object? follower = freezed,
     Object? following = freezed,
     Object? createdAt = freezed,
+    Object? imageProfileUrl = freezed,
   }) {
     return _then(_value.copyWith(
       uid: null == uid
@@ -120,6 +123,10 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      imageProfileUrl: freezed == imageProfileUrl
+          ? _value.imageProfileUrl
+          : imageProfileUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -142,7 +149,8 @@ abstract class _$$UserModelImplCopyWith<$Res>
       String? website,
       int? follower,
       int? following,
-      DateTime? createdAt});
+      DateTime? createdAt,
+      String? imageProfileUrl});
 }
 
 /// @nodoc
@@ -166,6 +174,7 @@ class __$$UserModelImplCopyWithImpl<$Res>
     Object? follower = freezed,
     Object? following = freezed,
     Object? createdAt = freezed,
+    Object? imageProfileUrl = freezed,
   }) {
     return _then(_$UserModelImpl(
       uid: null == uid
@@ -208,6 +217,10 @@ class __$$UserModelImplCopyWithImpl<$Res>
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      imageProfileUrl: freezed == imageProfileUrl
+          ? _value.imageProfileUrl
+          : imageProfileUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -225,7 +238,8 @@ class _$UserModelImpl implements _UserModel {
       this.website,
       this.follower,
       this.following,
-      this.createdAt});
+      this.createdAt,
+      this.imageProfileUrl});
 
   factory _$UserModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserModelImplFromJson(json);
@@ -250,10 +264,12 @@ class _$UserModelImpl implements _UserModel {
   final int? following;
   @override
   final DateTime? createdAt;
+  @override
+  final String? imageProfileUrl;
 
   @override
   String toString() {
-    return 'UserModel(uid: $uid, name: $name, email: $email, job: $job, fcmToken: $fcmToken, desc: $desc, website: $website, follower: $follower, following: $following, createdAt: $createdAt)';
+    return 'UserModel(uid: $uid, name: $name, email: $email, job: $job, fcmToken: $fcmToken, desc: $desc, website: $website, follower: $follower, following: $following, createdAt: $createdAt, imageProfileUrl: $imageProfileUrl)';
   }
 
   @override
@@ -274,13 +290,15 @@ class _$UserModelImpl implements _UserModel {
             (identical(other.following, following) ||
                 other.following == following) &&
             (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt));
+                other.createdAt == createdAt) &&
+            (identical(other.imageProfileUrl, imageProfileUrl) ||
+                other.imageProfileUrl == imageProfileUrl));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, uid, name, email, job, fcmToken,
-      desc, website, follower, following, createdAt);
+      desc, website, follower, following, createdAt, imageProfileUrl);
 
   @JsonKey(ignore: true)
   @override
@@ -307,7 +325,8 @@ abstract class _UserModel implements UserModel {
       final String? website,
       final int? follower,
       final int? following,
-      final DateTime? createdAt}) = _$UserModelImpl;
+      final DateTime? createdAt,
+      final String? imageProfileUrl}) = _$UserModelImpl;
 
   factory _UserModel.fromJson(Map<String, dynamic> json) =
       _$UserModelImpl.fromJson;
@@ -332,6 +351,8 @@ abstract class _UserModel implements UserModel {
   int? get following;
   @override
   DateTime? get createdAt;
+  @override
+  String? get imageProfileUrl;
   @override
   @JsonKey(ignore: true)
   _$$UserModelImplCopyWith<_$UserModelImpl> get copyWith =>

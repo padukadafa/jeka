@@ -4,6 +4,7 @@ ThemeData darkTheme = ThemeData(
   brightness: Brightness.dark,
   colorScheme: const ColorScheme.dark(
     surfaceBright: Color(0xff121212),
+    onPrimary: Colors.white,
   ),
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(

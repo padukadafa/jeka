@@ -6,6 +6,7 @@ import 'package:jeka/core/theme/theme.dark.dart';
 import 'package:jeka/core/theme/theme.light.dart';
 import 'package:jeka/di.dart';
 import 'package:jeka/init.dart';
+import 'package:appflowy_editor/appflowy_editor.dart';
 
 void main() async {
   await init();
@@ -25,6 +26,9 @@ class MainApp extends StatelessWidget {
             theme: lightTheme,
             debugShowCheckedModeBanner: false,
             darkTheme: darkTheme,
+            localizationsDelegates: const [
+              AppFlowyEditorLocalizations.delegate,
+            ],
             themeMode: theme,
             routerConfig: _appRouter.config(),
             builder: EasyLoading.init(),

@@ -15,6 +15,7 @@ class UserModel with _$UserModel {
     int? follower,
     int? following,
     DateTime? createdAt,
+    String? imageProfileUrl,
   }) = _UserModel;
   factory UserModel.fromJson(Map<String, dynamic> json) =>
       _$UserModelFromJson(json);
