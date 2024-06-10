@@ -7,6 +7,7 @@ AppBar ReuseableAppBar({
   Widget? title,
   bool showBackButton = false,
   Color? backgroundColor,
+  List<Widget>? actions,
 }) {
   return AppBar(
     leading: showBackButton
@@ -17,5 +18,6 @@ AppBar ReuseableAppBar({
         : null,
     title: title,
     backgroundColor: backgroundColor,
+    actions: actions,
   );
 }

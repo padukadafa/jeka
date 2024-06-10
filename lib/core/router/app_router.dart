@@ -12,7 +12,7 @@ import 'package:jeka/features/auth/presentation/pages/login/login_page.dart';
 import 'package:jeka/features/auth/presentation/pages/register/register_page.dart';
 import 'package:jeka/features/settings/presentation/pages/settings/settings_page.dart';
 import 'package:jeka/features/user/presentation/pages/change_password/change_password_page.dart';
-import 'package:jeka/features/user/presentation/pages/edit_description/edit_description_page.dart';
+import 'package:jeka/features/generative_text_editor/presentation/generative_text_editor/generative_text_editor.dart';
 import 'package:jeka/features/user/presentation/pages/edit_user/edit_user_page.dart';
 part 'app_router.gr.dart';
 
@@ -34,6 +34,6 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: CommunityGuidelinesRoute.page),
         AutoRoute(page: FAQRoute.page),
         AutoRoute(page: EditUserRoute.page),
-        AutoRoute(page: EditDescriptionRoute.page),
+        AutoRoute(page: GenerativeTextEditorRoute.page),
       ];
 }

@@ -35,16 +35,6 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const CommunityGuidelinesPage(),
       );
     },
-    EditDescriptionRoute.name: (routeData) {
-      final args = routeData.argsAs<EditDescriptionRouteArgs>();
-      return AutoRoutePage<String>(
-        routeData: routeData,
-        child: EditDescriptionPage(
-          key: args.key,
-          desc: args.desc,
-        ),
-      );
-    },
     EditUserRoute.name: (routeData) {
       final args = routeData.argsAs<EditUserRouteArgs>(
           orElse: () => const EditUserRouteArgs());
@@ -65,6 +55,16 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: ForgotPasswordPage(key: args.key),
+      );
+    },
+    GenerativeTextEditorRoute.name: (routeData) {
+      final args = routeData.argsAs<GenerativeTextEditorRouteArgs>();
+      return AutoRoutePage<String>(
+        routeData: routeData,
+        child: GenerativeTextEditorPage(
+          key: args.key,
+          desc: args.desc,
+        ),
       );
     },
     HomeRoute.name: (routeData) {
@@ -178,44 +178,6 @@ class CommunityGuidelinesRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [EditDescriptionPage]
-class EditDescriptionRoute extends PageRouteInfo<EditDescriptionRouteArgs> {
-  EditDescriptionRoute({
-    Key? key,
-    required String desc,
-    List<PageRouteInfo>? children,
-  }) : super(
-          EditDescriptionRoute.name,
-          args: EditDescriptionRouteArgs(
-            key: key,
-            desc: desc,
-          ),
-          initialChildren: children,
-        );
-
-  static const String name = 'EditDescriptionRoute';
-
-  static const PageInfo<EditDescriptionRouteArgs> page =
-      PageInfo<EditDescriptionRouteArgs>(name);
-}
-
-class EditDescriptionRouteArgs {
-  const EditDescriptionRouteArgs({
-    this.key,
-    required this.desc,
-  });
-
-  final Key? key;
-
-  final String desc;
-
-  @override
-  String toString() {
-    return 'EditDescriptionRouteArgs{key: $key, desc: $desc}';
-  }
-}
-
-/// generated route for
 /// [EditUserPage]
 class EditUserRoute extends PageRouteInfo<EditUserRouteArgs> {
   EditUserRoute({
@@ -284,6 +246,45 @@ class ForgotPasswordRouteArgs {
   @override
   String toString() {
     return 'ForgotPasswordRouteArgs{key: $key}';
+  }
+}
+
+/// generated route for
+/// [GenerativeTextEditorPage]
+class GenerativeTextEditorRoute
+    extends PageRouteInfo<GenerativeTextEditorRouteArgs> {
+  GenerativeTextEditorRoute({
+    Key? key,
+    required String desc,
+    List<PageRouteInfo>? children,
+  }) : super(
+          GenerativeTextEditorRoute.name,
+          args: GenerativeTextEditorRouteArgs(
+            key: key,
+            desc: desc,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'GenerativeTextEditorRoute';
+
+  static const PageInfo<GenerativeTextEditorRouteArgs> page =
+      PageInfo<GenerativeTextEditorRouteArgs>(name);
+}
+
+class GenerativeTextEditorRouteArgs {
+  const GenerativeTextEditorRouteArgs({
+    this.key,
+    required this.desc,
+  });
+
+  final Key? key;
+
+  final String desc;
+
+  @override
+  String toString() {
+    return 'GenerativeTextEditorRouteArgs{key: $key, desc: $desc}';
   }
 }
 

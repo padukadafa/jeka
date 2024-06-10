@@ -85,7 +85,7 @@ class EditUserForm extends StatelessWidget {
                 return GestureDetector(
                   onTap: () async {
                     final response = await context.router.push<String>(
-                        EditDescriptionRoute(desc: user?.desc ?? ""));
+                        GenerativeTextEditorRoute(desc: user?.desc ?? ""));
                     if (response != null) {
                       await controller.updateDescription(response);
                     }
@@ -107,7 +107,9 @@ class EditUserForm extends StatelessWidget {
                     child: Visibility(
                       visible: user?.desc != null,
                       replacement: const ReuseableText("Tap to add about"),
-                      child: MarkdownBody(data: user?.desc ?? ""),
+                      child: MarkdownBody(
+                        data: "> hello",
+                      ),
                     ),
                   ),
                 );

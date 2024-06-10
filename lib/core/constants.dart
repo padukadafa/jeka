@@ -8,6 +8,7 @@ class AppConstants {
   static const IS_SHOW_NOTIFICATION = 'is-show-notification';
   static const LANGUAGE = 'language';
   static const IS_PRIVATE = 'is-private';
+  static const GEMINI_API_KEY = "AIzaSyABYKYj3tIHlA2X-edcqYhjw7xSQXM3GWM";
   static const List<Onboarding> onBoardings = [
     Onboarding(
       imagePath: "assets/images/onboarding/first.svg",

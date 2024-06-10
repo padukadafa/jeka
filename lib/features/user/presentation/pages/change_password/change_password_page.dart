@@ -18,10 +18,18 @@ class ChangePasswordPage extends StatelessWidget {
     return AppLayout(
       child: Scaffold(
         appBar: ReuseableAppBar(
-          context: context,
-          showBackButton: true,
-          title: const Text("Change Password"),
-        ),
+            context: context,
+            showBackButton: true,
+            title: const Text("Change Password"),
+            actions: [
+              TextButton(
+                onPressed: () {},
+                child: const ReuseableText(
+                  "AI this",
+                  color: Colors.amber,
+                ),
+              ),
+            ]),
         body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),

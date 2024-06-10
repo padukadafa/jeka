@@ -10,7 +10,10 @@ class ReuseableTextForm extends StatefulWidget {
   final TextEditingController? controller;
   final String? Function(String? val)? validator;
   final TextInputType? textInputType;
-  final int maxLines;
+  final int? maxLines;
+  final int? minLines;
+  final FocusNode? focus;
+  final void Function(PointerDownEvent)? onTapOutside;
   const ReuseableTextForm({
     super.key,
     this.title,
@@ -19,7 +22,10 @@ class ReuseableTextForm extends StatefulWidget {
     this.controller,
     this.validator,
     this.textInputType,
-    this.maxLines = 1,
+    this.maxLines,
+    this.minLines,
+    this.focus,
+    this.onTapOutside,
   });
 
   @override
@@ -33,6 +39,7 @@ class _ReuseableTextFormState extends State<ReuseableTextForm> {
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -52,12 +59,19 @@ class _ReuseableTextFormState extends State<ReuseableTextForm> {
             children: [
               Expanded(
                 child: TextFormField(
+                  minLines: widget.minLines,
                   keyboardType: widget.textInputType,
                   controller: widget.controller,
-                  focusNode: focus,
+                  focusNode: widget.focus ?? focus,
                   validator: widget.validator,
                   obscureText: widget.showHideButton && _isHidden,
-                  onTapOutside: (_) => focus.unfocus(),
+                  onTapOutside: (event) {
+                    if (widget.onTapOutside == null) {
+                      (widget.focus ?? focus).unfocus();
+                    } else {
+                      widget.onTapOutside!(event);
+                    }
+                  },
                   style: GoogleFonts.lato(fontSize: 14),
                   cursorHeight: 20,
                   maxLines: widget.maxLines,
