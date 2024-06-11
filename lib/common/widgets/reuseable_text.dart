@@ -10,6 +10,8 @@ class ReuseableText extends StatelessWidget {
   final FontWeight? fontWeight;
   final FontStyle? fontStyle;
   final TextDecoration? textDecoration;
+  final double? height;
+  final int? maxLines;
 
   const ReuseableText(
     this.text, {
@@ -20,6 +22,8 @@ class ReuseableText extends StatelessWidget {
     this.fontWeight,
     this.textAlign,
     this.textDecoration,
+    this.height,
+    this.maxLines,
   });
 
   @override
@@ -27,6 +31,7 @@ class ReuseableText extends StatelessWidget {
     return Text(
       text,
       textAlign: textAlign,
+      maxLines: maxLines,
       style: GoogleFonts.sourceSans3(
         color: color ?? Theme.of(context).colorScheme.onSurface,
         fontSize: fontSize,
@@ -34,6 +39,7 @@ class ReuseableText extends StatelessWidget {
         fontStyle: fontStyle,
         decoration: textDecoration,
         decorationColor: color,
+        height: height,
       ),
     );
   }

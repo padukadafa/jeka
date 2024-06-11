@@ -1,8 +1,7 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:jeka/core/error.dart';
 import 'package:jeka/di.dart';
 import 'package:jeka/features/auth/presentation/blocs/bloc/auth_bloc.dart';
 import 'package:jeka/features/user/data/repository/user_repository.dart';
@@ -28,6 +27,7 @@ class EditUserController {
   updatePhotoProfile() async {
     final result = await userRepository.updatePhotoprofile();
     result.fold((l) {
+      if (l is AbortedFailure) return;
       EasyLoading.showError(l.message);
     }, (r) {
       authBloc.add(const UpdateUser());

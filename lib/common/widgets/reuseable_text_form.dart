@@ -74,7 +74,7 @@ class _ReuseableTextFormState extends State<ReuseableTextForm> {
                   },
                   style: GoogleFonts.lato(fontSize: 14),
                   cursorHeight: 20,
-                  maxLines: widget.maxLines,
+                  maxLines: widget.showHideButton ? 1 : widget.maxLines,
                   decoration: InputDecoration(
                     border: InputBorder.none,
                     hintText: widget.hintText,

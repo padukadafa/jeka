@@ -1,6 +1,5 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:jeka/common/widgets/app_layout.dart';
 import 'package:jeka/common/widgets/avatar.dart';
@@ -8,6 +7,7 @@ import 'package:jeka/common/widgets/reuseable_text.dart';
 import 'package:jeka/common/widgets/reuseable_text_form.dart';
 import 'package:jeka/core/router/app_router.dart';
 import 'package:jeka/features/auth/presentation/blocs/bloc/auth_selector.dart';
+import 'package:jeka/features/generative_text_editor/presentation/generative_text_editor/generative_text_viewer.dart';
 import 'package:jeka/features/user/presentation/pages/edit_user/controller/edit_user_controller.dart';
 
 @RoutePage()
@@ -107,8 +107,16 @@ class EditUserForm extends StatelessWidget {
                     child: Visibility(
                       visible: user?.desc != null,
                       replacement: const ReuseableText("Tap to add about"),
-                      child: MarkdownBody(
-                        data: "> hello",
+                      child: GenerativeTextViewer(
+                        user?.desc ?? "",
+                        onTap: () async {
+                          final response = await context.router.push<String>(
+                              GenerativeTextEditorRoute(
+                                  desc: user?.desc ?? ""));
+                          if (response != null) {
+                            await controller.updateDescription(response);
+                          }
+                        },
                       ),
                     ),
                   ),

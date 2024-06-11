@@ -65,8 +65,7 @@ class HomeController {
   }
 
   changePage(int index) async {
-    pageController.animateToPage(index,
-        duration: const Duration(milliseconds: 300), curve: Curves.easeInOut);
+    pageController.jumpToPage(index);
     onPageChange(index);
   }
 

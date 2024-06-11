@@ -27,7 +27,12 @@ import 'package:uuid/uuid.dart';
 @RoutePage<String>()
 class GenerativeTextEditorPage extends StatefulWidget {
   final String desc;
-  const GenerativeTextEditorPage({super.key, required this.desc});
+  final bool enableImage;
+  const GenerativeTextEditorPage({
+    super.key,
+    required this.desc,
+    this.enableImage = false,
+  });
 
   @override
   State<GenerativeTextEditorPage> createState() =>
@@ -46,11 +51,8 @@ class _GenerativeTextEditorPageState extends State<GenerativeTextEditorPage> {
   void initState() {
     super.initState();
     if (widget.desc.isNotEmpty) {
-      final mdDocument = md.Document(encodeHtml: false);
-      final mdToDelta = MarkdownToDelta(markdownDocument: mdDocument);
-
-      final delta = mdToDelta.convert(widget.desc);
-      _controller.document = Document.fromDelta(delta);
+      _controller.document =
+          Document.fromDelta(Delta.fromJson(jsonDecode(widget.desc)));
     }
     _controller.addListener(() {
       if (showAiPrompt) {
@@ -86,9 +88,11 @@ class _GenerativeTextEditorPageState extends State<GenerativeTextEditorPage> {
                     children: [
                       IconButton(
                         onPressed: () {
-                          final quill = DeltaToMarkdown()
-                              .convert(_controller.document.toDelta());
-                          context.router.maybePop<String>(quill);
+                          context.router.maybePop<String>(
+                            jsonEncode(
+                              _controller.document.toDelta(),
+                            ),
+                          );
                         },
                         icon: const FaIcon(
                           FontAwesomeIcons.x,
@@ -283,9 +287,11 @@ class GenerativeTextEditorToolBar extends StatelessWidget {
   GenerativeTextEditorToolBar({
     super.key,
     required QuillController controller,
+    this.enableImage = false,
   }) : _controller = controller;
 
   final QuillController _controller;
+  final bool enableImage;
   final uplouadService = getIt<UploadService>();
   @override
   Widget build(BuildContext context) {
@@ -321,28 +327,30 @@ class GenerativeTextEditorToolBar extends StatelessWidget {
             QuillToolbarFontFamilyButton(
               controller: _controller,
             ),
-            QuillToolbarCustomButton(
-              controller: _controller,
-              options: QuillToolbarCustomButtonOptions(
-                onPressed: () async {
-                  EasyLoading.show();
-                  final image = await ImagePicker()
-                      .pickImage(source: ImageSource.gallery);
-                  if (image != null && authBloc.state.user != null) {
-                    final path =
-                        "/contents/${authBloc.state.user!.uid}/${const Uuid().v4()}.${image.path.split("/").last.split(".").last}";
-                    final result =
-                        await uplouadService.uploadFile(File(image.path), path);
-                    _controller.insertImageBlock(imageSource: result);
-                  }
-                  EasyLoading.dismiss();
-                },
-                icon: const FaIcon(
-                  FontAwesomeIcons.image,
-                  size: 18,
-                ),
-              ),
-            ),
+            enableImage
+                ? QuillToolbarCustomButton(
+                    controller: _controller,
+                    options: QuillToolbarCustomButtonOptions(
+                      onPressed: () async {
+                        EasyLoading.show();
+                        final image = await ImagePicker()
+                            .pickImage(source: ImageSource.gallery);
+                        if (image != null && authBloc.state.user != null) {
+                          final path =
+                              "/contents/${authBloc.state.user!.uid}/${const Uuid().v4()}.${image.path.split("/").last.split(".").last}";
+                          final result = await uplouadService.uploadFile(
+                              File(image.path), path);
+                          _controller.insertImageBlock(imageSource: result);
+                        }
+                        EasyLoading.dismiss();
+                      },
+                      icon: const FaIcon(
+                        FontAwesomeIcons.image,
+                        size: 18,
+                      ),
+                    ),
+                  )
+                : const SizedBox(),
             QuillToolbarLinkStyleButton(
               controller: _controller,
             ),

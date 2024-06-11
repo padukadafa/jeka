@@ -64,6 +64,7 @@ abstract class _$AppRouter extends RootStackRouter {
         child: GenerativeTextEditorPage(
           key: args.key,
           desc: args.desc,
+          enableImage: args.enableImage,
         ),
       );
     },
@@ -95,6 +96,12 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: OnBoardingPage(key: args.key),
+      );
+    },
+    PostDetailRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const PostDetailPage(),
       );
     },
     RegisterRoute.name: (routeData) {
@@ -256,12 +263,14 @@ class GenerativeTextEditorRoute
   GenerativeTextEditorRoute({
     Key? key,
     required String desc,
+    bool enableImage = false,
     List<PageRouteInfo>? children,
   }) : super(
           GenerativeTextEditorRoute.name,
           args: GenerativeTextEditorRouteArgs(
             key: key,
             desc: desc,
+            enableImage: enableImage,
           ),
           initialChildren: children,
         );
@@ -276,15 +285,18 @@ class GenerativeTextEditorRouteArgs {
   const GenerativeTextEditorRouteArgs({
     this.key,
     required this.desc,
+    this.enableImage = false,
   });
 
   final Key? key;
 
   final String desc;
 
+  final bool enableImage;
+
   @override
   String toString() {
-    return 'GenerativeTextEditorRouteArgs{key: $key, desc: $desc}';
+    return 'GenerativeTextEditorRouteArgs{key: $key, desc: $desc, enableImage: $enableImage}';
   }
 }
 
@@ -385,6 +397,20 @@ class OnBoardingRouteArgs {
   String toString() {
     return 'OnBoardingRouteArgs{key: $key}';
   }
+}
+
+/// generated route for
+/// [PostDetailPage]
+class PostDetailRoute extends PageRouteInfo<void> {
+  const PostDetailRoute({List<PageRouteInfo>? children})
+      : super(
+          PostDetailRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'PostDetailRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for

@@ -17,7 +17,6 @@ class GeminiRemoteDataSourceImpl extends GeminiRemoteDataSource {
     } on GenerativeAIException catch (e) {
       throw ServerException(e.message);
     } catch (e) {
-      print(e.toString());
       throw ServerException("Server Error");
     }
   }

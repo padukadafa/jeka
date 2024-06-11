@@ -20,7 +20,7 @@ class UserRepositoryImpl extends UserRepository {
       final XFile? response =
           await picker.pickImage(source: ImageSource.gallery);
       if (response == null) {
-        return const Left(UnknownFailure());
+        return Left(AbortedFailure());
       }
       final result =
           await _userDataRemote.updateImageProfile(File(response.path));
