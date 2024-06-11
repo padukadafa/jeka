@@ -2,16 +2,22 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 import 'package:jeka/common/widgets/app_bar.dart';
 import 'package:jeka/common/widgets/app_layout.dart';
 import 'package:jeka/common/widgets/avatar.dart';
 import 'package:jeka/common/widgets/reuseable_text.dart';
 import 'package:jeka/features/auth/presentation/blocs/bloc/auth_selector.dart';
 import 'package:jeka/features/generative_text_editor/presentation/generative_text_editor/generative_text_viewer.dart';
+import 'package:jeka/features/posts/data/models/post.dart';
 
 @RoutePage()
 class PostDetailPage extends StatelessWidget {
-  const PostDetailPage({super.key});
+  final Post post;
+  const PostDetailPage({
+    super.key,
+    required this.post,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +43,7 @@ class PostDetailPage extends StatelessWidget {
                 child: Column(
                   children: [
                     Text(
-                      "KMP vs Flutter. Part 1: Setting Everything Up",
+                      post.title,
                       style: GoogleFonts.lato(
                         fontWeight: FontWeight.bold,
                         fontSize: 42,
@@ -50,8 +56,9 @@ class PostDetailPage extends StatelessWidget {
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        const Avatar(
+                        Avatar(
                           size: 45,
+                          url: post.creator.imageProfileUrl,
                         ),
                         const SizedBox(
                           width: 6,
@@ -61,8 +68,8 @@ class PostDetailPage extends StatelessWidget {
                           children: [
                             Row(
                               children: [
-                                const ReuseableText(
-                                  "Padukadafa",
+                                ReuseableText(
+                                  post.creator.name ?? "",
                                   fontWeight: FontWeight.bold,
                                   fontSize: 18,
                                 ),
@@ -82,8 +89,10 @@ class PostDetailPage extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            const ReuseableText(
-                              "7 jun 2024",
+                            ReuseableText(
+                              DateFormat("d MM, yyyy").format(
+                                post.creator.createdAt ?? DateTime.now(),
+                              ),
                             ),
                           ],
                         ),

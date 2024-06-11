@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:jeka/common/widgets/avatar.dart';
 import 'package:jeka/common/widgets/reuseable_text.dart';
 import 'package:jeka/core/router/app_router.dart';
+import 'package:jeka/features/posts/data/models/post.dart';
 
 enum DiscoveryPostItemType {
   type1,
@@ -12,8 +13,10 @@ enum DiscoveryPostItemType {
 
 class DiscoveryPostItem extends StatelessWidget {
   final DiscoveryPostItemType type;
+  final Post post;
   const DiscoveryPostItem({
     super.key,
+    required this.post,
     this.type = DiscoveryPostItemType.type1,
   });
   @override
@@ -22,11 +25,10 @@ class DiscoveryPostItem extends StatelessWidget {
     if (type == DiscoveryPostItemType.type2) {
       return GestureDetector(
         onTap: () {
-          context.router.push(const PostDetailRoute());
+          context.router.push(PostDetailRoute(post: post));
         },
         child: CachedNetworkImage(
-          imageUrl:
-              "https://previews.123rf.com/images/rawpixel/rawpixel1604/rawpixel160412674/54881714-diversity-friends-meeting-community-discussion-concept.jpg",
+          imageUrl: post.image,
           imageBuilder: (context, imageProvider) {
             return Container(
               width: 220,
@@ -47,22 +49,22 @@ class DiscoveryPostItem extends StatelessWidget {
               ),
               child: Container(
                 color: Colors.black.withOpacity(0.2),
-                child: const Column(
+                child: Column(
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 100,
                     ),
                     Padding(
-                      padding: EdgeInsets.all(6),
+                      padding: const EdgeInsets.all(6),
                       child: Column(
                         children: [
                           ReuseableText(
-                            "Tips for navigating This Community",
+                            post.title,
                             fontWeight: FontWeight.bold,
                             height: 0,
                             color: Colors.white,
                           ),
-                          ReuseableText(
+                          const ReuseableText(
                             "As you engage with other members here in the app, you....",
                             fontWeight: FontWeight.w300,
                             height: 0,
@@ -72,12 +74,13 @@ class DiscoveryPostItem extends StatelessWidget {
                             children: [
                               Avatar(
                                 size: 21,
+                                url: post.creator.imageProfileUrl,
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 8,
                               ),
                               ReuseableText(
-                                "Elon musk",
+                                post.creator.name ?? "",
                                 color: Colors.white,
                               ),
                             ],
@@ -107,7 +110,7 @@ class DiscoveryPostItem extends StatelessWidget {
     }
     return GestureDetector(
       onTap: () {
-        context.router.push(const PostDetailRoute());
+        context.router.push(PostDetailRoute(post: post));
       },
       child: Container(
         width: 220,
@@ -125,8 +128,7 @@ class DiscoveryPostItem extends StatelessWidget {
         child: Column(
           children: [
             CachedNetworkImage(
-              imageUrl:
-                  "https://previews.123rf.com/images/rawpixel/rawpixel1604/rawpixel160412674/54881714-diversity-friends-meeting-community-discussion-concept.jpg",
+              imageUrl: post.image,
               imageBuilder: (context, imageProvider) {
                 return Container(
                   height: 100,
@@ -155,16 +157,16 @@ class DiscoveryPostItem extends StatelessWidget {
                 );
               },
             ),
-            const Padding(
-              padding: EdgeInsets.all(6),
+            Padding(
+              padding: const EdgeInsets.all(6),
               child: Column(
                 children: [
-                  ReuseableText(
+                  const ReuseableText(
                     "Tips for navigating This Community",
                     fontWeight: FontWeight.bold,
                     height: 0,
                   ),
-                  ReuseableText(
+                  const ReuseableText(
                     "As you engage with other members here in the app, you....",
                     fontWeight: FontWeight.w300,
                     height: 0,
@@ -173,11 +175,12 @@ class DiscoveryPostItem extends StatelessWidget {
                     children: [
                       Avatar(
                         size: 21,
+                        url: post.creator.imageProfileUrl,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 8,
                       ),
-                      ReuseableText("Elon musk"),
+                      ReuseableText(post.creator.name ?? ""),
                     ],
                   ),
                 ],

@@ -3,7 +3,12 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:jeka/common/widgets/app_layout.dart';
 import 'package:jeka/common/widgets/avatar.dart';
 import 'package:jeka/common/widgets/reuseable_text.dart';
+import 'package:jeka/features/community/presentation/bloc/community_selector.dart';
+import 'package:jeka/features/community/presentation/pages/community_event/community_event_page.dart';
+import 'package:jeka/features/community/presentation/pages/community_feed/community_feed_page.dart';
+import 'package:jeka/features/community/presentation/pages/community_member/community_member_page.dart';
 import 'package:jeka/features/community/presentation/pages/discovery/discovery_page.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 class CommunityPage extends StatefulWidget {
   final void Function() onOpenDrawer;
@@ -31,11 +36,6 @@ class _CommunityPageState extends State<CommunityPage>
     return AppLayout(
       child: Scaffold(
         backgroundColor: colorScheme.surface,
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {},
-          shape: const CircleBorder(),
-          child: const FaIcon(FontAwesomeIcons.plus),
-        ),
         body: NestedScrollView(
           headerSliverBuilder: (context, innerBoxIsScrolled) {
             return [
@@ -46,28 +46,37 @@ class _CommunityPageState extends State<CommunityPage>
                   },
                   icon: const FaIcon(FontAwesomeIcons.barsStaggered),
                 ),
+                backgroundColor: colorScheme.surfaceBright,
+                surfaceTintColor: colorScheme.surfaceBright,
                 expandedHeight: 200,
-                flexibleSpace: const FlexibleSpaceBar(
-                  background: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 16),
-                    child: Row(
-                      children: [
-                        Avatar(
-                          size: 80,
+                flexibleSpace: FlexibleSpaceBar(
+                  background: CurrentCommunitySelector(builder: (community) {
+                    return Skeletonizer(
+                      enabled: community == null,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        child: Row(
+                          children: [
+                            Avatar(
+                              size: 80,
+                              url: community?.logo,
+                            ),
+                            const SizedBox(
+                              width: 12,
+                            ),
+                            Expanded(
+                              child: ReuseableText(
+                                community?.name ??
+                                    "Loading Community Name.....",
+                                fontWeight: FontWeight.bold,
+                                fontSize: 26,
+                              ),
+                            ),
+                          ],
                         ),
-                        SizedBox(
-                          width: 12,
-                        ),
-                        Expanded(
-                          child: ReuseableText(
-                            "Rumah Baca Babe Inyoel",
-                            fontWeight: FontWeight.bold,
-                            fontSize: 26,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                      ),
+                    );
+                  }),
                 ),
                 pinned: true,
                 actions: [
@@ -101,9 +110,9 @@ class _CommunityPageState extends State<CommunityPage>
             controller: tabController,
             children: [
               DiscoveryPage(),
-              DiscoveryPage(),
-              DiscoveryPage(),
-              DiscoveryPage(),
+              CommunityMemberPage(),
+              CommunityFeedPage(),
+              CommunityEventPage(),
             ],
           ),
         ),

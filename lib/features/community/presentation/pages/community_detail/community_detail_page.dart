@@ -5,11 +5,16 @@ import 'package:jeka/common/widgets/app_bar.dart';
 import 'package:jeka/common/widgets/app_layout.dart';
 import 'package:jeka/common/widgets/avatar.dart';
 import 'package:jeka/common/widgets/reuseable_text.dart';
+import 'package:jeka/features/community/data/models/community.dart';
 import 'package:jeka/features/community/presentation/pages/community_detail/widgets/community_upcoming_event.dart';
 
 @RoutePage()
 class CommunityDetailPage extends StatelessWidget {
-  const CommunityDetailPage({super.key});
+  final Community community;
+  const CommunityDetailPage({
+    super.key,
+    required this.community,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -42,21 +47,23 @@ class CommunityDetailPage extends StatelessWidget {
                 ),
                 child: Column(
                   children: [
-                    const Row(
+                    Row(
                       children: [
-                        Avatar(),
-                        SizedBox(
+                        Avatar(
+                          url: community.logo,
+                        ),
+                        const SizedBox(
                           width: 8,
                         ),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             ReuseableText(
-                              "Rumah Baca Babe Inyoel",
+                              community.name,
                               fontWeight: FontWeight.bold,
                               fontSize: 18,
                             ),
-                            Row(
+                            const Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 FaIcon(
@@ -100,7 +107,7 @@ class CommunityDetailPage extends StatelessWidget {
                     const SizedBox(
                       height: 12,
                     ),
-                    Column(
+                    const Column(
                       children: [
                         Row(
                           children: [
@@ -155,7 +162,7 @@ class CommunityDetailPage extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 18,
               ),
               Container(
@@ -169,7 +176,7 @@ class CommunityDetailPage extends StatelessWidget {
                     ),
                   ],
                 ),
-                child: Column(
+                child: const Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     ReuseableText(
@@ -186,7 +193,7 @@ Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots 
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 18,
               ),
               Container(
@@ -203,14 +210,14 @@ Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots 
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    CommunityUpcomingEvent(),
-                    SizedBox(
+                    const CommunityUpcomingEvent(),
+                    const SizedBox(
                       height: 12,
                     ),
-                    Divider(
+                    const Divider(
                       color: Colors.grey,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 12,
                     ),
                     ListTile(
@@ -235,7 +242,7 @@ Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots 
                           color: Colors.white,
                         ),
                       ),
-                      trailing: ReuseableText(
+                      trailing: const ReuseableText(
                         "128",
                         fontSize: 16,
                       ),

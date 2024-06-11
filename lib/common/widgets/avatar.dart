@@ -16,7 +16,7 @@ class Avatar extends StatelessWidget {
     return UserAuthSelector(
       builder: (user) {
         return CachedNetworkImage(
-          imageUrl: user?.imageProfileUrl ?? "",
+          imageUrl: url != null ? url! : (user?.imageProfileUrl ?? ""),
           errorWidget: (context, url, error) {
             return Container(
               width: size,

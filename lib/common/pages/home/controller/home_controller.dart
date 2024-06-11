@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:jeka/common/pages/home/cubit/home_cubit.dart';
+import 'package:jeka/common/widgets/avatar.dart';
 import 'package:jeka/features/chat/presentation/pages/chat/chat_page.dart';
+import 'package:jeka/features/community/presentation/bloc/community_selector.dart';
 import 'package:jeka/features/community/presentation/pages/community/community_page.dart';
 import 'package:jeka/features/notification/presentation/pages/notification/notification_page.dart';
 import 'package:jeka/features/search/presentation/pages/search/search_page.dart';
@@ -16,14 +18,12 @@ class HomeController {
 
   final List<BottomNavigationBarItem> bottomNavbarItems = [
     BottomNavigationBarItem(
-      icon: Container(
-        decoration: const BoxDecoration(
-          shape: BoxShape.circle,
-          color: Colors.grey,
-        ),
-        width: 24,
-        height: 24,
-      ),
+      icon: CurrentCommunitySelector(builder: (community) {
+        return Avatar(
+          size: 25,
+          url: community?.logo,
+        );
+      }),
       label: "Home",
     ),
     const BottomNavigationBarItem(

@@ -10,12 +10,15 @@ import 'package:jeka/common/pages/rules_and_agreement/rules_and_agreement_page.d
 import 'package:jeka/features/auth/presentation/pages/forgot_password/forgot_password_page.dart';
 import 'package:jeka/features/auth/presentation/pages/login/login_page.dart';
 import 'package:jeka/features/auth/presentation/pages/register/register_page.dart';
+import 'package:jeka/features/community/data/models/community.dart';
 import 'package:jeka/features/community/presentation/pages/community_detail/community_detail_page.dart';
+import 'package:jeka/features/posts/data/models/post.dart';
 import 'package:jeka/features/posts/presentation/pages/post_detail/post_detail_page.dart';
 import 'package:jeka/features/settings/presentation/pages/settings/settings_page.dart';
 import 'package:jeka/features/user/presentation/pages/change_password/change_password_page.dart';
 import 'package:jeka/features/generative_text_editor/presentation/generative_text_editor/generative_text_editor.dart';
 import 'package:jeka/features/user/presentation/pages/edit_user/edit_user_page.dart';
+import 'package:jeka/features/user/presentation/pages/user_detail/user_detail_page.dart';
 part 'app_router.gr.dart';
 
 @AutoRouterConfig()
@@ -39,5 +42,6 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: GenerativeTextEditorRoute.page),
         AutoRoute(page: PostDetailRoute.page),
         AutoRoute(page: CommunityDetailRoute.page),
+        AutoRoute(page: UserDetailRoute.page),
       ];
 }

@@ -30,9 +30,13 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     CommunityDetailRoute.name: (routeData) {
+      final args = routeData.argsAs<CommunityDetailRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const CommunityDetailPage(),
+        child: CommunityDetailPage(
+          key: args.key,
+          community: args.community,
+        ),
       );
     },
     CommunityGuidelinesRoute.name: (routeData) {
@@ -105,9 +109,13 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     PostDetailRoute.name: (routeData) {
+      final args = routeData.argsAs<PostDetailRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const PostDetailPage(),
+        child: PostDetailPage(
+          key: args.key,
+          post: args.post,
+        ),
       );
     },
     RegisterRoute.name: (routeData) {
@@ -128,6 +136,12 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const SettingsPage(),
+      );
+    },
+    UserDetailRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const UserDetailPage(),
       );
     },
   };
@@ -178,16 +192,40 @@ class ChangePasswordRouteArgs {
 
 /// generated route for
 /// [CommunityDetailPage]
-class CommunityDetailRoute extends PageRouteInfo<void> {
-  const CommunityDetailRoute({List<PageRouteInfo>? children})
-      : super(
+class CommunityDetailRoute extends PageRouteInfo<CommunityDetailRouteArgs> {
+  CommunityDetailRoute({
+    Key? key,
+    required Community community,
+    List<PageRouteInfo>? children,
+  }) : super(
           CommunityDetailRoute.name,
+          args: CommunityDetailRouteArgs(
+            key: key,
+            community: community,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'CommunityDetailRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<CommunityDetailRouteArgs> page =
+      PageInfo<CommunityDetailRouteArgs>(name);
+}
+
+class CommunityDetailRouteArgs {
+  const CommunityDetailRouteArgs({
+    this.key,
+    required this.community,
+  });
+
+  final Key? key;
+
+  final Community community;
+
+  @override
+  String toString() {
+    return 'CommunityDetailRouteArgs{key: $key, community: $community}';
+  }
 }
 
 /// generated route for
@@ -421,16 +459,40 @@ class OnBoardingRouteArgs {
 
 /// generated route for
 /// [PostDetailPage]
-class PostDetailRoute extends PageRouteInfo<void> {
-  const PostDetailRoute({List<PageRouteInfo>? children})
-      : super(
+class PostDetailRoute extends PageRouteInfo<PostDetailRouteArgs> {
+  PostDetailRoute({
+    Key? key,
+    required Post post,
+    List<PageRouteInfo>? children,
+  }) : super(
           PostDetailRoute.name,
+          args: PostDetailRouteArgs(
+            key: key,
+            post: post,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'PostDetailRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<PostDetailRouteArgs> page =
+      PageInfo<PostDetailRouteArgs>(name);
+}
+
+class PostDetailRouteArgs {
+  const PostDetailRouteArgs({
+    this.key,
+    required this.post,
+  });
+
+  final Key? key;
+
+  final Post post;
+
+  @override
+  String toString() {
+    return 'PostDetailRouteArgs{key: $key, post: $post}';
+  }
 }
 
 /// generated route for
@@ -486,6 +548,20 @@ class SettingsRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'SettingsRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [UserDetailPage]
+class UserDetailRoute extends PageRouteInfo<void> {
+  const UserDetailRoute({List<PageRouteInfo>? children})
+      : super(
+          UserDetailRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'UserDetailRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

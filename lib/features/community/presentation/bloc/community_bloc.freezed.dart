@@ -312,19 +312,20 @@ abstract class ChangePage implements CommunityEvent {
 /// @nodoc
 mixin _$CommunityState {
   int get tabIndex => throw _privateConstructorUsedError;
+  Community? get community => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int tabIndex) initial,
+    required TResult Function(int tabIndex, Community? community) initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int tabIndex)? initial,
+    TResult? Function(int tabIndex, Community? community)? initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int tabIndex)? initial,
+    TResult Function(int tabIndex, Community? community)? initial,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -356,7 +357,9 @@ abstract class $CommunityStateCopyWith<$Res> {
           CommunityState value, $Res Function(CommunityState) then) =
       _$CommunityStateCopyWithImpl<$Res, CommunityState>;
   @useResult
-  $Res call({int tabIndex});
+  $Res call({int tabIndex, Community? community});
+
+  $CommunityCopyWith<$Res>? get community;
 }
 
 /// @nodoc
@@ -373,13 +376,30 @@ class _$CommunityStateCopyWithImpl<$Res, $Val extends CommunityState>
   @override
   $Res call({
     Object? tabIndex = null,
+    Object? community = freezed,
   }) {
     return _then(_value.copyWith(
       tabIndex: null == tabIndex
           ? _value.tabIndex
           : tabIndex // ignore: cast_nullable_to_non_nullable
               as int,
+      community: freezed == community
+          ? _value.community
+          : community // ignore: cast_nullable_to_non_nullable
+              as Community?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $CommunityCopyWith<$Res>? get community {
+    if (_value.community == null) {
+      return null;
+    }
+
+    return $CommunityCopyWith<$Res>(_value.community!, (value) {
+      return _then(_value.copyWith(community: value) as $Val);
+    });
   }
 }
 
@@ -391,7 +411,10 @@ abstract class _$$InitialImplCopyWith<$Res>
       __$$InitialImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int tabIndex});
+  $Res call({int tabIndex, Community? community});
+
+  @override
+  $CommunityCopyWith<$Res>? get community;
 }
 
 /// @nodoc
@@ -406,12 +429,17 @@ class __$$InitialImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? tabIndex = null,
+    Object? community = freezed,
   }) {
     return _then(_$InitialImpl(
       tabIndex: null == tabIndex
           ? _value.tabIndex
           : tabIndex // ignore: cast_nullable_to_non_nullable
               as int,
+      community: freezed == community
+          ? _value.community
+          : community // ignore: cast_nullable_to_non_nullable
+              as Community?,
     ));
   }
 }
@@ -419,15 +447,17 @@ class __$$InitialImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$InitialImpl implements _Initial {
-  const _$InitialImpl({this.tabIndex = 0});
+  const _$InitialImpl({this.tabIndex = 0, this.community});
 
   @override
   @JsonKey()
   final int tabIndex;
+  @override
+  final Community? community;
 
   @override
   String toString() {
-    return 'CommunityState.initial(tabIndex: $tabIndex)';
+    return 'CommunityState.initial(tabIndex: $tabIndex, community: $community)';
   }
 
   @override
@@ -436,11 +466,13 @@ class _$InitialImpl implements _Initial {
         (other.runtimeType == runtimeType &&
             other is _$InitialImpl &&
             (identical(other.tabIndex, tabIndex) ||
-                other.tabIndex == tabIndex));
+                other.tabIndex == tabIndex) &&
+            (identical(other.community, community) ||
+                other.community == community));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, tabIndex);
+  int get hashCode => Object.hash(runtimeType, tabIndex, community);
 
   @JsonKey(ignore: true)
   @override
@@ -451,27 +483,27 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int tabIndex) initial,
+    required TResult Function(int tabIndex, Community? community) initial,
   }) {
-    return initial(tabIndex);
+    return initial(tabIndex, community);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int tabIndex)? initial,
+    TResult? Function(int tabIndex, Community? community)? initial,
   }) {
-    return initial?.call(tabIndex);
+    return initial?.call(tabIndex, community);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int tabIndex)? initial,
+    TResult Function(int tabIndex, Community? community)? initial,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial(tabIndex);
+      return initial(tabIndex, community);
     }
     return orElse();
   }
@@ -503,13 +535,20 @@ class _$InitialImpl implements _Initial {
     }
     return orElse();
   }
+
+  @override
+  // TODO: implement user
+  get user => throw UnimplementedError();
 }
 
 abstract class _Initial implements CommunityState {
-  const factory _Initial({final int tabIndex}) = _$InitialImpl;
+  const factory _Initial({final int tabIndex, final Community? community}) =
+      _$InitialImpl;
 
   @override
   int get tabIndex;
+  @override
+  Community? get community;
   @override
   @JsonKey(ignore: true)
   _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>

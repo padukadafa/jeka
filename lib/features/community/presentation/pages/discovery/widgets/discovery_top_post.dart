@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jeka/common/widgets/reuseable_text.dart';
 import 'package:jeka/features/community/presentation/pages/discovery/widgets/discovery_post_item.dart';
+import 'package:jeka/features/posts/data/dummy/posts_dummy.dart';
 
 class DiscoveryTopPosts extends StatelessWidget {
   const DiscoveryTopPosts({
@@ -33,9 +34,10 @@ class DiscoveryTopPosts extends StatelessWidget {
           scrollDirection: Axis.horizontal,
           child: Row(
             children: List.generate(
-              4,
+              3,
               (index) {
                 return DiscoveryPostItem(
+                  post: dummyPosts[index],
                   type: (index % 2 == 0)
                       ? DiscoveryPostItemType.type1
                       : DiscoveryPostItemType.type2,

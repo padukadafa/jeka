@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:jeka/common/widgets/avatar.dart';
 import 'package:jeka/common/widgets/reuseable_text.dart';
 import 'package:jeka/core/router/app_router.dart';
+import 'package:jeka/features/community/data/dummy/community_dummy.dart';
 
 class DiscoveryCommunityThisMonth extends StatelessWidget {
   const DiscoveryCommunityThisMonth({
@@ -35,21 +36,31 @@ class DiscoveryCommunityThisMonth extends StatelessWidget {
           scrollDirection: Axis.horizontal,
           child: Row(
             children: List.generate(
-              6,
+              dummyCommunities.length,
               (index) {
                 return GestureDetector(
                   onTap: () {
-                    context.router.push(const CommunityDetailRoute());
+                    context.router.push(CommunityDetailRoute(
+                        community: dummyCommunities[index]));
                   },
                   child: Container(
                     margin: const EdgeInsets.symmetric(horizontal: 12),
-                    child: const Column(
+                    child: Column(
                       children: [
-                        Avatar(),
-                        SizedBox(
+                        Avatar(
+                          url: dummyCommunities[index].logo,
+                        ),
+                        const SizedBox(
                           height: 6,
                         ),
-                        ReuseableText("Rise World"),
+                        SizedBox(
+                          width: 80,
+                          child: ReuseableText(
+                            dummyCommunities[index].name,
+                            maxLines: 2,
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
                       ],
                     ),
                   ),

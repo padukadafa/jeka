@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:jeka/features/community/presentation/pages/discovery/widgets/discovery_community_this_month.dart';
 import 'package:jeka/features/community/presentation/pages/discovery/widgets/discovery_near_member.dart';
 import 'package:jeka/features/community/presentation/pages/discovery/widgets/discovery_top_post.dart';
@@ -9,8 +10,13 @@ class DiscoveryPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: SingleChildScrollView(
+    return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        shape: const CircleBorder(),
+        child: const FaIcon(FontAwesomeIcons.plus),
+      ),
+      body: const SingleChildScrollView(
         child: Column(
           children: [
             DiscoveryTopPosts(),
