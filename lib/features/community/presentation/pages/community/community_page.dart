@@ -93,13 +93,13 @@ class _CommunityPageState extends State<CommunityPage>
                       text: "Discovery",
                     ),
                     Tab(
-                      text: "Members",
-                    ),
-                    Tab(
                       text: "Feed",
                     ),
                     Tab(
                       text: "Event",
+                    ),
+                    Tab(
+                      text: "Members",
                     ),
                   ],
                 ),
@@ -110,9 +110,9 @@ class _CommunityPageState extends State<CommunityPage>
             controller: tabController,
             children: [
               DiscoveryPage(),
-              CommunityMemberPage(),
               CommunityFeedPage(),
               CommunityEventPage(),
+              CommunityMemberPage(),
             ],
           ),
         ),

@@ -13,6 +13,7 @@ class ReuseableTextForm extends StatefulWidget {
   final int? maxLines;
   final int? minLines;
   final FocusNode? focus;
+  final BoxBorder? border;
   final void Function(PointerDownEvent)? onTapOutside;
   const ReuseableTextForm({
     super.key,
@@ -26,6 +27,7 @@ class ReuseableTextForm extends StatefulWidget {
     this.minLines,
     this.focus,
     this.onTapOutside,
+    this.border,
   });
 
   @override
@@ -51,9 +53,10 @@ class _ReuseableTextFormState extends State<ReuseableTextForm> {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8),
             color: colorScheme.surfaceBright,
-            border: Border.all(
-              color: colorScheme.shadow,
-            ),
+            border: widget.border ??
+                Border.all(
+                  color: colorScheme.shadow,
+                ),
           ),
           child: Row(
             children: [

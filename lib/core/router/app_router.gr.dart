@@ -35,6 +35,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const ChatDetailPage(),
       );
     },
+    CommunityCreateEventRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const CommunityCreateEventPage(),
+      );
+    },
     CommunityDetailRoute.name: (routeData) {
       final args = routeData.argsAs<CommunityDetailRouteArgs>();
       return AutoRoutePage<dynamic>(
@@ -43,6 +49,12 @@ abstract class _$AppRouter extends RootStackRouter {
           key: args.key,
           community: args.community,
         ),
+      );
+    },
+    CommunityEventDetailRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const CommunityEventDetailPage(),
       );
     },
     CommunityFeedDetailRoute.name: (routeData) {
@@ -55,6 +67,12 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const CommunityGuidelinesPage(),
+      );
+    },
+    CreatePostRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const CreatePostPage(),
       );
     },
     EditUserRoute.name: (routeData) {
@@ -217,6 +235,20 @@ class ChatDetailRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [CommunityCreateEventPage]
+class CommunityCreateEventRoute extends PageRouteInfo<void> {
+  const CommunityCreateEventRoute({List<PageRouteInfo>? children})
+      : super(
+          CommunityCreateEventRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'CommunityCreateEventRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
 /// [CommunityDetailPage]
 class CommunityDetailRoute extends PageRouteInfo<CommunityDetailRouteArgs> {
   CommunityDetailRoute({
@@ -255,6 +287,20 @@ class CommunityDetailRouteArgs {
 }
 
 /// generated route for
+/// [CommunityEventDetailPage]
+class CommunityEventDetailRoute extends PageRouteInfo<void> {
+  const CommunityEventDetailRoute({List<PageRouteInfo>? children})
+      : super(
+          CommunityEventDetailRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'CommunityEventDetailRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
 /// [CommunityFeedDetailPage]
 class CommunityFeedDetailRoute extends PageRouteInfo<void> {
   const CommunityFeedDetailRoute({List<PageRouteInfo>? children})
@@ -278,6 +324,20 @@ class CommunityGuidelinesRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'CommunityGuidelinesRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [CreatePostPage]
+class CreatePostRoute extends PageRouteInfo<void> {
+  const CreatePostRoute({List<PageRouteInfo>? children})
+      : super(
+          CreatePostRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'CreatePostRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

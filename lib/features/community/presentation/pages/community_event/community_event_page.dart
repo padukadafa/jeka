@@ -1,5 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:jeka/core/router/app_router.dart';
 import 'package:jeka/features/community/presentation/pages/community_event/widgets/community_event_item.dart';
 
 class CommunityEventPage extends StatelessWidget {
@@ -19,7 +21,9 @@ class CommunityEventPage extends StatelessWidget {
                 children: [
                   Expanded(
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        context.router.push(const CommunityCreateEventRoute());
+                      },
                       child: const Text("Create Event"),
                     ),
                   ),
