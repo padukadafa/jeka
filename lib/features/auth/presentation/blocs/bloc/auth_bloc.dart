@@ -54,7 +54,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     final result = await _authRepository.loginWithEmailAndPassword(
         event.email, event.password);
     result.fold((l) => EasyLoading.showError(l.message), (r) {
-      event.context.router.pushAll([HomeRoute()]);
+      event.context.router.pushAndPopUntil(
+        HomeRoute(),
+        predicate: (route) => false,
+      );
       emit(state.copyWith(user: r));
     });
     EasyLoading.dismiss();
@@ -69,7 +72,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         EasyLoading.showError(l.message);
       }
     }, (r) {
-      event.context.router.pushAll([HomeRoute()]);
+      event.context.router.pushAndPopUntil(
+        HomeRoute(),
+        predicate: (route) => false,
+      );
       emit(state.copyWith(user: r));
     });
     EasyLoading.dismiss();
