@@ -18,14 +18,11 @@ class ChatPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
     return AppLayout(
-      surfaceColor: colorScheme.primary,
       brightness: Brightness.light,
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: colorScheme.primary,
-          title: ReuseableText(
+          title: const ReuseableText(
             "Chat",
-            color: colorScheme.onPrimary,
             fontWeight: FontWeight.bold,
             fontSize: 18,
           ),
@@ -34,24 +31,21 @@ class ChatPage extends StatelessWidget {
             onPressed: () {
               onOpenDrawer();
             },
-            icon: FaIcon(
+            icon: const FaIcon(
               FontAwesomeIcons.barsStaggered,
-              color: colorScheme.onPrimary,
             ),
           ),
           actions: [
             IconButton(
               onPressed: () {},
-              icon: FaIcon(
+              icon: const FaIcon(
                 FontAwesomeIcons.magnifyingGlass,
-                color: colorScheme.onPrimary,
               ),
             ),
             IconButton(
               onPressed: () {},
-              icon: FaIcon(
+              icon: const FaIcon(
                 FontAwesomeIcons.circlePlus,
-                color: colorScheme.onPrimary,
               ),
             ),
           ],
@@ -60,7 +54,6 @@ class ChatPage extends StatelessWidget {
           child: Column(
             children: [
               Container(
-                color: colorScheme.primary,
                 child: Column(
                   children: [
                     const SizedBox(
@@ -99,9 +92,9 @@ class ChatPage extends StatelessWidget {
                       leading: const Avatar(
                         size: 45,
                       ),
-                      title: Text("Dave"),
-                      subtitle: Text("How are you david?"),
-                      trailing: ReuseableText("21 July"),
+                      title: const Text("Dave"),
+                      subtitle: const Text("How are you david?"),
+                      trailing: const ReuseableText("21 July"),
                     );
                   },
                 ),

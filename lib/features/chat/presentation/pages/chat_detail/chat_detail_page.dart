@@ -61,7 +61,47 @@ class ChatDetailPage extends StatelessWidget {
               child: ListView.builder(
                 itemCount: 10,
                 itemBuilder: (context, index) {
-                  return Container();
+                  return Container(
+                    alignment: Alignment.centerLeft,
+                    child: Padding(
+                      padding:
+                          const EdgeInsets.only(right: 64, top: 12, left: 4),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Avatar(
+                            size: 30,
+                          ),
+                          const SizedBox(
+                            width: 12,
+                          ),
+                          Expanded(
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Expanded(
+                                  child: Container(
+                                    padding: const EdgeInsets.all(8),
+                                    decoration: BoxDecoration(
+                                      color: colorScheme.surfaceBright,
+                                      borderRadius: BorderRadius.circular(4),
+                                    ),
+                                    child: const ReuseableText(
+                                      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus efficitur enim sed nibh fringilla, ac blandit nisl elementum. Phasellus iaculis volutpat mi et iaculis",
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  width: 12,
+                                ),
+                                ReuseableText("21:09"),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
                 },
               ),
             ),

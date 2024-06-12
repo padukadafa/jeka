@@ -54,7 +54,9 @@ class HomeController {
           onOpenDrawer: onOpenDrawer,
         ),
         const SearchPage(),
-        const Notificationpage(),
+        Notificationpage(
+          onOpenDrawer: onOpenDrawer,
+        ),
         const UserPage(),
       ];
   updateContext(BuildContext context) {

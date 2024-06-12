@@ -17,14 +17,13 @@ class SettingsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
     return AppLayout(
-      surfaceColor: colorScheme.surface,
       child: Scaffold(
-        backgroundColor: colorScheme.surface,
+        backgroundColor: colorScheme.surfaceBright,
         appBar: ReuseableAppBar(
           context: context,
           title: const Text("Settings"),
           showBackButton: true,
-          backgroundColor: colorScheme.surface,
+          backgroundColor: colorScheme.surfaceBright,
         ),
         body: const SingleChildScrollView(
           child: Padding(
