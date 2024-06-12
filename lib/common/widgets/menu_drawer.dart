@@ -23,7 +23,7 @@ class MenuDrawer extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(
-              height: 24,
+              height: 48,
             ),
             UserAuthSelector(
               builder: (user) {

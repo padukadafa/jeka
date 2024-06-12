@@ -1,10 +1,115 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:jeka/common/widgets/app_layout.dart';
+import 'package:jeka/common/widgets/avatar.dart';
+import 'package:jeka/common/widgets/reuseable_text.dart';
+import 'package:jeka/core/router/app_router.dart';
 
 class ChatPage extends StatelessWidget {
-  const ChatPage({super.key});
+  final void Function() onOpenDrawer;
+
+  const ChatPage({
+    super.key,
+    required this.onOpenDrawer,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    final colorScheme = Theme.of(context).colorScheme;
+    return AppLayout(
+      surfaceColor: colorScheme.primary,
+      brightness: Brightness.light,
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: colorScheme.primary,
+          title: ReuseableText(
+            "Chat",
+            color: colorScheme.onPrimary,
+            fontWeight: FontWeight.bold,
+            fontSize: 18,
+          ),
+          centerTitle: true,
+          leading: IconButton(
+            onPressed: () {
+              onOpenDrawer();
+            },
+            icon: FaIcon(
+              FontAwesomeIcons.barsStaggered,
+              color: colorScheme.onPrimary,
+            ),
+          ),
+          actions: [
+            IconButton(
+              onPressed: () {},
+              icon: FaIcon(
+                FontAwesomeIcons.magnifyingGlass,
+                color: colorScheme.onPrimary,
+              ),
+            ),
+            IconButton(
+              onPressed: () {},
+              icon: FaIcon(
+                FontAwesomeIcons.circlePlus,
+                color: colorScheme.onPrimary,
+              ),
+            ),
+          ],
+        ),
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              Container(
+                color: colorScheme.primary,
+                child: Column(
+                  children: [
+                    const SizedBox(
+                      height: 12,
+                    ),
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: List.generate(
+                          10,
+                          (index) {
+                            return Container(
+                              margin: const EdgeInsets.symmetric(horizontal: 6),
+                              child: const Avatar(
+                                size: 50,
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                  ],
+                ),
+              ),
+              Column(
+                children: List.generate(
+                  4,
+                  (index) {
+                    return ListTile(
+                      onTap: () {
+                        context.router.push(const ChatDetailRoute());
+                      },
+                      leading: const Avatar(
+                        size: 45,
+                      ),
+                      title: Text("Dave"),
+                      subtitle: Text("How are you david?"),
+                      trailing: ReuseableText("21 July"),
+                    );
+                  },
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }

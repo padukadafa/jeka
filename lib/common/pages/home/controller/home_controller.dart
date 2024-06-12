@@ -50,7 +50,9 @@ class HomeController {
         CommunityPage(
           onOpenDrawer: onOpenDrawer,
         ),
-        const ChatPage(),
+        ChatPage(
+          onOpenDrawer: onOpenDrawer,
+        ),
         const SearchPage(),
         const Notificationpage(),
         const UserPage(),

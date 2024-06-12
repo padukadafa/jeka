@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:jeka/features/community/presentation/pages/community_event/widgets/community_event_item.dart';
 
 class CommunityEventPage extends StatelessWidget {
   const CommunityEventPage({super.key});
@@ -9,11 +10,11 @@ class CommunityEventPage extends StatelessWidget {
     final colorScheme = Theme.of(context).colorScheme;
     return Scaffold(
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
-              child: Row(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+          child: Column(
+            children: [
+              Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Expanded(
@@ -22,7 +23,7 @@ class CommunityEventPage extends StatelessWidget {
                       child: const Text("Create Event"),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 16,
                   ),
                   Container(
@@ -40,23 +41,23 @@ class CommunityEventPage extends StatelessWidget {
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        FaIcon(
+                        const FaIcon(
                           FontAwesomeIcons.filter,
                           color: Colors.grey,
                           size: 18,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 16,
                         ),
                         DropdownButton(
-                          items: [
+                          items: const [
                             DropdownMenuItem(
-                              child: Text("All"),
                               value: "",
+                              child: Text("All"),
                             ),
                             DropdownMenuItem(
-                              child: Text("All"),
                               value: "",
+                              child: Text("All"),
                             ),
                           ],
                           underline: const SizedBox(),
@@ -67,8 +68,16 @@ class CommunityEventPage extends StatelessWidget {
                   )
                 ],
               ),
-            ),
-          ],
+              Column(
+                children: List.generate(
+                  4,
+                  (index) {
+                    return const CommunityEventItem();
+                  },
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

@@ -29,6 +29,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: ChangePasswordPage(key: args.key),
       );
     },
+    ChatDetailRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const ChatDetailPage(),
+      );
+    },
     CommunityDetailRoute.name: (routeData) {
       final args = routeData.argsAs<CommunityDetailRouteArgs>();
       return AutoRoutePage<dynamic>(
@@ -194,6 +200,20 @@ class ChangePasswordRouteArgs {
   String toString() {
     return 'ChangePasswordRouteArgs{key: $key}';
   }
+}
+
+/// generated route for
+/// [ChatDetailPage]
+class ChatDetailRoute extends PageRouteInfo<void> {
+  const ChatDetailRoute({List<PageRouteInfo>? children})
+      : super(
+          ChatDetailRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ChatDetailRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for
