@@ -27,13 +27,13 @@ class HomeController {
       label: "Home",
     ),
     const BottomNavigationBarItem(
+      icon: FaIcon(FontAwesomeIcons.magnifyingGlass),
+      label: "Search",
+    ),
+    const BottomNavigationBarItem(
       icon: FaIcon(FontAwesomeIcons.message),
       label: "Chat",
       activeIcon: FaIcon(FontAwesomeIcons.solidMessage),
-    ),
-    const BottomNavigationBarItem(
-      icon: FaIcon(FontAwesomeIcons.magnifyingGlass),
-      label: "Search",
     ),
     const BottomNavigationBarItem(
       icon: FaIcon(FontAwesomeIcons.bell),
@@ -50,10 +50,10 @@ class HomeController {
         CommunityPage(
           onOpenDrawer: onOpenDrawer,
         ),
+        const SearchPage(),
         ChatPage(
           onOpenDrawer: onOpenDrawer,
         ),
-        const SearchPage(),
         Notificationpage(
           onOpenDrawer: onOpenDrawer,
         ),
