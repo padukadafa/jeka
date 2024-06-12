@@ -6,7 +6,6 @@ class CommunityFeedPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(

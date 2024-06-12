@@ -39,6 +39,12 @@ abstract class _$AppRouter extends RootStackRouter {
         ),
       );
     },
+    CommunityFeedDetailRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const CommunityFeedDetailPage(),
+      );
+    },
     CommunityGuidelinesRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -226,6 +232,20 @@ class CommunityDetailRouteArgs {
   String toString() {
     return 'CommunityDetailRouteArgs{key: $key, community: $community}';
   }
+}
+
+/// generated route for
+/// [CommunityFeedDetailPage]
+class CommunityFeedDetailRoute extends PageRouteInfo<void> {
+  const CommunityFeedDetailRoute({List<PageRouteInfo>? children})
+      : super(
+          CommunityFeedDetailRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'CommunityFeedDetailRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for

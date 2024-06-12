@@ -535,10 +535,6 @@ class _$InitialImpl implements _Initial {
     }
     return orElse();
   }
-
-  @override
-  // TODO: implement user
-  get user => throw UnimplementedError();
 }
 
 abstract class _Initial implements CommunityState {

@@ -6,6 +6,4 @@ class CommunityState with _$CommunityState {
     @Default(0) int tabIndex,
     Community? community,
   }) = _Initial;
-
-  get user => null;
 }

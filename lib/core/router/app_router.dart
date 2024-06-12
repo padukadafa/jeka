@@ -12,6 +12,7 @@ import 'package:jeka/features/auth/presentation/pages/login/login_page.dart';
 import 'package:jeka/features/auth/presentation/pages/register/register_page.dart';
 import 'package:jeka/features/community/data/models/community.dart';
 import 'package:jeka/features/community/presentation/pages/community_detail/community_detail_page.dart';
+import 'package:jeka/features/community/presentation/pages/community_feed_detail/comunity_feed_detail_page.dart';
 import 'package:jeka/features/posts/data/models/post.dart';
 import 'package:jeka/features/posts/presentation/pages/post_detail/post_detail_page.dart';
 import 'package:jeka/features/settings/presentation/pages/settings/settings_page.dart';
@@ -43,5 +44,6 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: PostDetailRoute.page),
         AutoRoute(page: CommunityDetailRoute.page),
         AutoRoute(page: UserDetailRoute.page),
+        AutoRoute(page: CommunityFeedDetailRoute.page),
       ];
 }
