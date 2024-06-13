@@ -15,7 +15,6 @@ class AuthTopbar extends StatelessWidget {
   Widget build(BuildContext context) {
     final ColorScheme colorScheme = Theme.of(context).colorScheme;
     return Container(
-      color: colorScheme.primary,
       alignment: Alignment.center,
       height: 140,
       width: size.width,
@@ -26,7 +25,7 @@ class AuthTopbar extends StatelessWidget {
             "JeKa",
             style: GoogleFonts.sora(
               fontWeight: FontWeight.bold,
-              color: colorScheme.onPrimary,
+              color: colorScheme.onSurface,
               fontSize: 32,
             ),
           ),
@@ -34,7 +33,7 @@ class AuthTopbar extends StatelessWidget {
             desc,
             style: GoogleFonts.sourceSans3(
               fontWeight: FontWeight.w600,
-              color: colorScheme.onPrimary,
+              color: colorScheme.onSurface,
               fontSize: 14,
             ),
           ),

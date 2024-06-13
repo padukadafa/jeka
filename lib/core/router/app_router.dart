@@ -7,12 +7,14 @@ import 'package:jeka/common/pages/home/home_page.dart';
 import 'package:jeka/common/pages/loading/loading_page.dart';
 import 'package:jeka/common/pages/onboarding/onboarding_page.dart';
 import 'package:jeka/common/pages/rules_and_agreement/rules_and_agreement_page.dart';
+import 'package:jeka/common/pages/text_editor/text_editor_page.dart';
 import 'package:jeka/features/auth/presentation/pages/forgot_password/forgot_password_page.dart';
 import 'package:jeka/features/auth/presentation/pages/login/login_page.dart';
 import 'package:jeka/features/auth/presentation/pages/register/register_page.dart';
 import 'package:jeka/features/chat/presentation/pages/chat_detail/chat_detail_page.dart';
 import 'package:jeka/features/community/data/models/community.dart';
 import 'package:jeka/features/community/presentation/pages/community_create_event/community_create_event_page.dart';
+import 'package:jeka/features/community/presentation/pages/community_create_feed/community_create_feed_page.dart';
 import 'package:jeka/features/community/presentation/pages/community_detail/community_detail_page.dart';
 import 'package:jeka/features/community/presentation/pages/community_event_detail/community_event_detail_page.dart';
 import 'package:jeka/features/community/presentation/pages/community_feed_detail/comunity_feed_detail_page.dart';
@@ -52,6 +54,8 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: ChatDetailRoute.page),
         AutoRoute(page: CreatePostRoute.page),
         AutoRoute(page: CommunityCreateEventRoute.page),
-        AutoRoute(page: CommunityCreateEventRoute.page),
+        AutoRoute(page: CommunityEventDetailRoute.page),
+        AutoRoute(page: CommunityCreateFeedRoute.page),
+        AutoRoute(page: TextEditorRoute.page),
       ];
 }

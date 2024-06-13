@@ -12,9 +12,15 @@ part 'community_bloc.freezed.dart';
 class CommunityBloc extends Bloc<CommunityEvent, CommunityState> {
   CommunityBloc() : super(_Initial(community: dummyCommunities[0])) {
     on<ChangePage>(_changePageHandler);
+    on<ChangeCommunityTab>(_changeCommunityTabHandler);
   }
 
   _changePageHandler(ChangePage event, Emitter<CommunityState> emit) {
     emit(state.copyWith(tabIndex: event.index));
+  }
+
+  _changeCommunityTabHandler(
+      ChangeCommunityTab event, Emitter<CommunityState> emit) {
+    emit(state.copyWith(communityTabIndex: event.index));
   }
 }

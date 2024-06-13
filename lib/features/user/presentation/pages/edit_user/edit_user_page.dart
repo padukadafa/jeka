@@ -7,7 +7,6 @@ import 'package:jeka/common/widgets/reuseable_text.dart';
 import 'package:jeka/common/widgets/reuseable_text_form.dart';
 import 'package:jeka/core/router/app_router.dart';
 import 'package:jeka/features/auth/presentation/blocs/bloc/auth_selector.dart';
-import 'package:jeka/features/generative_text_editor/presentation/generative_text_editor/generative_text_viewer.dart';
 import 'package:jeka/features/user/presentation/pages/edit_user/controller/edit_user_controller.dart';
 
 @RoutePage()
@@ -75,6 +74,7 @@ class EditUserForm extends StatelessWidget {
               hintText: "e.g https://www.john.com",
               title: "Website",
               controller: controller.websiteController,
+              maxLines: 1,
             ),
             const ReuseableText("About me"),
             const SizedBox(
@@ -82,43 +82,56 @@ class EditUserForm extends StatelessWidget {
             ),
             UserAuthSelector(
               builder: (user) {
+                if (user?.desc != null) {
+                  return GestureDetector(
+                    onTap: () async {
+                      final result = await context.router.push<String>(
+                        TextEditorRoute(
+                          initialText: user?.desc ?? "",
+                        ),
+                      );
+                      controller.updateProfile(desc: result);
+                    },
+                    child: Container(
+                      width: double.maxFinite,
+                      padding: const EdgeInsets.all(12),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(4),
+                        color: colorScheme.surfaceBright,
+                        boxShadow: [
+                          BoxShadow(
+                            color: colorScheme.shadow,
+                            blurRadius: 2,
+                          ),
+                        ],
+                      ),
+                      child: ReuseableText(user?.desc ?? ""),
+                    ),
+                  );
+                }
                 return GestureDetector(
                   onTap: () async {
-                    final response = await context.router.push<String>(
-                        GenerativeTextEditorRoute(desc: user?.desc ?? ""));
-                    if (response != null) {
-                      await controller.updateDescription(response);
-                    }
+                    final result =
+                        await context.router.push<String>(TextEditorRoute(
+                      initialText: user?.desc ?? "",
+                    ));
+                    controller.updateProfile(desc: result);
                   },
                   child: Container(
-                    width: size.width,
-                    padding: const EdgeInsets.all(12),
-                    height: user == null ? 100 : null,
+                    alignment: Alignment.center,
+                    height: 100,
+                    width: double.maxFinite,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(4),
                       color: colorScheme.surfaceBright,
                       boxShadow: [
                         BoxShadow(
                           color: colorScheme.shadow,
                           blurRadius: 2,
-                        ),
+                        )
                       ],
                     ),
-                    child: Visibility(
-                      visible: user?.desc != null,
-                      replacement: const ReuseableText("Tap to add about"),
-                      child: GenerativeTextViewer(
-                        user?.desc ?? "",
-                        onTap: () async {
-                          final response = await context.router.push<String>(
-                              GenerativeTextEditorRoute(
-                                  desc: user?.desc ?? ""));
-                          if (response != null) {
-                            await controller.updateDescription(response);
-                          }
-                        },
-                      ),
-                    ),
+                    child: const Text("Tab to Add about"),
                   ),
                 );
               },
@@ -220,7 +233,7 @@ class EditUserBackground extends StatelessWidget {
                           color: colorScheme.onPrimary,
                         ),
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),

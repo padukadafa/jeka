@@ -34,7 +34,7 @@ class EditUserController {
     });
   }
 
-  updateProfile() async {
+  updateProfile({String? desc}) async {
     EasyLoading.show();
     if (!formKey.currentState!.validate()) {
       return;
@@ -42,10 +42,10 @@ class EditUserController {
     if (authBloc.state.user != null) {
       final result = await userRepository.updateUser(
         authBloc.state.user!.copyWith(
-          name: nameController.text,
-          job: jobController.text,
-          website: websiteController.text,
-        ),
+            name: nameController.text,
+            job: jobController.text,
+            website: websiteController.text,
+            desc: desc ?? authBloc.state.user?.desc),
       );
       result.fold((l) {
         EasyLoading.showError(l.message);

@@ -7,8 +7,8 @@ import 'package:jeka/common/widgets/reuseable_text.dart';
 import 'package:jeka/common/widgets/reuseable_text_form.dart';
 
 @RoutePage()
-class CommunityCreateEventPage extends StatelessWidget {
-  const CommunityCreateEventPage({super.key});
+class CommunityCreateFeedPage extends StatelessWidget {
+  const CommunityCreateFeedPage({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -41,6 +41,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const CommunityCreateEventPage(),
       );
     },
+    CommunityCreateFeedRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const CommunityCreateFeedPage(),
+      );
+    },
     CommunityDetailRoute.name: (routeData) {
       final args = routeData.argsAs<CommunityDetailRouteArgs>();
       return AutoRoutePage<dynamic>(
@@ -168,6 +174,16 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const SettingsPage(),
       );
     },
+    TextEditorRoute.name: (routeData) {
+      final args = routeData.argsAs<TextEditorRouteArgs>();
+      return AutoRoutePage<String>(
+        routeData: routeData,
+        child: TextEditorPage(
+          key: args.key,
+          initialText: args.initialText,
+        ),
+      );
+    },
     UserDetailRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -244,6 +260,20 @@ class CommunityCreateEventRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'CommunityCreateEventRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [CommunityCreateFeedPage]
+class CommunityCreateFeedRoute extends PageRouteInfo<void> {
+  const CommunityCreateFeedRoute({List<PageRouteInfo>? children})
+      : super(
+          CommunityCreateFeedRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'CommunityCreateFeedRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
@@ -650,6 +680,44 @@ class SettingsRoute extends PageRouteInfo<void> {
   static const String name = 'SettingsRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [TextEditorPage]
+class TextEditorRoute extends PageRouteInfo<TextEditorRouteArgs> {
+  TextEditorRoute({
+    Key? key,
+    required String initialText,
+    List<PageRouteInfo>? children,
+  }) : super(
+          TextEditorRoute.name,
+          args: TextEditorRouteArgs(
+            key: key,
+            initialText: initialText,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'TextEditorRoute';
+
+  static const PageInfo<TextEditorRouteArgs> page =
+      PageInfo<TextEditorRouteArgs>(name);
+}
+
+class TextEditorRouteArgs {
+  const TextEditorRouteArgs({
+    this.key,
+    required this.initialText,
+  });
+
+  final Key? key;
+
+  final String initialText;
+
+  @override
+  String toString() {
+    return 'TextEditorRouteArgs{key: $key, initialText: $initialText}';
+  }
 }
 
 /// generated route for

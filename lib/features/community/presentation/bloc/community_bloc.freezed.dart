@@ -20,18 +20,21 @@ mixin _$CommunityEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(int index) changePage,
+    required TResult Function(int index) changeCommunityTab,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(int index)? changePage,
+    TResult? Function(int index)? changeCommunityTab,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(int index)? changePage,
+    TResult Function(int index)? changeCommunityTab,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +42,21 @@ mixin _$CommunityEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(ChangePage value) changePage,
+    required TResult Function(ChangeCommunityTab value) changeCommunityTab,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(ChangePage value)? changePage,
+    TResult? Function(ChangeCommunityTab value)? changeCommunityTab,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(ChangePage value)? changePage,
+    TResult Function(ChangeCommunityTab value)? changeCommunityTab,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -114,6 +120,7 @@ class _$StartedImpl implements _Started {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(int index) changePage,
+    required TResult Function(int index) changeCommunityTab,
   }) {
     return started();
   }
@@ -123,6 +130,7 @@ class _$StartedImpl implements _Started {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(int index)? changePage,
+    TResult? Function(int index)? changeCommunityTab,
   }) {
     return started?.call();
   }
@@ -132,6 +140,7 @@ class _$StartedImpl implements _Started {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(int index)? changePage,
+    TResult Function(int index)? changeCommunityTab,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -145,6 +154,7 @@ class _$StartedImpl implements _Started {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(ChangePage value) changePage,
+    required TResult Function(ChangeCommunityTab value) changeCommunityTab,
   }) {
     return started(this);
   }
@@ -154,6 +164,7 @@ class _$StartedImpl implements _Started {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(ChangePage value)? changePage,
+    TResult? Function(ChangeCommunityTab value)? changeCommunityTab,
   }) {
     return started?.call(this);
   }
@@ -163,6 +174,7 @@ class _$StartedImpl implements _Started {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(ChangePage value)? changePage,
+    TResult Function(ChangeCommunityTab value)? changeCommunityTab,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -242,6 +254,7 @@ class _$ChangePageImpl implements ChangePage {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(int index) changePage,
+    required TResult Function(int index) changeCommunityTab,
   }) {
     return changePage(index);
   }
@@ -251,6 +264,7 @@ class _$ChangePageImpl implements ChangePage {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(int index)? changePage,
+    TResult? Function(int index)? changeCommunityTab,
   }) {
     return changePage?.call(index);
   }
@@ -260,6 +274,7 @@ class _$ChangePageImpl implements ChangePage {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(int index)? changePage,
+    TResult Function(int index)? changeCommunityTab,
     required TResult orElse(),
   }) {
     if (changePage != null) {
@@ -273,6 +288,7 @@ class _$ChangePageImpl implements ChangePage {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(ChangePage value) changePage,
+    required TResult Function(ChangeCommunityTab value) changeCommunityTab,
   }) {
     return changePage(this);
   }
@@ -282,6 +298,7 @@ class _$ChangePageImpl implements ChangePage {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(ChangePage value)? changePage,
+    TResult? Function(ChangeCommunityTab value)? changeCommunityTab,
   }) {
     return changePage?.call(this);
   }
@@ -291,6 +308,7 @@ class _$ChangePageImpl implements ChangePage {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(ChangePage value)? changePage,
+    TResult Function(ChangeCommunityTab value)? changeCommunityTab,
     required TResult orElse(),
   }) {
     if (changePage != null) {
@@ -310,22 +328,168 @@ abstract class ChangePage implements CommunityEvent {
 }
 
 /// @nodoc
+abstract class _$$ChangeCommunityTabImplCopyWith<$Res> {
+  factory _$$ChangeCommunityTabImplCopyWith(_$ChangeCommunityTabImpl value,
+          $Res Function(_$ChangeCommunityTabImpl) then) =
+      __$$ChangeCommunityTabImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int index});
+}
+
+/// @nodoc
+class __$$ChangeCommunityTabImplCopyWithImpl<$Res>
+    extends _$CommunityEventCopyWithImpl<$Res, _$ChangeCommunityTabImpl>
+    implements _$$ChangeCommunityTabImplCopyWith<$Res> {
+  __$$ChangeCommunityTabImplCopyWithImpl(_$ChangeCommunityTabImpl _value,
+      $Res Function(_$ChangeCommunityTabImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? index = null,
+  }) {
+    return _then(_$ChangeCommunityTabImpl(
+      null == index
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ChangeCommunityTabImpl implements ChangeCommunityTab {
+  const _$ChangeCommunityTabImpl(this.index);
+
+  @override
+  final int index;
+
+  @override
+  String toString() {
+    return 'CommunityEvent.changeCommunityTab(index: $index)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangeCommunityTabImpl &&
+            (identical(other.index, index) || other.index == index));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, index);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChangeCommunityTabImplCopyWith<_$ChangeCommunityTabImpl> get copyWith =>
+      __$$ChangeCommunityTabImplCopyWithImpl<_$ChangeCommunityTabImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(int index) changePage,
+    required TResult Function(int index) changeCommunityTab,
+  }) {
+    return changeCommunityTab(index);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(int index)? changePage,
+    TResult? Function(int index)? changeCommunityTab,
+  }) {
+    return changeCommunityTab?.call(index);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(int index)? changePage,
+    TResult Function(int index)? changeCommunityTab,
+    required TResult orElse(),
+  }) {
+    if (changeCommunityTab != null) {
+      return changeCommunityTab(index);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(ChangePage value) changePage,
+    required TResult Function(ChangeCommunityTab value) changeCommunityTab,
+  }) {
+    return changeCommunityTab(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(ChangePage value)? changePage,
+    TResult? Function(ChangeCommunityTab value)? changeCommunityTab,
+  }) {
+    return changeCommunityTab?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(ChangePage value)? changePage,
+    TResult Function(ChangeCommunityTab value)? changeCommunityTab,
+    required TResult orElse(),
+  }) {
+    if (changeCommunityTab != null) {
+      return changeCommunityTab(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ChangeCommunityTab implements CommunityEvent {
+  const factory ChangeCommunityTab(final int index) = _$ChangeCommunityTabImpl;
+
+  int get index;
+  @JsonKey(ignore: true)
+  _$$ChangeCommunityTabImplCopyWith<_$ChangeCommunityTabImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$CommunityState {
   int get tabIndex => throw _privateConstructorUsedError;
   Community? get community => throw _privateConstructorUsedError;
+  int get communityTabIndex => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int tabIndex, Community? community) initial,
+    required TResult Function(
+            int tabIndex, Community? community, int communityTabIndex)
+        initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int tabIndex, Community? community)? initial,
+    TResult? Function(
+            int tabIndex, Community? community, int communityTabIndex)?
+        initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int tabIndex, Community? community)? initial,
+    TResult Function(int tabIndex, Community? community, int communityTabIndex)?
+        initial,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -357,7 +521,7 @@ abstract class $CommunityStateCopyWith<$Res> {
           CommunityState value, $Res Function(CommunityState) then) =
       _$CommunityStateCopyWithImpl<$Res, CommunityState>;
   @useResult
-  $Res call({int tabIndex, Community? community});
+  $Res call({int tabIndex, Community? community, int communityTabIndex});
 
   $CommunityCopyWith<$Res>? get community;
 }
@@ -377,6 +541,7 @@ class _$CommunityStateCopyWithImpl<$Res, $Val extends CommunityState>
   $Res call({
     Object? tabIndex = null,
     Object? community = freezed,
+    Object? communityTabIndex = null,
   }) {
     return _then(_value.copyWith(
       tabIndex: null == tabIndex
@@ -387,6 +552,10 @@ class _$CommunityStateCopyWithImpl<$Res, $Val extends CommunityState>
           ? _value.community
           : community // ignore: cast_nullable_to_non_nullable
               as Community?,
+      communityTabIndex: null == communityTabIndex
+          ? _value.communityTabIndex
+          : communityTabIndex // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 
@@ -411,7 +580,7 @@ abstract class _$$InitialImplCopyWith<$Res>
       __$$InitialImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int tabIndex, Community? community});
+  $Res call({int tabIndex, Community? community, int communityTabIndex});
 
   @override
   $CommunityCopyWith<$Res>? get community;
@@ -430,6 +599,7 @@ class __$$InitialImplCopyWithImpl<$Res>
   $Res call({
     Object? tabIndex = null,
     Object? community = freezed,
+    Object? communityTabIndex = null,
   }) {
     return _then(_$InitialImpl(
       tabIndex: null == tabIndex
@@ -440,6 +610,10 @@ class __$$InitialImplCopyWithImpl<$Res>
           ? _value.community
           : community // ignore: cast_nullable_to_non_nullable
               as Community?,
+      communityTabIndex: null == communityTabIndex
+          ? _value.communityTabIndex
+          : communityTabIndex // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -447,17 +621,21 @@ class __$$InitialImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$InitialImpl implements _Initial {
-  const _$InitialImpl({this.tabIndex = 0, this.community});
+  const _$InitialImpl(
+      {this.tabIndex = 0, this.community, this.communityTabIndex = 0});
 
   @override
   @JsonKey()
   final int tabIndex;
   @override
   final Community? community;
+  @override
+  @JsonKey()
+  final int communityTabIndex;
 
   @override
   String toString() {
-    return 'CommunityState.initial(tabIndex: $tabIndex, community: $community)';
+    return 'CommunityState.initial(tabIndex: $tabIndex, community: $community, communityTabIndex: $communityTabIndex)';
   }
 
   @override
@@ -468,11 +646,14 @@ class _$InitialImpl implements _Initial {
             (identical(other.tabIndex, tabIndex) ||
                 other.tabIndex == tabIndex) &&
             (identical(other.community, community) ||
-                other.community == community));
+                other.community == community) &&
+            (identical(other.communityTabIndex, communityTabIndex) ||
+                other.communityTabIndex == communityTabIndex));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, tabIndex, community);
+  int get hashCode =>
+      Object.hash(runtimeType, tabIndex, community, communityTabIndex);
 
   @JsonKey(ignore: true)
   @override
@@ -483,27 +664,32 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int tabIndex, Community? community) initial,
+    required TResult Function(
+            int tabIndex, Community? community, int communityTabIndex)
+        initial,
   }) {
-    return initial(tabIndex, community);
+    return initial(tabIndex, community, communityTabIndex);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int tabIndex, Community? community)? initial,
+    TResult? Function(
+            int tabIndex, Community? community, int communityTabIndex)?
+        initial,
   }) {
-    return initial?.call(tabIndex, community);
+    return initial?.call(tabIndex, community, communityTabIndex);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int tabIndex, Community? community)? initial,
+    TResult Function(int tabIndex, Community? community, int communityTabIndex)?
+        initial,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial(tabIndex, community);
+      return initial(tabIndex, community, communityTabIndex);
     }
     return orElse();
   }
@@ -538,13 +724,17 @@ class _$InitialImpl implements _Initial {
 }
 
 abstract class _Initial implements CommunityState {
-  const factory _Initial({final int tabIndex, final Community? community}) =
-      _$InitialImpl;
+  const factory _Initial(
+      {final int tabIndex,
+      final Community? community,
+      final int communityTabIndex}) = _$InitialImpl;
 
   @override
   int get tabIndex;
   @override
   Community? get community;
+  @override
+  int get communityTabIndex;
   @override
   @JsonKey(ignore: true)
   _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>

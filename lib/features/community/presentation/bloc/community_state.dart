@@ -5,5 +5,6 @@ class CommunityState with _$CommunityState {
   const factory CommunityState.initial({
     @Default(0) int tabIndex,
     Community? community,
+    @Default(0) int communityTabIndex,
   }) = _Initial;
 }

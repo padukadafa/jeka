@@ -21,10 +21,7 @@ class LoginPage extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     final colorScheme = Theme.of(context).colorScheme;
     return AppLayout(
-      surfaceColor: colorScheme.primary,
-      brightness: Brightness.light,
       child: Scaffold(
-        backgroundColor: colorScheme.surface,
         body: SingleChildScrollView(
           child: Column(
             children: [
@@ -39,16 +36,6 @@ class LoginPage extends StatelessWidget {
                 margin: const EdgeInsets.symmetric(horizontal: 16),
                 child: Column(
                   children: [
-                    AuthLoginWIthGoogle(
-                      size: size,
-                    ),
-                    const SizedBox(
-                      height: 24,
-                    ),
-                    const AuthDivider(),
-                    const SizedBox(
-                      height: 24,
-                    ),
                     LoginForm(
                       formKey: controller.formKey,
                       controller: controller,
@@ -63,6 +50,16 @@ class LoginPage extends StatelessWidget {
                           "Login",
                         ),
                       ),
+                    ),
+                    const SizedBox(
+                      height: 24,
+                    ),
+                    const AuthDivider(),
+                    const SizedBox(
+                      height: 24,
+                    ),
+                    AuthLoginWIthGoogle(
+                      size: size,
                     ),
                     const SizedBox(
                       height: 12,
@@ -81,7 +78,7 @@ class LoginPage extends StatelessWidget {
                           ),
                         )
                       ],
-                    )
+                    ),
                   ],
                 ),
               )

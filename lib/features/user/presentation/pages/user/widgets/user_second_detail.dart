@@ -31,12 +31,15 @@ class UserSecondDetail extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                const SizedBox(
+                  width: double.maxFinite,
+                ),
                 const ReuseableText(
                   "About me",
                   fontWeight: FontWeight.bold,
                 ),
-                const ReuseableText(
-                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id lacinia nisi. Sed scelerisque ultricies malesuada. Nunc sagittis blandit eros, a imperdiet elit mollis vel. Aenean a viverra risus. Nam scelerisque eu nisl sit amet rutrum. Nunc iaculis vehicula ipsum in dignissim. Aliquam finibus nibh vitae ipsum egestas aliquet. Aenean non lorem mi. Sed vitae",
+                ReuseableText(
+                  user?.desc ?? "",
                 ),
                 const SizedBox(
                   height: 12,
@@ -46,6 +49,14 @@ class UserSecondDetail extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
                 ReuseableText(user?.job ?? "Set on edit profile"),
+                const SizedBox(
+                  height: 12,
+                ),
+                const ReuseableText(
+                  "Website",
+                  fontWeight: FontWeight.bold,
+                ),
+                ReuseableText(user?.website ?? ""),
                 const SizedBox(
                   height: 12,
                 ),

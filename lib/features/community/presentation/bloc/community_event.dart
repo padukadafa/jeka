@@ -4,4 +4,6 @@ part of 'community_bloc.dart';
 class CommunityEvent with _$CommunityEvent {
   const factory CommunityEvent.started() = _Started;
   const factory CommunityEvent.changePage(int index) = ChangePage;
+  const factory CommunityEvent.changeCommunityTab(int index) =
+      ChangeCommunityTab;
 }

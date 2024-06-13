@@ -14,3 +14,10 @@ class CurrentCommunitySelector extends CommunitySelector<Community?> {
   CurrentCommunitySelector({super.key, required super.builder})
       : super(selector: (state) => state.community);
 }
+
+class CommunityTabIndexSelector extends CommunitySelector<int> {
+  CommunityTabIndexSelector({super.key, required super.builder})
+      : super(
+          selector: (state) => state.communityTabIndex,
+        );
+}

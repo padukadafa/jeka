@@ -85,7 +85,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     EasyLoading.show();
     await _authRepository.logout();
     emit(state.copyWith(user: null));
-    event.context.router.pushAll([LoginRoute()]);
+    event.context.router
+        .pushAndPopUntil(LoginRoute(), predicate: (route) => false);
     await EasyLoading.dismiss();
   }
 

@@ -10,11 +10,6 @@ class CommunityMemberPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        shape: const CircleBorder(),
-        child: const FaIcon(FontAwesomeIcons.magnifyingGlass),
-      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
