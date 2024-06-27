@@ -1,18 +1,39 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:intl/intl.dart';
 import 'package:jeka/common/widgets/app_bar.dart';
 import 'package:jeka/common/widgets/app_layout.dart';
-import 'package:jeka/common/widgets/avatar.dart';
+import 'package:jeka/common/widgets/avatars/avatar.dart';
+import 'package:jeka/common/widgets/avatars/user_avatar.dart';
 import 'package:jeka/common/widgets/reuseable_text.dart';
+import 'package:jeka/core/router/app_router.dart';
+import 'package:jeka/di.dart';
+import 'package:jeka/features/community/data/data_source/remote/community_remote_data_source.dart';
+import 'package:jeka/features/community/data/models/post.dart';
+import 'package:jeka/features/community/presentation/bloc/community_bloc.dart';
+import 'package:jeka/features/community/presentation/widgets/post_attachment_widget.dart';
+import 'package:jeka/features/community/presentation/widgets/post_item_type.dart';
+import 'package:jeka/features/community/presentation/widgets/post_reaction_widget.dart';
 
 @RoutePage()
-class CommunityFeedDetailPage extends StatelessWidget {
-  const CommunityFeedDetailPage({super.key});
+class CommunityFeedDetailPage extends StatefulWidget {
+  final Post post;
+  const CommunityFeedDetailPage({super.key, required this.post});
 
+  @override
+  State<CommunityFeedDetailPage> createState() =>
+      _CommunityFeedDetailPageState();
+}
+
+class _CommunityFeedDetailPageState extends State<CommunityFeedDetailPage> {
+  bool _showCommentFiled = false;
+  final commentController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
+    final communityBloc = context.read<CommunityBloc>();
 
     return AppLayout(
       child: Scaffold(
@@ -26,149 +47,160 @@ class CommunityFeedDetailPage extends StatelessWidget {
             )
           ],
         ),
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              Container(
-                margin: const EdgeInsets.symmetric(vertical: 8),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(4),
-                  color: colorScheme.surfaceBright,
-                ),
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8),
-                      child: Row(
-                        children: [
-                          FaIcon(
-                            FontAwesomeIcons.solidLightbulb,
-                            size: 16,
-                            color: colorScheme.primary,
-                          ),
-                          ReuseableText(
-                            "Announcement",
-                            color: colorScheme.primary,
-                          ),
-                        ],
-                      ),
+        body: Stack(
+          children: [
+            SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    margin: const EdgeInsets.symmetric(vertical: 8),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(4),
+                      color: colorScheme.surfaceBright,
                     ),
-                    Divider(
-                      color: colorScheme.surface,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8),
-                      child: Column(
-                        children: [
-                          const Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        PostItemType(type: widget.post.postType),
+                        Divider(
+                          color: colorScheme.surface,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Avatar(
-                                    size: 35,
+                                  Row(
+                                    children: [
+                                      UserAvatar(
+                                        size: 35,
+                                        uid: widget.post.writerId,
+                                      ),
+                                      const SizedBox(
+                                        width: 8,
+                                      ),
+                                      ReuseableText(widget.post.writer ?? ""),
+                                    ],
                                   ),
-                                  SizedBox(
-                                    width: 8,
-                                  ),
-                                  ReuseableText("Lucas Bradly"),
+                                  ReuseableText(DateFormat("dd MMM || hh:MM")
+                                      .format(widget.post.createdAt ??
+                                          DateTime.now())),
                                 ],
                               ),
-                              ReuseableText("08:13 am"),
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 12,
-                          ),
-                          const ReuseableText(
-                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id lacinia nisi. Sed scelerisque ultricies malesuada. Nunc sagittis blandit eros, a imperdiet elit mollis vel. Aenean a viverra risus. Nam scelerisque eu nisl sit amet rutrum. Nunc iaculis vehicula ipsum in dignissim. Aliquam finibus nibh vitae ipsum egestas aliquet. Aenean non lorem mi. Sed vitae",
-                          ),
-                          const SizedBox(
-                            height: 12,
-                          ),
-                          Container(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 12,
-                              vertical: 6,
-                            ),
-                            decoration: BoxDecoration(
-                              color: colorScheme.surfaceBright,
-                              borderRadius: BorderRadius.circular(4),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: colorScheme.shadow,
-                                  blurRadius: 2,
-                                ),
-                              ],
-                            ),
-                            child: const Row(
-                              children: [
-                                FaIcon(
-                                  FontAwesomeIcons.solidFilePdf,
-                                  color: Colors.red,
-                                  size: 18,
-                                ),
-                                SizedBox(
-                                  width: 6,
-                                ),
-                                ReuseableText("Pitch deck.pdf"),
-                                SizedBox(
-                                  width: 6,
-                                ),
-                                ReuseableText("Uploaded"),
-                              ],
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 12,
-                          ),
-                          Row(
-                            children: [
-                              Container(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 8,
-                                  vertical: 4,
-                                ),
-                                decoration: BoxDecoration(
-                                  color: colorScheme.surfaceBright,
-                                  borderRadius: BorderRadius.circular(4),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: colorScheme.shadow,
-                                      blurRadius: 2,
-                                    ),
-                                  ],
-                                ),
-                                child: const Row(
-                                  children: [
-                                    ReuseableText("12"),
-                                    SizedBox(
-                                      width: 4,
-                                    ),
-                                    FaIcon(
-                                      FontAwesomeIcons.solidFaceSurprise,
-                                      size: 16,
-                                      color: Colors.orange,
-                                    ),
-                                    SizedBox(
-                                      width: 4,
-                                    ),
-                                    ReuseableText("12"),
-                                    SizedBox(
-                                      width: 4,
-                                    ),
-                                    FaIcon(
-                                      FontAwesomeIcons.solidFaceLaugh,
-                                      size: 16,
-                                      color: Colors.red,
-                                    ),
-                                  ],
-                                ),
+                              const SizedBox(
+                                height: 12,
+                              ),
+                              ReuseableText(
+                                widget.post.desc ?? "",
                               ),
                               const SizedBox(
-                                width: 12,
+                                height: 12,
                               ),
+                              PostAttachmentWidget(
+                                  postFiles: widget.post.files),
+                              const SizedBox(
+                                height: 12,
+                              ),
+                              PostReactionWidget(
+                                  reactions: widget.post.postReactions),
                             ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Divider(
+                    color: colorScheme.surface,
+                  ),
+                  CommunityWidgetComments(post: widget.post),
+                  ListTile(
+                    onTap: () {
+                      setState(() {
+                        _showCommentFiled = true;
+                      });
+                    },
+                    leading: const Avatar(
+                      size: 35,
+                    ),
+                    title: const ReuseableText(
+                      "Write a comment...",
+                      fontSize: 14,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 24,
+                  ),
+                ],
+              ),
+            ),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Visibility(
+                visible: _showCommentFiled,
+                child: Column(
+                  children: [
+                    Expanded(child: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          _showCommentFiled = false;
+                        });
+                      },
+                    )),
+                    Container(
+                      padding: const EdgeInsets.all(12),
+                      decoration: BoxDecoration(
+                        color: colorScheme.surfaceBright,
+                        boxShadow: [
+                          BoxShadow(
+                            color: colorScheme.shadow,
+                            offset: const Offset(0, -2),
+                          )
+                        ],
+                      ),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(12),
+                                border: Border.all(color: colorScheme.shadow),
+                              ),
+                              child: TextFormField(
+                                controller: commentController,
+                                autofocus: true,
+                                decoration: const InputDecoration(
+                                  contentPadding: EdgeInsets.only(left: 12),
+                                  hintText: "Comment...",
+                                  border: InputBorder.none,
+                                ),
+                              ),
+                            ),
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              communityBloc.add(
+                                CreatePostComment(
+                                  context,
+                                  PostComment(
+                                    comment: commentController.text,
+                                    createdAt: DateTime.now(),
+                                  ),
+                                  widget.post,
+                                  onDone: (p) {
+                                    commentController.clear();
+                                    context.router.replace(
+                                      CommunityFeedDetailRoute(post: p),
+                                    );
+                                  },
+                                ),
+                              );
+                            },
+                            child: const ReuseableText("Send"),
                           )
                         ],
                       ),
@@ -176,43 +208,42 @@ class CommunityFeedDetailPage extends StatelessWidget {
                   ],
                 ),
               ),
-              Divider(
-                color: colorScheme.surface,
-              ),
-              Column(
-                children: List.generate(
-                  4,
-                  (index) {
-                    return const ListTile(
-                      leading: Avatar(
-                        size: 35,
-                      ),
-                      title: ReuseableText(
-                        "Literacy enthusiast that wanna improve education in africa and more in the world",
-                        fontSize: 14,
-                      ),
-                      subtitle: ReuseableText(
-                        "4 weeks ago",
-                        fontSize: 12,
-                        color: Colors.grey,
-                      ),
-                    );
-                  },
-                ),
-              ),
-              ListTile(
-                onTap: () {},
-                leading: const Avatar(
-                  size: 35,
-                ),
-                title: const ReuseableText(
-                  "Write a comment...",
-                  fontSize: 14,
-                ),
-              ),
-            ],
-          ),
+            )
+          ],
         ),
+      ),
+    );
+  }
+}
+
+class CommunityWidgetComments extends StatelessWidget {
+  final Post post;
+  const CommunityWidgetComments({
+    super.key,
+    required this.post,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: List.generate(
+        post.comments.length,
+        (index) {
+          return ListTile(
+            leading: UserAvatar(
+              size: 35,
+              uid: post.comments[index].writerId,
+            ),
+            title: ReuseableText(
+              post.comments[index].writer ?? "",
+              fontSize: 12,
+              color: Colors.grey,
+            ),
+            subtitle: ReuseableText(
+              post.comments[index].comment ?? "",
+            ),
+          );
+        },
       ),
     );
   }

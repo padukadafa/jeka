@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:auto_route/auto_route.dart';
@@ -23,6 +22,7 @@ import 'package:jeka/utils/uploud_service.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import 'package:markdown/markdown.dart' as md;
 import 'package:uuid/uuid.dart';
+import 'package:delta_to_html/delta_to_html.dart';
 
 @RoutePage<String>()
 class GenerativeTextEditorPage extends StatefulWidget {
@@ -51,8 +51,7 @@ class _GenerativeTextEditorPageState extends State<GenerativeTextEditorPage> {
   void initState() {
     super.initState();
     if (widget.desc.isNotEmpty) {
-      _controller.document =
-          Document.fromDelta(Delta.fromJson(jsonDecode(widget.desc)));
+      _controller.document = Document.fromHtml(widget.desc);
     }
     _controller.addListener(() {
       if (showAiPrompt) {
@@ -88,10 +87,10 @@ class _GenerativeTextEditorPageState extends State<GenerativeTextEditorPage> {
                     children: [
                       IconButton(
                         onPressed: () {
+                          final result = DeltaToHTML.encodeJson(
+                              _controller.document.toDelta().toJson());
                           context.router.maybePop<String>(
-                            jsonEncode(
-                              _controller.document.toDelta(),
-                            ),
+                            result,
                           );
                         },
                         icon: const FaIcon(
@@ -303,19 +302,15 @@ class GenerativeTextEditorToolBar extends StatelessWidget {
           children: [
             QuillToolbarToggleStyleButton(
               controller: _controller,
+              attribute: Attribute.bold,
+            ),
+            QuillToolbarToggleStyleButton(
+              controller: _controller,
               attribute: Attribute.centerAlignment,
             ),
             QuillToolbarToggleStyleButton(
               controller: _controller,
               attribute: Attribute.justifyAlignment,
-            ),
-            QuillToolbarColorButton(
-              controller: _controller,
-              isBackground: false,
-            ),
-            QuillToolbarColorButton(
-              controller: _controller,
-              isBackground: true,
             ),
             QuillToolbarToggleStyleButton(
               controller: _controller,

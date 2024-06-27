@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jeka/common/widgets/avatar.dart';
+import 'package:jeka/common/widgets/avatars/avatar.dart';
 import 'package:jeka/common/widgets/reuseable_text.dart';
 import 'package:jeka/features/auth/presentation/blocs/bloc/auth_selector.dart';
 import 'package:skeletonizer/skeletonizer.dart';

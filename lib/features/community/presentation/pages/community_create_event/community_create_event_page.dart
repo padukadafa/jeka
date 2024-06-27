@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:jeka/common/widgets/app_layout.dart';
-import 'package:jeka/common/widgets/avatar.dart';
+import 'package:jeka/common/widgets/avatars/avatar.dart';
 import 'package:jeka/common/widgets/reuseable_text.dart';
 import 'package:jeka/common/widgets/reuseable_text_form.dart';
 
@@ -25,7 +25,7 @@ class CommunityCreateEventPage extends StatelessWidget {
           actions: [
             TextButton(
               onPressed: () {},
-              child: ReuseableText(
+              child: const ReuseableText(
                 "Create",
                 fontSize: 16,
               ),
@@ -37,7 +37,7 @@ class CommunityCreateEventPage extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Column(
               children: [
-                Row(
+                const Row(
                   children: [
                     Avatar(
                       size: 45,
@@ -58,7 +58,7 @@ class CommunityCreateEventPage extends StatelessWidget {
                   width: double.maxFinite,
                   child: ElevatedButton.icon(
                     onPressed: () {},
-                    label: ReuseableText("Add File"),
+                    label: const ReuseableText("Add File"),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: colorScheme.surfaceBright,
                     ),

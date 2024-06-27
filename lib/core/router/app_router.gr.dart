@@ -21,6 +21,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const AboutPage(),
       );
     },
+    AddCommunityRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const AddCommunityPage(),
+      );
+    },
     ChangePasswordRoute.name: (routeData) {
       final args = routeData.argsAs<ChangePasswordRouteArgs>(
           orElse: () => const ChangePasswordRouteArgs());
@@ -41,10 +47,10 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const CommunityCreateEventPage(),
       );
     },
-    CommunityCreateFeedRoute.name: (routeData) {
+    CommunityCreatePostRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const CommunityCreateFeedPage(),
+        child: const CommunityCreatePostPage(),
       );
     },
     CommunityDetailRoute.name: (routeData) {
@@ -64,9 +70,13 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     CommunityFeedDetailRoute.name: (routeData) {
+      final args = routeData.argsAs<CommunityFeedDetailRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const CommunityFeedDetailPage(),
+        child: CommunityFeedDetailPage(
+          key: args.key,
+          post: args.post,
+        ),
       );
     },
     CommunityGuidelinesRoute.name: (routeData) {
@@ -75,10 +85,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const CommunityGuidelinesPage(),
       );
     },
-    CreatePostRoute.name: (routeData) {
+    CreateCommunityRoute.name: (routeData) {
+      final args = routeData.argsAs<CreateCommunityRouteArgs>(
+          orElse: () => const CreateCommunityRouteArgs());
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const CreatePostPage(),
+        child: CreateCommunityPage(key: args.key),
       );
     },
     EditUserRoute.name: (routeData) {
@@ -122,6 +134,16 @@ abstract class _$AppRouter extends RootStackRouter {
         child: HomePage(key: args.key),
       );
     },
+    JoinCommunityRoute.name: (routeData) {
+      final args = routeData.argsAs<JoinCommunityRouteArgs>();
+      return AutoRoutePage<Community>(
+        routeData: routeData,
+        child: JoinCommunityPage(
+          key: args.key,
+          community: args.community,
+        ),
+      );
+    },
     LoadingRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -144,16 +166,6 @@ abstract class _$AppRouter extends RootStackRouter {
         child: OnBoardingPage(key: args.key),
       );
     },
-    PostDetailRoute.name: (routeData) {
-      final args = routeData.argsAs<PostDetailRouteArgs>();
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: PostDetailPage(
-          key: args.key,
-          post: args.post,
-        ),
-      );
-    },
     RegisterRoute.name: (routeData) {
       final args = routeData.argsAs<RegisterRouteArgs>(
           orElse: () => const RegisterRouteArgs());
@@ -166,6 +178,24 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const RulesAndAgreementPage(),
+      );
+    },
+    SearchCommunityRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const SearchCommunityPage(),
+      );
+    },
+    SearchCommunityResultRoute.name: (routeData) {
+      final args = routeData.argsAs<SearchCommunityResultRouteArgs>(
+          orElse: () => const SearchCommunityResultRouteArgs());
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: SearchCommunityResultPage(
+          key: args.key,
+          query: args.query,
+          type: args.type,
+        ),
       );
     },
     SettingsRoute.name: (routeData) {
@@ -203,6 +233,20 @@ class AboutRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'AboutRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [AddCommunityPage]
+class AddCommunityRoute extends PageRouteInfo<void> {
+  const AddCommunityRoute({List<PageRouteInfo>? children})
+      : super(
+          AddCommunityRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'AddCommunityRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
@@ -265,15 +309,15 @@ class CommunityCreateEventRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [CommunityCreateFeedPage]
-class CommunityCreateFeedRoute extends PageRouteInfo<void> {
-  const CommunityCreateFeedRoute({List<PageRouteInfo>? children})
+/// [CommunityCreatePostPage]
+class CommunityCreatePostRoute extends PageRouteInfo<void> {
+  const CommunityCreatePostRoute({List<PageRouteInfo>? children})
       : super(
-          CommunityCreateFeedRoute.name,
+          CommunityCreatePostRoute.name,
           initialChildren: children,
         );
 
-  static const String name = 'CommunityCreateFeedRoute';
+  static const String name = 'CommunityCreatePostRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
@@ -332,16 +376,41 @@ class CommunityEventDetailRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [CommunityFeedDetailPage]
-class CommunityFeedDetailRoute extends PageRouteInfo<void> {
-  const CommunityFeedDetailRoute({List<PageRouteInfo>? children})
-      : super(
+class CommunityFeedDetailRoute
+    extends PageRouteInfo<CommunityFeedDetailRouteArgs> {
+  CommunityFeedDetailRoute({
+    Key? key,
+    required Post post,
+    List<PageRouteInfo>? children,
+  }) : super(
           CommunityFeedDetailRoute.name,
+          args: CommunityFeedDetailRouteArgs(
+            key: key,
+            post: post,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'CommunityFeedDetailRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<CommunityFeedDetailRouteArgs> page =
+      PageInfo<CommunityFeedDetailRouteArgs>(name);
+}
+
+class CommunityFeedDetailRouteArgs {
+  const CommunityFeedDetailRouteArgs({
+    this.key,
+    required this.post,
+  });
+
+  final Key? key;
+
+  final Post post;
+
+  @override
+  String toString() {
+    return 'CommunityFeedDetailRouteArgs{key: $key, post: $post}';
+  }
 }
 
 /// generated route for
@@ -359,17 +428,32 @@ class CommunityGuidelinesRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [CreatePostPage]
-class CreatePostRoute extends PageRouteInfo<void> {
-  const CreatePostRoute({List<PageRouteInfo>? children})
-      : super(
-          CreatePostRoute.name,
+/// [CreateCommunityPage]
+class CreateCommunityRoute extends PageRouteInfo<CreateCommunityRouteArgs> {
+  CreateCommunityRoute({
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
+          CreateCommunityRoute.name,
+          args: CreateCommunityRouteArgs(key: key),
           initialChildren: children,
         );
 
-  static const String name = 'CreatePostRoute';
+  static const String name = 'CreateCommunityRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<CreateCommunityRouteArgs> page =
+      PageInfo<CreateCommunityRouteArgs>(name);
+}
+
+class CreateCommunityRouteArgs {
+  const CreateCommunityRouteArgs({this.key});
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'CreateCommunityRouteArgs{key: $key}';
+  }
 }
 
 /// generated route for
@@ -517,6 +601,44 @@ class HomeRouteArgs {
 }
 
 /// generated route for
+/// [JoinCommunityPage]
+class JoinCommunityRoute extends PageRouteInfo<JoinCommunityRouteArgs> {
+  JoinCommunityRoute({
+    Key? key,
+    required Community community,
+    List<PageRouteInfo>? children,
+  }) : super(
+          JoinCommunityRoute.name,
+          args: JoinCommunityRouteArgs(
+            key: key,
+            community: community,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'JoinCommunityRoute';
+
+  static const PageInfo<JoinCommunityRouteArgs> page =
+      PageInfo<JoinCommunityRouteArgs>(name);
+}
+
+class JoinCommunityRouteArgs {
+  const JoinCommunityRouteArgs({
+    this.key,
+    required this.community,
+  });
+
+  final Key? key;
+
+  final Community community;
+
+  @override
+  String toString() {
+    return 'JoinCommunityRouteArgs{key: $key, community: $community}';
+  }
+}
+
+/// generated route for
 /// [LoadingPage]
 class LoadingRoute extends PageRouteInfo<void> {
   const LoadingRoute({List<PageRouteInfo>? children})
@@ -588,44 +710,6 @@ class OnBoardingRouteArgs {
 }
 
 /// generated route for
-/// [PostDetailPage]
-class PostDetailRoute extends PageRouteInfo<PostDetailRouteArgs> {
-  PostDetailRoute({
-    Key? key,
-    required Post post,
-    List<PageRouteInfo>? children,
-  }) : super(
-          PostDetailRoute.name,
-          args: PostDetailRouteArgs(
-            key: key,
-            post: post,
-          ),
-          initialChildren: children,
-        );
-
-  static const String name = 'PostDetailRoute';
-
-  static const PageInfo<PostDetailRouteArgs> page =
-      PageInfo<PostDetailRouteArgs>(name);
-}
-
-class PostDetailRouteArgs {
-  const PostDetailRouteArgs({
-    this.key,
-    required this.post,
-  });
-
-  final Key? key;
-
-  final Post post;
-
-  @override
-  String toString() {
-    return 'PostDetailRouteArgs{key: $key, post: $post}';
-  }
-}
-
-/// generated route for
 /// [RegisterPage]
 class RegisterRoute extends PageRouteInfo<RegisterRouteArgs> {
   RegisterRoute({
@@ -666,6 +750,64 @@ class RulesAndAgreementRoute extends PageRouteInfo<void> {
   static const String name = 'RulesAndAgreementRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [SearchCommunityPage]
+class SearchCommunityRoute extends PageRouteInfo<void> {
+  const SearchCommunityRoute({List<PageRouteInfo>? children})
+      : super(
+          SearchCommunityRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'SearchCommunityRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [SearchCommunityResultPage]
+class SearchCommunityResultRoute
+    extends PageRouteInfo<SearchCommunityResultRouteArgs> {
+  SearchCommunityResultRoute({
+    Key? key,
+    String? query,
+    String? type,
+    List<PageRouteInfo>? children,
+  }) : super(
+          SearchCommunityResultRoute.name,
+          args: SearchCommunityResultRouteArgs(
+            key: key,
+            query: query,
+            type: type,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'SearchCommunityResultRoute';
+
+  static const PageInfo<SearchCommunityResultRouteArgs> page =
+      PageInfo<SearchCommunityResultRouteArgs>(name);
+}
+
+class SearchCommunityResultRouteArgs {
+  const SearchCommunityResultRouteArgs({
+    this.key,
+    this.query,
+    this.type,
+  });
+
+  final Key? key;
+
+  final String? query;
+
+  final String? type;
+
+  @override
+  String toString() {
+    return 'SearchCommunityResultRouteArgs{key: $key, query: $query, type: $type}';
+  }
 }
 
 /// generated route for

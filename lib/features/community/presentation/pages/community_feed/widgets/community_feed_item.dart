@@ -1,21 +1,80 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:jeka/common/widgets/avatar.dart';
+import 'package:intl/intl.dart';
+import 'package:jeka/common/widgets/avatars/avatar.dart';
 import 'package:jeka/common/widgets/reuseable_text.dart';
 import 'package:jeka/core/router/app_router.dart';
+import 'package:jeka/features/community/data/models/post.dart';
+import 'package:jeka/features/community/presentation/widgets/post_attachment_widget.dart';
+import 'package:jeka/features/community/presentation/widgets/post_item_type.dart';
+import 'package:jeka/features/community/presentation/widgets/post_reaction_widget.dart';
 
 class CommunityFeedItem extends StatelessWidget {
+  final Post post;
   const CommunityFeedItem({
     super.key,
+    required this.post,
   });
 
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
+    if (post.postType == 2) {
+      return GestureDetector(
+        onTap: () {
+          context.router.push(CommunityFeedDetailRoute(post: post));
+        },
+        child: Container(
+          margin: const EdgeInsets.symmetric(vertical: 8),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(4),
+            color: colorScheme.surfaceBright,
+            boxShadow: [
+              BoxShadow(
+                color: colorScheme.shadow,
+                blurRadius: 2,
+              ),
+            ],
+          ),
+          child: Column(
+            children: [
+              PostItemType(
+                type: post.postType,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    PostAttachmentWidget(
+                      postFiles: post.files,
+                    ),
+                    const SizedBox(
+                      height: 12,
+                    ),
+                    Row(
+                      children: [
+                        PostReactionWidget(
+                          reactions: post.postReactions,
+                        ),
+                        const SizedBox(
+                          width: 12,
+                        ),
+                        ReuseableText("${post.comments.length} comments"),
+                      ],
+                    )
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+    }
     return GestureDetector(
       onTap: () {
-        context.router.push(const CommunityFeedDetailRoute());
+        context.router.push(CommunityFeedDetailRoute(post: post));
       },
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 8),
@@ -31,21 +90,8 @@ class CommunityFeedItem extends StatelessWidget {
         ),
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.all(8),
-              child: Row(
-                children: [
-                  FaIcon(
-                    FontAwesomeIcons.solidLightbulb,
-                    size: 16,
-                    color: colorScheme.primary,
-                  ),
-                  ReuseableText(
-                    "Announcement",
-                    color: colorScheme.primary,
-                  ),
-                ],
-              ),
+            PostItemType(
+              type: post.postType,
             ),
             Divider(
               color: colorScheme.surface,
@@ -53,8 +99,9 @@ class CommunityFeedItem extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Row(
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Row(
@@ -65,104 +112,37 @@ class CommunityFeedItem extends StatelessWidget {
                           SizedBox(
                             width: 8,
                           ),
-                          ReuseableText("Lucas Bradly"),
+                          ReuseableText(post.writer ?? ""),
                         ],
                       ),
-                      ReuseableText("08:13 am"),
+                      ReuseableText(DateFormat("dd MMM || hh:MM")
+                          .format(post.createdAt ?? DateTime.now())),
                     ],
                   ),
                   const SizedBox(
                     height: 12,
                   ),
-                  const ReuseableText(
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id lacinia nisi. Sed scelerisque ultricies malesuada. Nunc sagittis blandit eros, a imperdiet elit mollis vel. Aenean a viverra risus. Nam scelerisque eu nisl sit amet rutrum. Nunc iaculis vehicula ipsum in dignissim. Aliquam finibus nibh vitae ipsum egestas aliquet. Aenean non lorem mi. Sed vitae",
+                  ReuseableText(
+                    post.desc ?? "",
                   ),
                   const SizedBox(
                     height: 12,
                   ),
-                  Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 12,
-                      vertical: 6,
-                    ),
-                    decoration: BoxDecoration(
-                      color: colorScheme.surfaceBright,
-                      borderRadius: BorderRadius.circular(4),
-                      boxShadow: [
-                        BoxShadow(
-                          color: colorScheme.shadow,
-                          blurRadius: 2,
-                        ),
-                      ],
-                    ),
-                    child: const Row(
-                      children: [
-                        FaIcon(
-                          FontAwesomeIcons.solidFilePdf,
-                          color: Colors.red,
-                          size: 18,
-                        ),
-                        SizedBox(
-                          width: 6,
-                        ),
-                        ReuseableText("Pitch deck.pdf"),
-                        SizedBox(
-                          width: 6,
-                        ),
-                        ReuseableText("Uploaded"),
-                      ],
-                    ),
+                  PostAttachmentWidget(
+                    postFiles: post.files,
                   ),
                   const SizedBox(
                     height: 12,
                   ),
                   Row(
                     children: [
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 8,
-                          vertical: 4,
-                        ),
-                        decoration: BoxDecoration(
-                          color: colorScheme.surfaceBright,
-                          borderRadius: BorderRadius.circular(4),
-                          boxShadow: [
-                            BoxShadow(
-                              color: colorScheme.shadow,
-                              blurRadius: 2,
-                            ),
-                          ],
-                        ),
-                        child: const Row(
-                          children: [
-                            ReuseableText("12"),
-                            SizedBox(
-                              width: 4,
-                            ),
-                            FaIcon(
-                              FontAwesomeIcons.solidFaceSurprise,
-                              size: 16,
-                              color: Colors.orange,
-                            ),
-                            SizedBox(
-                              width: 4,
-                            ),
-                            ReuseableText("12"),
-                            SizedBox(
-                              width: 4,
-                            ),
-                            FaIcon(
-                              FontAwesomeIcons.solidFaceLaugh,
-                              size: 16,
-                              color: Colors.red,
-                            ),
-                          ],
-                        ),
+                      PostReactionWidget(
+                        reactions: post.postReactions,
                       ),
                       const SizedBox(
                         width: 12,
                       ),
-                      const ReuseableText("4 comments"),
+                      ReuseableText("${post.comments.length} comments"),
                     ],
                   )
                 ],

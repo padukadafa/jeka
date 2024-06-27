@@ -4,6 +4,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -11,6 +12,7 @@ import 'package:jeka/core/error.dart';
 import 'package:jeka/core/router/app_router.dart';
 import 'package:jeka/features/auth/data/models/user_model.dart';
 import 'package:jeka/features/auth/data/repository/auth_repository.dart';
+import 'package:jeka/features/community/presentation/bloc/community_bloc.dart';
 import 'package:jeka/features/user/data/repository/user_repository.dart';
 
 part 'auth_event.dart';
@@ -54,6 +56,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     final result = await _authRepository.loginWithEmailAndPassword(
         event.email, event.password);
     result.fold((l) => EasyLoading.showError(l.message), (r) {
+      event.context
+          .read<CommunityBloc>()
+          .add(UpdateCommunityList(event.context));
+
       event.context.router.pushAndPopUntil(
         HomeRoute(),
         predicate: (route) => false,
@@ -72,10 +78,14 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         EasyLoading.showError(l.message);
       }
     }, (r) {
+      event.context
+          .read<CommunityBloc>()
+          .add(UpdateCommunityList(event.context));
       event.context.router.pushAndPopUntil(
         HomeRoute(),
         predicate: (route) => false,
       );
+
       emit(state.copyWith(user: r));
     });
     EasyLoading.dismiss();

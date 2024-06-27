@@ -21,3 +21,10 @@ class CommunityTabIndexSelector extends CommunitySelector<int> {
           selector: (state) => state.communityTabIndex,
         );
 }
+
+class CommunityListSelector extends CommunitySelector<List<Community>> {
+  CommunityListSelector({super.key, required super.builder})
+      : super(
+          selector: (state) => state.communities,
+        );
+}

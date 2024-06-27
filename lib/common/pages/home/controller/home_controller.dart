@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:jeka/common/pages/home/cubit/home_cubit.dart';
-import 'package:jeka/common/widgets/avatar.dart';
+import 'package:jeka/common/widgets/avatars/avatar.dart';
 import 'package:jeka/features/chat/presentation/pages/chat/chat_page.dart';
 import 'package:jeka/features/community/presentation/bloc/community_selector.dart';
 import 'package:jeka/features/community/presentation/pages/community/community_page.dart';
@@ -27,10 +27,6 @@ class HomeController {
       label: "Home",
     ),
     const BottomNavigationBarItem(
-      icon: FaIcon(FontAwesomeIcons.magnifyingGlass),
-      label: "Search",
-    ),
-    const BottomNavigationBarItem(
       icon: FaIcon(FontAwesomeIcons.message),
       label: "Chat",
       activeIcon: FaIcon(FontAwesomeIcons.solidMessage),
@@ -50,7 +46,6 @@ class HomeController {
         CommunityPage(
           onOpenDrawer: onOpenDrawer,
         ),
-        const SearchPage(),
         ChatPage(
           onOpenDrawer: onOpenDrawer,
         ),

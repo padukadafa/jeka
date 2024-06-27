@@ -14,21 +14,24 @@ class ReuseableTextForm extends StatefulWidget {
   final int? minLines;
   final FocusNode? focus;
   final BoxBorder? border;
+  final void Function(String)? onChange;
   final void Function(PointerDownEvent)? onTapOutside;
-  const ReuseableTextForm({
-    super.key,
-    this.title,
-    required this.hintText,
-    this.showHideButton = false,
-    this.controller,
-    this.validator,
-    this.textInputType,
-    this.maxLines,
-    this.minLines,
-    this.focus,
-    this.onTapOutside,
-    this.border,
-  });
+  final bool? enabled;
+  const ReuseableTextForm(
+      {super.key,
+      this.title,
+      required this.hintText,
+      this.showHideButton = false,
+      this.controller,
+      this.validator,
+      this.textInputType,
+      this.maxLines,
+      this.minLines,
+      this.focus,
+      this.onTapOutside,
+      this.border,
+      this.onChange,
+      this.enabled});
 
   @override
   State<ReuseableTextForm> createState() => _ReuseableTextFormState();
@@ -62,12 +65,14 @@ class _ReuseableTextFormState extends State<ReuseableTextForm> {
             children: [
               Expanded(
                 child: TextFormField(
+                  enabled: widget.enabled,
                   minLines: widget.minLines,
                   keyboardType: widget.textInputType,
                   controller: widget.controller,
                   focusNode: widget.focus ?? focus,
                   validator: widget.validator,
                   obscureText: widget.showHideButton && _isHidden,
+                  onChanged: widget.onChange,
                   onTapOutside: (event) {
                     if (widget.onTapOutside == null) {
                       (widget.focus ?? focus).unfocus();

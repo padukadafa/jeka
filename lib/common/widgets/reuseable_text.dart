@@ -41,6 +41,7 @@ class ReuseableText extends StatelessWidget {
         decorationColor: color,
         height: height,
       ),
+      // overflow: TextOverflow.ellipsis,
     );
   }
 }

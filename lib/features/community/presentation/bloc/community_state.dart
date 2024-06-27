@@ -6,5 +6,6 @@ class CommunityState with _$CommunityState {
     @Default(0) int tabIndex,
     Community? community,
     @Default(0) int communityTabIndex,
+    @Default([]) List<Community> communities,
   }) = _Initial;
 }

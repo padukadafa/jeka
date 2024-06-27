@@ -6,7 +6,10 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:jeka/core/constants.dart';
 import 'package:jeka/core/router/app_router.dart';
+import 'package:jeka/di.dart';
 import 'package:jeka/features/auth/presentation/blocs/bloc/auth_bloc.dart';
+import 'package:jeka/features/community/data/data_source/remote/community_remote_data_source.dart';
+import 'package:jeka/features/community/presentation/bloc/community_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LoadingController {
@@ -23,6 +26,13 @@ class LoadingController {
       );
       if (auth.currentUser != null) {
         context.read<AuthBloc>().add(const UpdateUser());
+        final communities =
+            await getIt<CommunityRemoteDataSource>().getCommunities();
+        if (communities.isEmpty) {
+          context.router.replaceAll([const SearchCommunityRoute()]);
+          return;
+        }
+        context.read<CommunityBloc>().add(UpdateCommunityList(context));
         context.router.replaceAll([HomeRoute()]);
         return;
       }

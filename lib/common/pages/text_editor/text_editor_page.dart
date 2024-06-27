@@ -11,22 +11,30 @@ class TextEditorPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {
-            context.maybePop<String>(controller.text);
-          },
-          icon: FaIcon(
-            FontAwesomeIcons.chevronLeft,
+    return PopScope(
+      onPopInvoked: (val) {
+        context.maybePop<String>(controller.text);
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          leading: IconButton(
+            onPressed: () {
+              context.maybePop<String>(controller.text);
+            },
+            icon: const FaIcon(
+              FontAwesomeIcons.chevronLeft,
+            ),
           ),
         ),
-      ),
-      body: TextFormField(
-        controller: controller,
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          hintText: "Type something",
+        body: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: TextFormField(
+            controller: controller,
+            decoration: const InputDecoration(
+              border: InputBorder.none,
+              hintText: "Type something",
+            ),
+          ),
         ),
       ),
     );

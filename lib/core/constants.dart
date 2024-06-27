@@ -6,6 +6,7 @@ class AppConstants {
   static const THEME_MODE = "theme-mode";
   static const ONBOARDING_STATUS = "onboarding-status";
   static const IS_SHOW_NOTIFICATION = 'is-show-notification';
+  static const SELECTED_COMMUNITY_ID = 'selected-community-id';
   static const LANGUAGE = 'language';
   static const IS_PRIVATE = 'is-private';
   static const GEMINI_API_KEY = "AIzaSyABYKYj3tIHlA2X-edcqYhjw7xSQXM3GWM";
@@ -28,5 +29,15 @@ class AppConstants {
       desc:
           "jeka is the perfect place to find a community to collaborate with. With its advanced features, jeka allows you to find communities that match your interests or hobbies, and even facilitates collaboration between them",
     ),
+  ];
+  static const List<String> communityTypes = [
+    "Business",
+    'Neighborhood',
+    'Religious',
+    "Urban",
+    "Education",
+    "Geographic",
+    "Cultural",
+    "Hobby or Special Interest"
   ];
 }

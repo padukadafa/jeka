@@ -1,11 +1,19 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:jeka/common/widgets/app_bar.dart';
 import 'package:jeka/common/widgets/app_layout.dart';
-import 'package:jeka/common/widgets/avatar.dart';
+import 'package:jeka/common/widgets/avatars/avatar.dart';
 import 'package:jeka/common/widgets/reuseable_text.dart';
+import 'package:jeka/core/router/app_router.dart';
+import 'package:jeka/di.dart';
+import 'package:jeka/features/auth/presentation/blocs/bloc/auth_bloc.dart';
 import 'package:jeka/features/community/data/models/community.dart';
+import 'package:jeka/features/community/presentation/bloc/community_bloc.dart';
 import 'package:jeka/features/community/presentation/pages/community_detail/widgets/community_upcoming_event.dart';
 
 @RoutePage()
@@ -84,7 +92,7 @@ class CommunityDetailPage extends StatelessWidget {
                       height: 12,
                     ),
                     Row(
-                      children: ["Literacy", "Valunteer"].map(
+                      children: community.types.map(
                         (f) {
                           return Container(
                             padding: const EdgeInsets.symmetric(
@@ -107,57 +115,70 @@ class CommunityDetailPage extends StatelessWidget {
                     const SizedBox(
                       height: 12,
                     ),
-                    const Column(
+                    Column(
                       children: [
                         Row(
                           children: [
-                            FaIcon(
+                            const FaIcon(
                               FontAwesomeIcons.locationDot,
                               size: 16,
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 6,
                             ),
-                            ReuseableText("Bandar Lampung"),
+                            ReuseableText(community.regency ?? ""),
                           ],
+                        ),
+                        Visibility(
+                          visible: community.instagram != null,
+                          child: Row(
+                            children: [
+                              const FaIcon(
+                                FontAwesomeIcons.instagram,
+                                size: 16,
+                              ),
+                              const SizedBox(
+                                width: 6,
+                              ),
+                              ReuseableText(community.instagram ?? ""),
+                            ],
+                          ),
+                        ),
+                        Visibility(
+                          visible: community.xTwitter != null,
+                          child: Row(
+                            children: [
+                              const FaIcon(
+                                FontAwesomeIcons.xTwitter,
+                                size: 16,
+                              ),
+                              const SizedBox(
+                                width: 6,
+                              ),
+                              ReuseableText(community.xTwitter ?? ""),
+                            ],
+                          ),
                         ),
                         Row(
                           children: [
-                            FaIcon(
-                              FontAwesomeIcons.instagram,
-                              size: 16,
-                            ),
-                            SizedBox(
-                              width: 6,
-                            ),
-                            ReuseableText("rumah_baca_babe_inyoel"),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            FaIcon(
-                              FontAwesomeIcons.xTwitter,
-                              size: 16,
-                            ),
-                            SizedBox(
-                              width: 6,
-                            ),
-                            ReuseableText("rumah_baca_babe_inyoel"),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            FaIcon(
+                            const FaIcon(
                               FontAwesomeIcons.user,
                               size: 16,
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 6,
                             ),
-                            ReuseableText("125 members"),
+                            ReuseableText(
+                                "${community.members.length} members"),
                           ],
                         ),
                       ],
+                    ),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    JoinCommunityStatus(
+                      community: community,
                     ),
                   ],
                 ),
@@ -176,20 +197,18 @@ class CommunityDetailPage extends StatelessWidget {
                     ),
                   ],
                 ),
-                child: const Column(
+                child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    ReuseableText(
+                    const ReuseableText(
                       "About Community",
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 12,
                     ),
-                    ReuseableText("""
-Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
-"""),
+                    HtmlWidget(community.desc),
                   ],
                 ),
               ),
@@ -242,8 +261,8 @@ Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots 
                           color: Colors.white,
                         ),
                       ),
-                      trailing: const ReuseableText(
-                        "128",
+                      trailing: ReuseableText(
+                        community.members.length.toString(),
                         fontSize: 16,
                       ),
                     ),
@@ -280,6 +299,52 @@ Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots 
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class JoinCommunityStatus extends StatelessWidget {
+  final Community community;
+  const JoinCommunityStatus({
+    super.key,
+    required this.community,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final auth = getIt<FirebaseAuth>();
+    print(community.membersId);
+    if (community.membersId.contains(auth.currentUser?.uid)) {
+      return SizedBox(
+        width: double.maxFinite,
+        child: ElevatedButton(
+          onPressed: () async {
+            context
+                .read<CommunityBloc>()
+                .add(LeaveCommunity(community.id!, onDone: (v) {
+                  context
+                      .read<CommunityBloc>()
+                      .add(UpdateCommunityList(context));
+                  context.router.replace(CommunityDetailRoute(community: v));
+                }));
+          },
+          child: const Text("Leave"),
+        ),
+      );
+    }
+    return SizedBox(
+      width: double.maxFinite,
+      child: ElevatedButton(
+        onPressed: () async {
+          final response = await context.router
+              .push<Community>(JoinCommunityRoute(community: community));
+          if (response != null) {
+            context.read<CommunityBloc>().add(UpdateCommunityList(context));
+            context.router.replaceAll([HomeRoute()]);
+          }
+        },
+        child: const Text("Join"),
       ),
     );
   }

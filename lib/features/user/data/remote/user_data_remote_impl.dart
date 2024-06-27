@@ -66,6 +66,7 @@ class UserDataRemoteImpl extends UserDataRemote {
   Future<UserModel> updateImageProfile(File image) async {
     try {
       final uid = _auth.currentUser?.uid;
+      print("remote data : ${image.path}");
       if (uid != null) {
         final user = await getUser(uid);
         final response = await _uploadService.uploadFile(image,
