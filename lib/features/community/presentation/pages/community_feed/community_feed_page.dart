@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jeka/common/widgets/reuseable_text.dart';
 import 'package:jeka/di.dart';
 import 'package:jeka/features/community/data/data_source/remote/community_remote_data_source.dart';
 import 'package:jeka/features/community/data/models/post.dart';
@@ -26,6 +27,27 @@ class _CommunityFeedPageState extends State<CommunityFeedPage> {
                   .getPosts(community?.id ?? ""),
               builder: (context, snapshot) {
                 final data = snapshot.data;
+                if (data != null && data.isEmpty) {
+                  return Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          "assets/icons/not-found.png",
+                          width: 100,
+                        ),
+                        const SizedBox(
+                          height: 24,
+                        ),
+                        ReuseableText(
+                          "No post available",
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                        ),
+                      ],
+                    ),
+                  );
+                }
                 return Skeletonizer(
                   enabled: !snapshot.hasData,
                   child: RefreshIndicator(

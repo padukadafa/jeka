@@ -6,11 +6,31 @@ import 'package:jeka/common/pages/home/controller/home_controller.dart';
 import 'package:jeka/common/pages/home/cubit/home_cubit.dart';
 import 'package:jeka/common/pages/home/cubit/home_state_wrapper.dart';
 import 'package:jeka/common/widgets/menu_drawer.dart';
+import 'package:toastification/toastification.dart';
 
 @RoutePage()
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   final controller = HomeController();
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((v) {
+      toastification.show(
+        context: context,
+        title: const Text('Hi, this app is under development'),
+        autoCloseDuration: const Duration(seconds: 5),
+        style: ToastificationStyle.fillColored,
+      );
+    });
+  }
 
   @override
   Widget build(BuildContext context) {

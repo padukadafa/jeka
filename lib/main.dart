@@ -7,6 +7,7 @@ import 'package:jeka/core/theme/theme.light.dart';
 import 'package:jeka/di.dart';
 import 'package:jeka/init.dart';
 import 'package:appflowy_editor/appflowy_editor.dart';
+import 'package:toastification/toastification.dart';
 
 void main() async {
   await init();
@@ -19,21 +20,23 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GlobalBlocProviders(
-      child: SettingsThemeSelector(
-        builder: (theme) {
-          return MaterialApp.router(
-            theme: lightTheme,
-            debugShowCheckedModeBanner: false,
-            darkTheme: darkTheme,
-            localizationsDelegates: const [
-              AppFlowyEditorLocalizations.delegate,
-            ],
-            themeMode: theme,
-            routerConfig: _appRouter.config(),
-            builder: EasyLoading.init(),
-          );
-        },
+    return ToastificationWrapper(
+      child: GlobalBlocProviders(
+        child: SettingsThemeSelector(
+          builder: (theme) {
+            return MaterialApp.router(
+              theme: lightTheme,
+              debugShowCheckedModeBanner: false,
+              darkTheme: darkTheme,
+              localizationsDelegates: const [
+                AppFlowyEditorLocalizations.delegate,
+              ],
+              themeMode: theme,
+              routerConfig: _appRouter.config(),
+              builder: EasyLoading.init(),
+            );
+          },
+        ),
       ),
     );
   }

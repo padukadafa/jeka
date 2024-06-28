@@ -47,7 +47,7 @@ class UserPage extends StatelessWidget {
                       ),
                       child: ListTile(
                         onTap: () {},
-                        title: const ReuseableText("Your Friends"),
+                        title: const ReuseableText("Your Communities"),
                         trailing: const FaIcon(
                           FontAwesomeIcons.chevronRight,
                           size: 16,
