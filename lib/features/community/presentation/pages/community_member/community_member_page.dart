@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jeka/common/widgets/avatars/avatar.dart';
 import 'package:jeka/common/widgets/reuseable_text.dart';
+import 'package:jeka/di.dart';
+import 'package:jeka/features/community/domain/usecases/get_community_members_usecase.dart';
+import 'package:jeka/features/community/presentation/bloc/community_bloc.dart';
 
 class CommunityMemberPage extends StatelessWidget {
   const CommunityMemberPage({super.key});
@@ -10,91 +14,98 @@ class CommunityMemberPage extends StatelessWidget {
     final colorScheme = Theme.of(context).colorScheme;
     return Scaffold(
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Container(
-              margin: const EdgeInsets.all(12),
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: colorScheme.surfaceBright,
-                boxShadow: [
-                  BoxShadow(
-                    color: colorScheme.shadow,
-                    blurRadius: 4,
-                  ),
-                ],
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const ReuseableText(
-                    "Organizer",
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  Column(
-                    children: List.generate(
-                      4,
-                      (index) {
-                        return const ListTile(
-                          minLeadingWidth: 0,
-                          contentPadding: EdgeInsets.all(0),
-                          leading: Avatar(
-                            size: 35,
+        child: BlocBuilder<CommunityBloc, CommunityState>(
+          builder: (context, state) {
+            return Column(
+                  children: [
+                    Container(
+                      width: double.maxFinite,
+                      margin: const EdgeInsets.all(12),
+                      padding: const EdgeInsets.all(16),
+                      decoration: BoxDecoration(
+                        color: colorScheme.surfaceBright,
+                        boxShadow: [
+                          BoxShadow(
+                            color: colorScheme.shadow,
+                            blurRadius: 4,
                           ),
-                          title: Text("Budioan"),
-                          trailing: ReuseableText(
-                            "Member",
-                            fontSize: 14,
+                        ],
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const ReuseableText(
+                            "Organizer",
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
                           ),
-                        );
-                      },
+                          Column(
+                            children: (state.community?.members.where((val) => val.role != "member") ?? []).map(
+                              (member) {
+                                return  ListTile(
+                                  minLeadingWidth: 0,
+                                  contentPadding: EdgeInsets.all(0),
+                                  leading: Avatar(
+                                    size: 35,
+                                  ),
+                                  title: Text(member.name ?? ""),
+                                  trailing: ReuseableText(
+                                    member.role ?? "Admin",
+                                    fontSize: 14,
+                                  ),
+                                );
+                              },
+                            ).toList(),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              margin: const EdgeInsets.all(12),
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: colorScheme.surfaceBright,
-                boxShadow: [
-                  BoxShadow(
-                    color: colorScheme.shadow,
-                    blurRadius: 4,
-                  ),
-                ],
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const ReuseableText(
-                    "Member",
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  Column(
-                    children: List.generate(
-                      8,
-                      (index) {
-                        return const ListTile(
-                          leading: Avatar(
-                            size: 35,
+                    Container(
+                      margin: const EdgeInsets.all(12),
+                      padding: const EdgeInsets.all(16),
+                      width: double.maxFinite,
+                      decoration: BoxDecoration(
+                        color: colorScheme.surfaceBright,
+                        boxShadow: [
+                          BoxShadow(
+                            color: colorScheme.shadow,
+                            blurRadius: 4,
                           ),
-                          title: Text("Budioan"),
-                          trailing: ReuseableText(
+                        ],
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const ReuseableText(
                             "Member",
-                            fontSize: 14,
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
                           ),
-                        );
-                      },
+                          Column(
+                            children: (state.community?.members
+                                        .where((val) => val.role == "member") ??
+                                    [])
+                                .map(
+                              (member) {
+                                return  ListTile(
+                                  leading: Avatar(
+                                    size: 35,
+                                  ),
+                                  title: Text(member.name ?? ""),
+                                  trailing: ReuseableText(
+                                    member.role ??"Member",
+                                    fontSize: 14,
+                                  ),
+                                );
+                              },
+                            ).toList(),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                ],
-              ),
-            ),
-          ],
+                  ],
+                );
+          },
         ),
       ),
     );

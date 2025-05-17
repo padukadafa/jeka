@@ -40,6 +40,8 @@ import 'package:jeka/features/community/data/repository/community_repository_imp
     as _i335;
 import 'package:jeka/features/community/domain/repository/community_repository.dart'
     as _i409;
+import 'package:jeka/features/community/domain/usecases/get_community_members_usecase.dart'
+    as _i868;
 import 'package:jeka/features/community/domain/usecases/like_post_usecase.dart'
     as _i611;
 import 'package:jeka/features/community/presentation/bloc/community_bloc.dart'
@@ -132,6 +134,8 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i460.SharedPreferences>(),
           gh<_i329.CommunityRemoteDataSource>(),
         ));
+    gh.singleton<_i868.GetCommunityMembersUsecase>(() =>
+        _i868.GetCommunityMembersUsecase(gh<_i409.CommunityRepository>()));
     gh.singleton<_i611.LikePostUsecase>(
         () => _i611.LikePostUsecase(gh<_i409.CommunityRepository>()));
     gh.factory<_i65.UserRepository>(

@@ -11,7 +11,7 @@ class LikePostUsecase extends UseCase<Either<Failure,bool>, String> {
   final CommunityRepository _communityRepository;
   LikePostUsecase(this._communityRepository);
   @override
-  FutureOr<Either<Failure,bool>> call(String params) {
-    return _communityRepository.likePost(params);
+  FutureOr<Either<Failure,bool>> call(String postId) {
+    return _communityRepository.likePost(postId);
   }
 }

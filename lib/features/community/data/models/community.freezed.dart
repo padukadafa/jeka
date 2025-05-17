@@ -515,6 +515,8 @@ CommunityMember _$CommunityMemberFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$CommunityMember {
   String? get userId => throw _privateConstructorUsedError;
+  DateTime? get joinedAt => throw _privateConstructorUsedError;
+  String? get role => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
 
   /// Serializes this CommunityMember to a JSON map.
@@ -533,7 +535,7 @@ abstract class $CommunityMemberCopyWith<$Res> {
           CommunityMember value, $Res Function(CommunityMember) then) =
       _$CommunityMemberCopyWithImpl<$Res, CommunityMember>;
   @useResult
-  $Res call({String? userId, String? name});
+  $Res call({String? userId, DateTime? joinedAt, String? role, String? name});
 }
 
 /// @nodoc
@@ -552,12 +554,22 @@ class _$CommunityMemberCopyWithImpl<$Res, $Val extends CommunityMember>
   @override
   $Res call({
     Object? userId = freezed,
+    Object? joinedAt = freezed,
+    Object? role = freezed,
     Object? name = freezed,
   }) {
     return _then(_value.copyWith(
       userId: freezed == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      joinedAt: freezed == joinedAt
+          ? _value.joinedAt
+          : joinedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      role: freezed == role
+          ? _value.role
+          : role // ignore: cast_nullable_to_non_nullable
               as String?,
       name: freezed == name
           ? _value.name
@@ -575,7 +587,7 @@ abstract class _$$CommunityMemberImplCopyWith<$Res>
       __$$CommunityMemberImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? userId, String? name});
+  $Res call({String? userId, DateTime? joinedAt, String? role, String? name});
 }
 
 /// @nodoc
@@ -592,12 +604,22 @@ class __$$CommunityMemberImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? userId = freezed,
+    Object? joinedAt = freezed,
+    Object? role = freezed,
     Object? name = freezed,
   }) {
     return _then(_$CommunityMemberImpl(
       userId: freezed == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      joinedAt: freezed == joinedAt
+          ? _value.joinedAt
+          : joinedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      role: freezed == role
+          ? _value.role
+          : role // ignore: cast_nullable_to_non_nullable
               as String?,
       name: freezed == name
           ? _value.name
@@ -610,7 +632,8 @@ class __$$CommunityMemberImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$CommunityMemberImpl implements _CommunityMember {
-  const _$CommunityMemberImpl({this.userId, this.name});
+  const _$CommunityMemberImpl(
+      {this.userId, this.joinedAt, this.role, this.name});
 
   factory _$CommunityMemberImpl.fromJson(Map<String, dynamic> json) =>
       _$$CommunityMemberImplFromJson(json);
@@ -618,11 +641,15 @@ class _$CommunityMemberImpl implements _CommunityMember {
   @override
   final String? userId;
   @override
+  final DateTime? joinedAt;
+  @override
+  final String? role;
+  @override
   final String? name;
 
   @override
   String toString() {
-    return 'CommunityMember(userId: $userId, name: $name)';
+    return 'CommunityMember(userId: $userId, joinedAt: $joinedAt, role: $role, name: $name)';
   }
 
   @override
@@ -631,12 +658,15 @@ class _$CommunityMemberImpl implements _CommunityMember {
         (other.runtimeType == runtimeType &&
             other is _$CommunityMemberImpl &&
             (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.joinedAt, joinedAt) ||
+                other.joinedAt == joinedAt) &&
+            (identical(other.role, role) || other.role == role) &&
             (identical(other.name, name) || other.name == name));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, userId, name);
+  int get hashCode => Object.hash(runtimeType, userId, joinedAt, role, name);
 
   /// Create a copy of CommunityMember
   /// with the given fields replaced by the non-null parameter values.
@@ -656,14 +686,21 @@ class _$CommunityMemberImpl implements _CommunityMember {
 }
 
 abstract class _CommunityMember implements CommunityMember {
-  const factory _CommunityMember({final String? userId, final String? name}) =
-      _$CommunityMemberImpl;
+  const factory _CommunityMember(
+      {final String? userId,
+      final DateTime? joinedAt,
+      final String? role,
+      final String? name}) = _$CommunityMemberImpl;
 
   factory _CommunityMember.fromJson(Map<String, dynamic> json) =
       _$CommunityMemberImpl.fromJson;
 
   @override
   String? get userId;
+  @override
+  DateTime? get joinedAt;
+  @override
+  String? get role;
   @override
   String? get name;
 

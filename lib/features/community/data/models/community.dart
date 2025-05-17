@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 part 'community.freezed.dart';
 part 'community.g.dart';
@@ -29,6 +30,8 @@ class Community with _$Community {
 class CommunityMember with _$CommunityMember {
   const factory CommunityMember({
     String? userId,
+    DateTime? joinedAt,
+    String? role,
     String? name,
   }) = _CommunityMember;
   factory CommunityMember.fromJson(Map<String, dynamic> json) =>

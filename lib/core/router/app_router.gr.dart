@@ -449,13 +449,10 @@ class GenerativeTextEditorRouteArgs {
 
 /// generated route for
 /// [HomePage]
-class HomeRoute extends PageRouteInfo<HomeRouteArgs> {
-  HomeRoute({
-    Key? key,
-    List<PageRouteInfo>? children,
-  }) : super(
+class HomeRoute extends PageRouteInfo<void> {
+  const HomeRoute({List<PageRouteInfo>? children})
+      : super(
           HomeRoute.name,
-          args: HomeRouteArgs(key: key),
           initialChildren: children,
         );
 
@@ -464,22 +461,9 @@ class HomeRoute extends PageRouteInfo<HomeRouteArgs> {
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      final args =
-          data.argsAs<HomeRouteArgs>(orElse: () => const HomeRouteArgs());
-      return HomePage(key: args.key);
+      return const HomePage();
     },
   );
-}
-
-class HomeRouteArgs {
-  const HomeRouteArgs({this.key});
-
-  final Key? key;
-
-  @override
-  String toString() {
-    return 'HomeRouteArgs{key: $key}';
-  }
 }
 
 /// generated route for
@@ -549,13 +533,10 @@ class LoadingRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [LoginPage]
-class LoginRoute extends PageRouteInfo<LoginRouteArgs> {
-  LoginRoute({
-    Key? key,
-    List<PageRouteInfo>? children,
-  }) : super(
+class LoginRoute extends PageRouteInfo<void> {
+  const LoginRoute({List<PageRouteInfo>? children})
+      : super(
           LoginRoute.name,
-          args: LoginRouteArgs(key: key),
           initialChildren: children,
         );
 
@@ -564,22 +545,9 @@ class LoginRoute extends PageRouteInfo<LoginRouteArgs> {
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      final args =
-          data.argsAs<LoginRouteArgs>(orElse: () => const LoginRouteArgs());
-      return LoginPage(key: args.key);
+      return const LoginPage();
     },
   );
-}
-
-class LoginRouteArgs {
-  const LoginRouteArgs({this.key});
-
-  final Key? key;
-
-  @override
-  String toString() {
-    return 'LoginRouteArgs{key: $key}';
-  }
 }
 
 /// generated route for

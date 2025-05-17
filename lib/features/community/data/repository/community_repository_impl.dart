@@ -116,4 +116,13 @@ class CommunityRepositoryImpl extends CommunityRepository {
       return const Left(UnknownFailure());
     }
   }
+  
+  @override
+  Future<Either<Failure, List<CommunityMember>>> getCommunityMembers(String communityId) async {
+try {
+      final result= await _dataSource.getCommunityMembers(communityId);
+      return Right(result);
+    } catch (e) {
+      return const Left(UnknownFailure());
+    }  }
 }

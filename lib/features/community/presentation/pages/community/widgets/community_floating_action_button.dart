@@ -18,17 +18,17 @@ class CommunityFloatingActionButton extends StatelessWidget {
       builder: (index) {
         return Visibility(
           visible: index != 1,
-          replacement: Align(
-            alignment: Alignment.bottomRight,
-            child: Padding(
-              padding: const EdgeInsets.all(16),
-              child: FloatingActionButton(
-                onPressed: () {},
-                shape: const CircleBorder(),
-                child: const FaIcon(FontAwesomeIcons.magnifyingGlass),
-              ),
-            ),
-          ),
+          // replacement: Align(
+          //   alignment: Alignment.bottomRight,
+          //   child: Padding(
+          //     padding: const EdgeInsets.all(16),
+          //     child: FloatingActionButton(
+          //       onPressed: () {},
+          //       shape: const CircleBorder(),
+          //       child: const FaIcon(FontAwesomeIcons.magnifyingGlass),
+          //     ),
+          //   ),
+          // ),
           child: FloatingActionButton(onPressed: () {
               context.router.push(const CommunityCreatePostRoute());
             },child: FaIcon(FontAwesomeIcons.plus),)
