@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "867130052345",
+    "project_id": "jeka-85742",
+    "storage_bucket": "jeka-85742.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:867130052345:android:459428dca1e34b4650dc28",
+        "android_client_info": {
+          "package_name": "com.example.jeka"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDaUU9fGzVBn6pOytngxd4X7LKnEGNEYc8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
