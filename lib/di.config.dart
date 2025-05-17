@@ -26,6 +26,11 @@ import 'package:jeka/features/auth/data/repository/auth_repository_impl.dart'
     as _i617;
 import 'package:jeka/features/auth/presentation/blocs/bloc/auth_bloc.dart'
     as _i936;
+import 'package:jeka/features/chat/data/data_sources/chat_remote_data_source.dart'
+    as _i1062;
+import 'package:jeka/features/chat/data/repository/chat_repository.dart'
+    as _i376;
+import 'package:jeka/features/chat/presentation/bloc/chat_bloc.dart' as _i232;
 import 'package:jeka/features/community/data/data_source/local/communirt_local_data_source.dart'
     as _i741;
 import 'package:jeka/features/community/data/data_source/local/community_local_data_source_impl.dart'
@@ -104,6 +109,13 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i431.GeminiRemoteDataSourceImpl());
     gh.singleton<_i132.UploadService>(
         () => _i132.UploadService(gh<_i457.Reference>()));
+    gh.singleton<_i1062.ChatRemoteDataSource>(
+        () => _i1062.ChatRemoteDataSourceImpl(
+              gh<_i974.FirebaseFirestore>(),
+              gh<_i59.FirebaseAuth>(),
+            ));
+    gh.singleton<_i376.ChatRepository>(
+        () => _i376.ChatRepositoryImpl(gh<_i1062.ChatRemoteDataSource>()));
     gh.singleton<_i741.CommunityLocalDataSource>(
         () => _i369.CommunityLocalDataSourceImpl(gh<_i401.SearchDatabase>()));
     gh.singleton<_i186.GeminiRepository>(
@@ -129,6 +141,8 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i821.UserDataRemote>(),
           gh<_i116.GoogleSignIn>(),
         ));
+    gh.factory<_i232.ChatBloc>(
+        () => _i232.ChatBloc(gh<_i376.ChatRepository>()));
     gh.factory<_i1036.CommunityBloc>(() => _i1036.CommunityBloc(
           gh<_i409.CommunityRepository>(),
           gh<_i460.SharedPreferences>(),
