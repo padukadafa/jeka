@@ -38,7 +38,7 @@ class SettingsRepositoryImpl extends SettingsRepository {
   @override
   Future<void> toggleShowNotification() async {
     final current =
-        _sharedPreferences.getBool(AppConstants.IS_SHOW_NOTIFICATION) ?? false;
+        _sharedPreferences.getBool(AppConstants.IS_SHOW_NOTIFICATION) ?? true;
     await _sharedPreferences.setBool(
         AppConstants.IS_SHOW_NOTIFICATION, !current);
   }

@@ -1,7 +1,10 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:jeka/core/constants.dart';
+import 'package:jeka/di.dart';
 import 'package:jeka/features/notification/data/data_sources/database/notification_database.dart';
 import 'package:jeka/features/notification/data/models/notification.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class NotificationService {
   static final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
@@ -25,8 +28,11 @@ class NotificationService {
     FirebaseMessaging.onMessage.listen((RemoteMessage message) async {
       final notification = message.notification;
       final android = message.notification?.android;
+      final isNotificationEnable = getIt<SharedPreferences>()
+              .getBool(AppConstants.IS_SHOW_NOTIFICATION) ??
+          true;
 
-      if (notification != null && android != null) {
+      if (notification != null && android != null && isNotificationEnable) {
         // Tampilkan notifikasi
         flutterLocalNotificationsPlugin.show(
           notification.hashCode,
@@ -66,8 +72,10 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   final database = await $FloorNotificationDatabase
       .databaseBuilder('notifications_database.db')
       .build();
-
-  if (notification != null && android != null) {
+  final sharedPreferences = await SharedPreferences.getInstance();
+  final isNotificationEnable =
+      sharedPreferences.getBool(AppConstants.IS_SHOW_NOTIFICATION) ?? true;
+  if (notification != null && android != null && isNotificationEnable) {
     // Simpan ke database
     final appNotification = NotificationModel(
       id: DateTime.now().millisecondsSinceEpoch,
