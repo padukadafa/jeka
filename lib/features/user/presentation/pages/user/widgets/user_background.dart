@@ -29,26 +29,26 @@ class UserBackground extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
-            child: GestureDetector(
-              onTap: () {
-                context.router.push(const SettingsRoute());
-              },
-              child: Container(
-                padding: const EdgeInsets.all(8),
-                decoration: BoxDecoration(
-                  color: colorScheme.primary,
-                  shape: BoxShape.circle,
-                  boxShadow: [
-                    BoxShadow(color: colorScheme.shadow),
-                  ],
-                ),
-                child: FaIcon(
-                  FontAwesomeIcons.gear,
-                  color: colorScheme.onPrimary,
-                  size: 18,
-                ),
-              ),
-            ),
+            // child: GestureDetector(
+            //   onTap: () {
+            //     context.router.push(const SettingsRoute());
+            //   },
+            //   child: Container(
+            //     padding: const EdgeInsets.all(8),
+            //     decoration: BoxDecoration(
+            //       color: colorScheme.primary,
+            //       shape: BoxShape.circle,
+            //       boxShadow: [
+            //         BoxShadow(color: colorScheme.shadow),
+            //       ],
+            //     ),
+            //     child: FaIcon(
+            //       FontAwesomeIcons.gear,
+            //       color: colorScheme.onPrimary,
+            //       size: 18,
+            //     ),
+            //   ),
+            // ),
           ),
           const Align(
             alignment: Alignment(-0.95, 1),

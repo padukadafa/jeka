@@ -25,6 +25,7 @@ class EditUserController {
   }
 
   updatePhotoProfile() async {
+    EasyLoading.show();
     final result = await userRepository.updatePhotoprofile();
     result.fold((l) {
       if (l is AbortedFailure) return;
@@ -32,6 +33,7 @@ class EditUserController {
     }, (r) {
       authBloc.add(const UpdateUser());
     });
+    EasyLoading.dismiss();
   }
 
   updateProfile({String? desc}) async {

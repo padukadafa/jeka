@@ -34,26 +34,26 @@ class UserPage extends StatelessWidget {
                     const SizedBox(
                       height: 16,
                     ),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: colorScheme.surfaceBright,
-                        borderRadius: BorderRadius.circular(8),
-                        boxShadow: [
-                          BoxShadow(
-                            color: colorScheme.shadow,
-                            blurRadius: 4,
-                          ),
-                        ],
-                      ),
-                      child: ListTile(
-                        onTap: () {},
-                        title: const ReuseableText("Your Communities"),
-                        trailing: const FaIcon(
-                          FontAwesomeIcons.chevronRight,
-                          size: 16,
-                        ),
-                      ),
-                    )
+                    // Container(
+                    //   decoration: BoxDecoration(
+                    //     color: colorScheme.surfaceBright,
+                    //     borderRadius: BorderRadius.circular(8),
+                    //     boxShadow: [
+                    //       BoxShadow(
+                    //         color: colorScheme.shadow,
+                    //         blurRadius: 4,
+                    //       ),
+                    //     ],
+                    //   ),
+                    //   child: ListTile(
+                    //     onTap: () {},
+                    //     title: const ReuseableText("Your Communities"),
+                    //     trailing: const FaIcon(
+                    //       FontAwesomeIcons.chevronRight,
+                    //       size: 16,
+                    //     ),
+                    //   ),
+                    // )
                   ],
                 ),
               ),
