@@ -94,6 +94,8 @@ class CommunityDetailPage extends StatelessWidget {
                     SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: community.types.map(
                           (f) {
                             return Container(

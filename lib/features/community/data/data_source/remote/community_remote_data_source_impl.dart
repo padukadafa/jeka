@@ -31,7 +31,7 @@ class CommunityRemoteDataSourceImpl extends CommunityRemoteDataSource {
         "logo": logoResponse,
         "id": response.id,
       }, SetOptions(merge: true));
-      await addCommunities(response.id);
+      await addCommunities(response.id, role: "owner");
       return community.copyWith(id: response.id, logo: logoResponse);
     } catch (e) {
       debugPrint(e.toString());
@@ -46,14 +46,15 @@ class CommunityRemoteDataSourceImpl extends CommunityRemoteDataSource {
   }
 
   @override
-  Future<void> addCommunities(String communityId) async {
+  Future<void> addCommunities(String communityId,
+      {String role = "member"}) async {
     try {
       await _firestore.collection("communities").doc(communityId).update({
         "members": FieldValue.arrayUnion([
           {
             "userId": _auth.currentUser?.uid,
             "name": _auth.currentUser?.displayName,
-            "role": "member",
+            "role": role,
             "joined_at": DateTime.now(),
           },
         ]),

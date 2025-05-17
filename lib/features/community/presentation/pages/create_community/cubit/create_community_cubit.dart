@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:auto_route/auto_route.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:image_picker/image_picker.dart';
@@ -10,6 +11,7 @@ import 'package:jeka/core/region.dart';
 import 'package:jeka/core/router/app_router.dart';
 import 'package:jeka/features/community/data/models/community.dart';
 import 'package:jeka/features/community/domain/repository/community_repository.dart';
+import 'package:jeka/features/community/presentation/bloc/community_bloc.dart';
 
 part 'create_community_state.dart';
 part 'create_community_cubit.freezed.dart';
@@ -109,6 +111,7 @@ class CreateCommunityCubit extends Cubit<CreateCommunityState> {
     );
     await _communityRepository.createCommunity(community, state.logo!);
     EasyLoading.dismiss();
+    context.read<CommunityBloc>().add(UpdateCommunityList(context));
     context.router.maybePop();
   }
 }
