@@ -17,7 +17,7 @@ class CommunityFloatingActionButton extends StatelessWidget {
     return CommunityTabIndexSelector(
       builder: (index) {
         return Visibility(
-          visible: index != 2,
+          visible: index != 1,
           replacement: Align(
             alignment: Alignment.bottomRight,
             child: Padding(
@@ -29,48 +29,9 @@ class CommunityFloatingActionButton extends StatelessWidget {
               ),
             ),
           ),
-          child: ExpandableFab(
-            openButtonBuilder: RotateFloatingActionButtonBuilder(
-              child: const FaIcon(FontAwesomeIcons.plus),
-              fabSize: ExpandableFabSize.regular,
-              foregroundColor: colorScheme.onPrimary,
-              backgroundColor: colorScheme.primary,
-              shape: const CircleBorder(),
-              heroTag: "open",
-            ),
-            closeButtonBuilder: RotateFloatingActionButtonBuilder(
-              child: const Icon(Icons.close),
-              fabSize: ExpandableFabSize.regular,
-              foregroundColor: colorScheme.onPrimary,
-              backgroundColor: colorScheme.primary,
-              shape: const CircleBorder(),
-              heroTag: "close",
-            ),
-            type: ExpandableFabType.up,
-            distance: 70,
-            children: [
-              FloatingActionButton.extended(
-                label: ReuseableText(
-                  "Create post",
-                  color: colorScheme.onSurface,
-                ),
-                heroTag: "Create post",
-                backgroundColor: colorScheme.surfaceBright,
-                onPressed: () {
-                  context.router.push(const CommunityCreatePostRoute());
-                },
-              ),
-              FloatingActionButton.extended(
-                label: ReuseableText(
-                  "Create Event",
-                  color: colorScheme.onSurface,
-                ),
-                heroTag: "create event",
-                backgroundColor: colorScheme.surfaceBright,
-                onPressed: () {},
-              ),
-            ],
-          ),
+          child: FloatingActionButton(onPressed: () {
+              context.router.push(const CommunityCreatePostRoute());
+            },child: FaIcon(FontAwesomeIcons.plus),)
         );
       },
     );

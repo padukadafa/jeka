@@ -45,7 +45,6 @@ class _CommunityPageState extends State<CommunityPage>
 
     return AppLayout(
       child: Scaffold(
-        floatingActionButtonLocation: ExpandableFab.location,
         floatingActionButton: const CommunityFloatingActionButton(),
         body: NestedScrollView(
           headerSliverBuilder: (context, innerBoxIsScrolled) {
@@ -103,9 +102,6 @@ class _CommunityPageState extends State<CommunityPage>
                       text: "Post",
                     ),
                     Tab(
-                      text: "Event",
-                    ),
-                    Tab(
                       text: "Members",
                     ),
                   ],
@@ -117,7 +113,6 @@ class _CommunityPageState extends State<CommunityPage>
             controller: tabController,
             children: [
               CommunityFeedPage(),
-              CommunityEventPage(),
               CommunityMemberPage(),
             ],
           ),
