@@ -29,7 +29,7 @@ class _CommunityPageState extends State<CommunityPage>
   late TabController tabController;
   @override
   void initState() {
-    tabController = TabController(length: 3, vsync: this);
+    tabController = TabController(length: 2, vsync: this);
 
     super.initState();
     tabController.addListener(() {

@@ -104,8 +104,6 @@ class _CommunityFeedDetailPageState extends State<CommunityFeedDetailPage> {
                               const SizedBox(
                                 height: 12,
                               ),
-                              PostReactionWidget(
-                                  post: widget.post),
                             ],
                           ),
                         ),
