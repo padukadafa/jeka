@@ -11,18 +11,19 @@ import 'package:jeka/features/community/presentation/widgets/post_item_type.dart
 
 class CommunityFeedItem extends StatelessWidget {
   final Post post;
-  const CommunityFeedItem({
-    super.key,
-    required this.post,
-  });
+  final void Function()? onClose;
+  const CommunityFeedItem({super.key, required this.post, this.onClose});
 
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
     if (post.postType == 2) {
       return GestureDetector(
-        onTap: () {
-          context.router.push(CommunityFeedDetailRoute(post: post));
+        onTap: () async {
+          await context.router.push(CommunityFeedDetailRoute(post: post));
+          if (onClose != null) {
+            onClose!();
+          }
         },
         child: Container(
           margin: const EdgeInsets.symmetric(vertical: 8),
@@ -66,8 +67,11 @@ class CommunityFeedItem extends StatelessWidget {
       );
     }
     return GestureDetector(
-      onTap: () {
-        context.router.push(CommunityFeedDetailRoute(post: post));
+      onTap: () async {
+        await context.router.push(CommunityFeedDetailRoute(post: post));
+        if (onClose != null) {
+          onClose!();
+        }
       },
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 8),
@@ -109,7 +113,7 @@ class CommunityFeedItem extends StatelessWidget {
                           ReuseableText(post.writer ?? ""),
                         ],
                       ),
-                      ReuseableText(DateFormat("dd MMM || hh:MM")
+                      ReuseableText(DateFormat("dd MMM | hh:MM")
                           .format(post.createdAt ?? DateTime.now())),
                     ],
                   ),

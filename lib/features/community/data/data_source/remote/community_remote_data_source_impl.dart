@@ -222,6 +222,7 @@ class CommunityRemoteDataSourceImpl extends CommunityRemoteDataSource {
       final response = await _firestore
           .collection('posts')
           .where('communityId', isEqualTo: communityId)
+          .orderBy("createdAt", descending: true)
           .get();
       final result =
           response.docs.map((data) => Post.fromJson(data.data())).toList();
@@ -346,7 +347,7 @@ class CommunityRemoteDataSourceImpl extends CommunityRemoteDataSource {
       throw UnknownError();
     }
   }
-  
+
   @override
   Future<void> likePost(String postId) async {
     try {
@@ -362,22 +363,27 @@ class CommunityRemoteDataSourceImpl extends CommunityRemoteDataSource {
       throw UnknownError();
     }
   }
-  
+
   @override
   Future<List<CommunityMember>> getCommunityMembers(String communityId) async {
-try {
-    return await _firestore.collection('communities').doc(communityId).get().then((value) {
-      if (value.exists) {
-        final members = value.data()?['members'] as List<dynamic>;
-        return members
-            .map((member) => CommunityMember.fromJson(member))
-            .toList();
-      } else {
-        throw ServerError("Community not found");
-      }
-    });
+    try {
+      return await _firestore
+          .collection('communities')
+          .doc(communityId)
+          .get()
+          .then((value) {
+        if (value.exists) {
+          final members = value.data()?['members'] as List<dynamic>;
+          return members
+              .map((member) => CommunityMember.fromJson(member))
+              .toList();
+        } else {
+          throw ServerError("Community not found");
+        }
+      });
     } catch (e) {
       print(e);
       throw UnknownError();
-    }  }
+    }
+  }
 }

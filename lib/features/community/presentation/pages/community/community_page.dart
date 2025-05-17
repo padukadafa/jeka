@@ -47,7 +47,11 @@ class _CommunityPageState extends State<CommunityPage>
 
     return AppLayout(
       child: Scaffold(
-        floatingActionButton: const CommunityFloatingActionButton(),
+        floatingActionButton: CommunityFloatingActionButton(
+          onClose: () {
+            setState(() {});
+          },
+        ),
         body: NestedScrollView(
           headerSliverBuilder: (context, innerBoxIsScrolled) {
             return [
