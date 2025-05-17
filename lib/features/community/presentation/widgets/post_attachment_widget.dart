@@ -61,8 +61,10 @@ class PostAttachmentWidget extends StatelessWidget {
               ],
             ),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const FaIcon(
+                Row(children: [
+                  const FaIcon(
                   FontAwesomeIcons.solidFilePdf,
                   color: Colors.red,
                   size: 18,
@@ -70,10 +72,9 @@ class PostAttachmentWidget extends StatelessWidget {
                 const SizedBox(
                   width: 6,
                 ),
-                ReuseableText(postFiles[index].name ?? ""),
-                const Expanded(
-                  child: SizedBox(),
-                ),
+                Expanded(child: ReuseableText(postFiles[index].name ?? "")),
+                
+                ],),
                 ReuseableText(postFiles[index].fileSizeString ?? ""),
               ],
             ),

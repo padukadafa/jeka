@@ -39,7 +39,7 @@ class OnBoardingPage extends StatelessWidget {
                     alignment: const Alignment(0, 0),
                     child: DotsIndicator(
                       dotsCount: 3,
-                      position: state.pageIndex,
+                      position: double.parse(state.pageIndex.toString())  ,
                       onTap: (index) {
                         controller.animatedToPage(context, index);
                       },

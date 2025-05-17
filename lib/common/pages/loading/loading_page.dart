@@ -35,7 +35,7 @@ class _LoadingPageState extends State<LoadingPage> {
                     : "assets/icons/logo_dark.png",
                 width: 200,
               ),
-              LoadingAnimationWidget.prograssiveDots(
+              LoadingAnimationWidget.progressiveDots(
                 color: Theme.of(context).colorScheme.primary,
                 size: 60,
               ),

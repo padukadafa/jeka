@@ -9,220 +9,6 @@
 
 part of 'app_router.dart';
 
-abstract class _$AppRouter extends RootStackRouter {
-  // ignore: unused_element
-  _$AppRouter({super.navigatorKey});
-
-  @override
-  final Map<String, PageFactory> pagesMap = {
-    AboutRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const AboutPage(),
-      );
-    },
-    AddCommunityRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const AddCommunityPage(),
-      );
-    },
-    ChangePasswordRoute.name: (routeData) {
-      final args = routeData.argsAs<ChangePasswordRouteArgs>(
-          orElse: () => const ChangePasswordRouteArgs());
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: ChangePasswordPage(key: args.key),
-      );
-    },
-    ChatDetailRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const ChatDetailPage(),
-      );
-    },
-    CommunityCreateEventRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const CommunityCreateEventPage(),
-      );
-    },
-    CommunityCreatePostRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const CommunityCreatePostPage(),
-      );
-    },
-    CommunityDetailRoute.name: (routeData) {
-      final args = routeData.argsAs<CommunityDetailRouteArgs>();
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: CommunityDetailPage(
-          key: args.key,
-          community: args.community,
-        ),
-      );
-    },
-    CommunityEventDetailRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const CommunityEventDetailPage(),
-      );
-    },
-    CommunityFeedDetailRoute.name: (routeData) {
-      final args = routeData.argsAs<CommunityFeedDetailRouteArgs>();
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: CommunityFeedDetailPage(
-          key: args.key,
-          post: args.post,
-        ),
-      );
-    },
-    CommunityGuidelinesRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const CommunityGuidelinesPage(),
-      );
-    },
-    CreateCommunityRoute.name: (routeData) {
-      final args = routeData.argsAs<CreateCommunityRouteArgs>(
-          orElse: () => const CreateCommunityRouteArgs());
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: CreateCommunityPage(key: args.key),
-      );
-    },
-    EditUserRoute.name: (routeData) {
-      final args = routeData.argsAs<EditUserRouteArgs>(
-          orElse: () => const EditUserRouteArgs());
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: EditUserPage(key: args.key),
-      );
-    },
-    FAQRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const FAQPage(),
-      );
-    },
-    ForgotPasswordRoute.name: (routeData) {
-      final args = routeData.argsAs<ForgotPasswordRouteArgs>(
-          orElse: () => const ForgotPasswordRouteArgs());
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: ForgotPasswordPage(key: args.key),
-      );
-    },
-    GenerativeTextEditorRoute.name: (routeData) {
-      final args = routeData.argsAs<GenerativeTextEditorRouteArgs>();
-      return AutoRoutePage<String>(
-        routeData: routeData,
-        child: GenerativeTextEditorPage(
-          key: args.key,
-          desc: args.desc,
-          enableImage: args.enableImage,
-        ),
-      );
-    },
-    HomeRoute.name: (routeData) {
-      final args =
-          routeData.argsAs<HomeRouteArgs>(orElse: () => const HomeRouteArgs());
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: HomePage(key: args.key),
-      );
-    },
-    JoinCommunityRoute.name: (routeData) {
-      final args = routeData.argsAs<JoinCommunityRouteArgs>();
-      return AutoRoutePage<Community>(
-        routeData: routeData,
-        child: JoinCommunityPage(
-          key: args.key,
-          community: args.community,
-        ),
-      );
-    },
-    LoadingRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const LoadingPage(),
-      );
-    },
-    LoginRoute.name: (routeData) {
-      final args = routeData.argsAs<LoginRouteArgs>(
-          orElse: () => const LoginRouteArgs());
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: LoginPage(key: args.key),
-      );
-    },
-    OnBoardingRoute.name: (routeData) {
-      final args = routeData.argsAs<OnBoardingRouteArgs>(
-          orElse: () => const OnBoardingRouteArgs());
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: OnBoardingPage(key: args.key),
-      );
-    },
-    RegisterRoute.name: (routeData) {
-      final args = routeData.argsAs<RegisterRouteArgs>(
-          orElse: () => const RegisterRouteArgs());
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: RegisterPage(key: args.key),
-      );
-    },
-    RulesAndAgreementRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const RulesAndAgreementPage(),
-      );
-    },
-    SearchCommunityRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const SearchCommunityPage(),
-      );
-    },
-    SearchCommunityResultRoute.name: (routeData) {
-      final args = routeData.argsAs<SearchCommunityResultRouteArgs>(
-          orElse: () => const SearchCommunityResultRouteArgs());
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: SearchCommunityResultPage(
-          key: args.key,
-          query: args.query,
-          type: args.type,
-        ),
-      );
-    },
-    SettingsRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const SettingsPage(),
-      );
-    },
-    TextEditorRoute.name: (routeData) {
-      final args = routeData.argsAs<TextEditorRouteArgs>();
-      return AutoRoutePage<String>(
-        routeData: routeData,
-        child: TextEditorPage(
-          key: args.key,
-          initialText: args.initialText,
-        ),
-      );
-    },
-    UserDetailRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const UserDetailPage(),
-      );
-    },
-  };
-}
-
 /// generated route for
 /// [AboutPage]
 class AboutRoute extends PageRouteInfo<void> {
@@ -234,7 +20,12 @@ class AboutRoute extends PageRouteInfo<void> {
 
   static const String name = 'AboutRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const AboutPage();
+    },
+  );
 }
 
 /// generated route for
@@ -248,7 +39,12 @@ class AddCommunityRoute extends PageRouteInfo<void> {
 
   static const String name = 'AddCommunityRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const AddCommunityPage();
+    },
+  );
 }
 
 /// generated route for
@@ -265,8 +61,14 @@ class ChangePasswordRoute extends PageRouteInfo<ChangePasswordRouteArgs> {
 
   static const String name = 'ChangePasswordRoute';
 
-  static const PageInfo<ChangePasswordRouteArgs> page =
-      PageInfo<ChangePasswordRouteArgs>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<ChangePasswordRouteArgs>(
+          orElse: () => const ChangePasswordRouteArgs());
+      return ChangePasswordPage(key: args.key);
+    },
+  );
 }
 
 class ChangePasswordRouteArgs {
@@ -291,7 +93,12 @@ class ChatDetailRoute extends PageRouteInfo<void> {
 
   static const String name = 'ChatDetailRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const ChatDetailPage();
+    },
+  );
 }
 
 /// generated route for
@@ -305,7 +112,12 @@ class CommunityCreateEventRoute extends PageRouteInfo<void> {
 
   static const String name = 'CommunityCreateEventRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const CommunityCreateEventPage();
+    },
+  );
 }
 
 /// generated route for
@@ -319,7 +131,12 @@ class CommunityCreatePostRoute extends PageRouteInfo<void> {
 
   static const String name = 'CommunityCreatePostRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const CommunityCreatePostPage();
+    },
+  );
 }
 
 /// generated route for
@@ -340,8 +157,16 @@ class CommunityDetailRoute extends PageRouteInfo<CommunityDetailRouteArgs> {
 
   static const String name = 'CommunityDetailRoute';
 
-  static const PageInfo<CommunityDetailRouteArgs> page =
-      PageInfo<CommunityDetailRouteArgs>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<CommunityDetailRouteArgs>();
+      return CommunityDetailPage(
+        key: args.key,
+        community: args.community,
+      );
+    },
+  );
 }
 
 class CommunityDetailRouteArgs {
@@ -371,7 +196,12 @@ class CommunityEventDetailRoute extends PageRouteInfo<void> {
 
   static const String name = 'CommunityEventDetailRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const CommunityEventDetailPage();
+    },
+  );
 }
 
 /// generated route for
@@ -393,8 +223,16 @@ class CommunityFeedDetailRoute
 
   static const String name = 'CommunityFeedDetailRoute';
 
-  static const PageInfo<CommunityFeedDetailRouteArgs> page =
-      PageInfo<CommunityFeedDetailRouteArgs>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<CommunityFeedDetailRouteArgs>();
+      return CommunityFeedDetailPage(
+        key: args.key,
+        post: args.post,
+      );
+    },
+  );
 }
 
 class CommunityFeedDetailRouteArgs {
@@ -424,7 +262,12 @@ class CommunityGuidelinesRoute extends PageRouteInfo<void> {
 
   static const String name = 'CommunityGuidelinesRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const CommunityGuidelinesPage();
+    },
+  );
 }
 
 /// generated route for
@@ -441,8 +284,14 @@ class CreateCommunityRoute extends PageRouteInfo<CreateCommunityRouteArgs> {
 
   static const String name = 'CreateCommunityRoute';
 
-  static const PageInfo<CreateCommunityRouteArgs> page =
-      PageInfo<CreateCommunityRouteArgs>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<CreateCommunityRouteArgs>(
+          orElse: () => const CreateCommunityRouteArgs());
+      return CreateCommunityPage(key: args.key);
+    },
+  );
 }
 
 class CreateCommunityRouteArgs {
@@ -470,8 +319,14 @@ class EditUserRoute extends PageRouteInfo<EditUserRouteArgs> {
 
   static const String name = 'EditUserRoute';
 
-  static const PageInfo<EditUserRouteArgs> page =
-      PageInfo<EditUserRouteArgs>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<EditUserRouteArgs>(
+          orElse: () => const EditUserRouteArgs());
+      return EditUserPage(key: args.key);
+    },
+  );
 }
 
 class EditUserRouteArgs {
@@ -496,7 +351,12 @@ class FAQRoute extends PageRouteInfo<void> {
 
   static const String name = 'FAQRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const FAQPage();
+    },
+  );
 }
 
 /// generated route for
@@ -513,8 +373,14 @@ class ForgotPasswordRoute extends PageRouteInfo<ForgotPasswordRouteArgs> {
 
   static const String name = 'ForgotPasswordRoute';
 
-  static const PageInfo<ForgotPasswordRouteArgs> page =
-      PageInfo<ForgotPasswordRouteArgs>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<ForgotPasswordRouteArgs>(
+          orElse: () => const ForgotPasswordRouteArgs());
+      return ForgotPasswordPage(key: args.key);
+    },
+  );
 }
 
 class ForgotPasswordRouteArgs {
@@ -549,8 +415,17 @@ class GenerativeTextEditorRoute
 
   static const String name = 'GenerativeTextEditorRoute';
 
-  static const PageInfo<GenerativeTextEditorRouteArgs> page =
-      PageInfo<GenerativeTextEditorRouteArgs>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<GenerativeTextEditorRouteArgs>();
+      return GenerativeTextEditorPage(
+        key: args.key,
+        desc: args.desc,
+        enableImage: args.enableImage,
+      );
+    },
+  );
 }
 
 class GenerativeTextEditorRouteArgs {
@@ -586,7 +461,14 @@ class HomeRoute extends PageRouteInfo<HomeRouteArgs> {
 
   static const String name = 'HomeRoute';
 
-  static const PageInfo<HomeRouteArgs> page = PageInfo<HomeRouteArgs>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args =
+          data.argsAs<HomeRouteArgs>(orElse: () => const HomeRouteArgs());
+      return HomePage(key: args.key);
+    },
+  );
 }
 
 class HomeRouteArgs {
@@ -618,8 +500,16 @@ class JoinCommunityRoute extends PageRouteInfo<JoinCommunityRouteArgs> {
 
   static const String name = 'JoinCommunityRoute';
 
-  static const PageInfo<JoinCommunityRouteArgs> page =
-      PageInfo<JoinCommunityRouteArgs>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<JoinCommunityRouteArgs>();
+      return JoinCommunityPage(
+        key: args.key,
+        community: args.community,
+      );
+    },
+  );
 }
 
 class JoinCommunityRouteArgs {
@@ -649,7 +539,12 @@ class LoadingRoute extends PageRouteInfo<void> {
 
   static const String name = 'LoadingRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const LoadingPage();
+    },
+  );
 }
 
 /// generated route for
@@ -666,7 +561,14 @@ class LoginRoute extends PageRouteInfo<LoginRouteArgs> {
 
   static const String name = 'LoginRoute';
 
-  static const PageInfo<LoginRouteArgs> page = PageInfo<LoginRouteArgs>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args =
+          data.argsAs<LoginRouteArgs>(orElse: () => const LoginRouteArgs());
+      return LoginPage(key: args.key);
+    },
+  );
 }
 
 class LoginRouteArgs {
@@ -694,8 +596,14 @@ class OnBoardingRoute extends PageRouteInfo<OnBoardingRouteArgs> {
 
   static const String name = 'OnBoardingRoute';
 
-  static const PageInfo<OnBoardingRouteArgs> page =
-      PageInfo<OnBoardingRouteArgs>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<OnBoardingRouteArgs>(
+          orElse: () => const OnBoardingRouteArgs());
+      return OnBoardingPage(key: args.key);
+    },
+  );
 }
 
 class OnBoardingRouteArgs {
@@ -723,8 +631,14 @@ class RegisterRoute extends PageRouteInfo<RegisterRouteArgs> {
 
   static const String name = 'RegisterRoute';
 
-  static const PageInfo<RegisterRouteArgs> page =
-      PageInfo<RegisterRouteArgs>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<RegisterRouteArgs>(
+          orElse: () => const RegisterRouteArgs());
+      return RegisterPage(key: args.key);
+    },
+  );
 }
 
 class RegisterRouteArgs {
@@ -749,7 +663,12 @@ class RulesAndAgreementRoute extends PageRouteInfo<void> {
 
   static const String name = 'RulesAndAgreementRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const RulesAndAgreementPage();
+    },
+  );
 }
 
 /// generated route for
@@ -763,7 +682,12 @@ class SearchCommunityRoute extends PageRouteInfo<void> {
 
   static const String name = 'SearchCommunityRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const SearchCommunityPage();
+    },
+  );
 }
 
 /// generated route for
@@ -787,8 +711,18 @@ class SearchCommunityResultRoute
 
   static const String name = 'SearchCommunityResultRoute';
 
-  static const PageInfo<SearchCommunityResultRouteArgs> page =
-      PageInfo<SearchCommunityResultRouteArgs>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<SearchCommunityResultRouteArgs>(
+          orElse: () => const SearchCommunityResultRouteArgs());
+      return SearchCommunityResultPage(
+        key: args.key,
+        query: args.query,
+        type: args.type,
+      );
+    },
+  );
 }
 
 class SearchCommunityResultRouteArgs {
@@ -821,7 +755,12 @@ class SettingsRoute extends PageRouteInfo<void> {
 
   static const String name = 'SettingsRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const SettingsPage();
+    },
+  );
 }
 
 /// generated route for
@@ -842,8 +781,16 @@ class TextEditorRoute extends PageRouteInfo<TextEditorRouteArgs> {
 
   static const String name = 'TextEditorRoute';
 
-  static const PageInfo<TextEditorRouteArgs> page =
-      PageInfo<TextEditorRouteArgs>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<TextEditorRouteArgs>();
+      return TextEditorPage(
+        key: args.key,
+        initialText: args.initialText,
+      );
+    },
+  );
 }
 
 class TextEditorRouteArgs {
@@ -873,5 +820,10 @@ class UserDetailRoute extends PageRouteInfo<void> {
 
   static const String name = 'UserDetailRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const UserDetailPage();
+    },
+  );
 }

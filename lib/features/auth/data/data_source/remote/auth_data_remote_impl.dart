@@ -99,6 +99,7 @@ class AuthDataRemoteImpl extends AuthDataRemote {
       if (e is AuthError) {
         rethrow;
       }
+      print(e.toString());
       throw UnknownError();
     }
   }

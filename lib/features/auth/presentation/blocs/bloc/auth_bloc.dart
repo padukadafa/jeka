@@ -44,6 +44,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     result.fold((l) {
       EasyLoading.showError(l.message);
     }, (r) {
+      event.context
+          .read<CommunityBloc>()
+          .add(UpdateCommunityList(event.context));
+
       event.context.router.pushAll([HomeRoute()]);
       emit(state.copyWith(user: r));
     });

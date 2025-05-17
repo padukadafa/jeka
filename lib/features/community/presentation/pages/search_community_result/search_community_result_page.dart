@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_quill/flutter_quill.dart';
 import 'package:flutter_quill/quill_delta.dart';
+import 'package:flutter_quill_delta_from_html/flutter_quill_delta_from_html.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:jeka/common/widgets/app_bar.dart';
 import 'package:jeka/common/widgets/app_layout.dart';
@@ -117,8 +118,9 @@ class SearchCommunityResultPage extends StatelessWidget {
                                   height: 12,
                                 ),
                                 ReuseableText(
-                                  Document.fromHtml(
-                                          data?[index].desc ?? "<br>something")
+                                  Document.fromDelta(
+                                          HtmlToDelta().convert(
+                                          data?[index].desc ?? "<br>something",transformTableAsEmbed: true))
                                       .toPlainText()
                                       .trim(),
                                   maxLines: 2,

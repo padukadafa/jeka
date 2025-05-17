@@ -13,6 +13,7 @@ import 'package:jeka/features/community/data/models/community.dart';
 import 'package:jeka/features/community/data/models/post.dart';
 import 'package:jeka/features/community/data/repository/community_repository.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:rxdart/rxdart.dart';
 
 part 'community_event.dart';
 part 'community_state.dart';
@@ -27,7 +28,7 @@ class CommunityBloc extends Bloc<CommunityEvent, CommunityState> {
       : super(const _Initial()) {
     on<ChangePage>(_changePageHandler);
     on<ChangeCommunityTab>(_changeCommunityTabHandler);
-    on<UpdateCommunityList>(_updateCommunityListHandler);
+    on<UpdateCommunityList>(_updateCommunityListHandler,transformer:(events, mapper) => events.switchMap(mapper),);
     on<ChangeCommunity>(_changeCommunityHandler);
     on<JoinCommunity>(_joinCommunityHandler);
     on<LeaveCommunity>(_onLeaveCommunityHandler);

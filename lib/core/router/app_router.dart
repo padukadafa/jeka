@@ -32,7 +32,7 @@ import 'package:jeka/features/user/presentation/pages/user_detail/user_detail_pa
 part 'app_router.gr.dart';
 
 @AutoRouterConfig()
-class AppRouter extends _$AppRouter {
+class AppRouter extends RootStackRouter {
   AppRouter();
   @override
   List<AutoRoute> get routes => [

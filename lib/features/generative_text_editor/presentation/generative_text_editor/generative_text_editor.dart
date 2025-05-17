@@ -6,8 +6,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter_quill/flutter_quill.dart';
-import 'package:flutter_quill/markdown_quill.dart';
 import 'package:flutter_quill/quill_delta.dart';
+import 'package:flutter_quill_delta_from_html/parser/html_to_delta.dart';
 import 'package:flutter_quill_extensions/flutter_quill_extensions.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:image_picker/image_picker.dart';
@@ -23,8 +23,9 @@ import 'package:skeletonizer/skeletonizer.dart';
 import 'package:markdown/markdown.dart' as md;
 import 'package:uuid/uuid.dart';
 import 'package:delta_to_html/delta_to_html.dart';
+import 'package:markdown_quill/markdown_quill.dart';
 
-@RoutePage<String>()
+@RoutePage()
 class GenerativeTextEditorPage extends StatefulWidget {
   final String desc;
   final bool enableImage;
@@ -51,7 +52,12 @@ class _GenerativeTextEditorPageState extends State<GenerativeTextEditorPage> {
   void initState() {
     super.initState();
     if (widget.desc.isNotEmpty) {
-      _controller.document = Document.fromHtml(widget.desc);
+        final delta =
+          HtmlToDelta().convert(widget.desc, transformTableAsEmbed: false);
+
+      _controller.document = Document.fromDelta(
+        delta
+      );
     }
     _controller.addListener(() {
       if (showAiPrompt) {
@@ -128,15 +134,14 @@ class _GenerativeTextEditorPageState extends State<GenerativeTextEditorPage> {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 12),
                     child: QuillEditor.basic(
-                      configurations: QuillEditorConfigurations(
-                        controller: _controller,
-                        sharedConfigurations: const QuillSharedConfigurations(
-                          locale: Locale('en'),
-                        ),
-                        onTapOutside: (event, focusNode) {
+                      controller: _controller,
+                      config: QuillEditorConfig(
+                                                onTapOutside: (event, focusNode) {
                           focusNode.unfocus();
                         },
+                      
                         embedBuilders: FlutterQuillEmbeds.editorBuilders(),
+
                       ),
                     ),
                   ),
@@ -255,8 +260,8 @@ class _GenerativeTextEditorPageState extends State<GenerativeTextEditorPage> {
                                             md.Document(encodeHtml: false),
                                       ).convert(AiResult!).toJson(),
                                     );
-                                    _controller
-                                        .setContents(Delta.fromJson(delta));
+                                    _controller.document=Document.fromDelta(
+                                        Delta.fromJson(delta));
                                     setState(() {
                                       AiResult = null;
                                       showAiResult = false;
@@ -295,8 +300,7 @@ class GenerativeTextEditorToolBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final authBloc = context.read<AuthBloc>();
-    return QuillToolbar(
-      child: SingleChildScrollView(
+    return SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Row(
           children: [
@@ -354,7 +358,7 @@ class GenerativeTextEditorToolBar extends StatelessWidget {
             ),
           ],
         ),
-      ),
-    );
+      )
+    ;
   }
 }

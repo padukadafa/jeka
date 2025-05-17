@@ -8,136 +8,139 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:cloud_firestore/cloud_firestore.dart' as _i7;
-import 'package:firebase_auth/firebase_auth.dart' as _i6;
-import 'package:firebase_messaging/firebase_messaging.dart' as _i8;
-import 'package:firebase_storage/firebase_storage.dart' as _i5;
-import 'package:get_it/get_it.dart' as _i1;
-import 'package:google_sign_in/google_sign_in.dart' as _i9;
-import 'package:injectable/injectable.dart' as _i2;
-import 'package:jeka/di.dart' as _i34;
+import 'package:cloud_firestore/cloud_firestore.dart' as _i974;
+import 'package:firebase_auth/firebase_auth.dart' as _i59;
+import 'package:firebase_messaging/firebase_messaging.dart' as _i892;
+import 'package:firebase_storage/firebase_storage.dart' as _i457;
+import 'package:get_it/get_it.dart' as _i174;
+import 'package:google_sign_in/google_sign_in.dart' as _i116;
+import 'package:injectable/injectable.dart' as _i526;
+import 'package:jeka/di.dart' as _i487;
 import 'package:jeka/features/auth/data/data_source/remote/auth_data_remote.dart'
-    as _i24;
+    as _i1021;
 import 'package:jeka/features/auth/data/data_source/remote/auth_data_remote_impl.dart'
-    as _i25;
+    as _i65;
 import 'package:jeka/features/auth/data/repository/auth_repository.dart'
-    as _i30;
+    as _i365;
 import 'package:jeka/features/auth/data/repository/auth_repository_impl.dart'
-    as _i31;
+    as _i617;
 import 'package:jeka/features/auth/presentation/blocs/bloc/auth_bloc.dart'
-    as _i33;
+    as _i936;
 import 'package:jeka/features/community/data/data_source/local/communirt_local_data_source.dart'
-    as _i15;
+    as _i741;
 import 'package:jeka/features/community/data/data_source/local/community_local_data_source_impl.dart'
-    as _i16;
+    as _i369;
 import 'package:jeka/features/community/data/data_source/local/search_database.dart'
-    as _i4;
+    as _i401;
 import 'package:jeka/features/community/data/data_source/remote/community_remote_data_source.dart'
-    as _i19;
+    as _i329;
 import 'package:jeka/features/community/data/data_source/remote/community_remote_data_source_impl.dart'
-    as _i20;
-import 'package:jeka/features/community/data/repository/community_repository.dart'
-    as _i26;
-import 'package:jeka/features/community/data/repository/community_repository_impl.dart'
-    as _i27;
-import 'package:jeka/features/community/presentation/bloc/community_bloc.dart'
-    as _i32;
-import 'package:jeka/features/generative_text_editor/data/data_source/gemini_remote_data_source.dart'
-    as _i12;
-import 'package:jeka/features/generative_text_editor/data/data_source/gemini_remote_data_source_impl.dart'
-    as _i13;
-import 'package:jeka/features/generative_text_editor/data/repository/gemini_repository.dart'
-    as _i17;
-import 'package:jeka/features/generative_text_editor/data/repository/gemini_repository_impl.dart'
-    as _i18;
-import 'package:jeka/features/settings/data/repository/settings_repository.dart'
-    as _i10;
-import 'package:jeka/features/settings/data/repository/settings_repository_impl.dart'
-    as _i11;
-import 'package:jeka/features/settings/presentation/blocs/bloc/settings_bloc.dart'
-    as _i21;
-import 'package:jeka/features/user/data/remote/user_data_remote.dart' as _i22;
-import 'package:jeka/features/user/data/remote/user_data_remote_impl.dart'
     as _i23;
+import 'package:jeka/features/community/data/repository/community_repository.dart'
+    as _i936;
+import 'package:jeka/features/community/data/repository/community_repository_impl.dart'
+    as _i335;
+import 'package:jeka/features/community/presentation/bloc/community_bloc.dart'
+    as _i1036;
+import 'package:jeka/features/generative_text_editor/data/data_source/gemini_remote_data_source.dart'
+    as _i701;
+import 'package:jeka/features/generative_text_editor/data/data_source/gemini_remote_data_source_impl.dart'
+    as _i431;
+import 'package:jeka/features/generative_text_editor/data/repository/gemini_repository.dart'
+    as _i186;
+import 'package:jeka/features/generative_text_editor/data/repository/gemini_repository_impl.dart'
+    as _i129;
+import 'package:jeka/features/settings/data/repository/settings_repository.dart'
+    as _i322;
+import 'package:jeka/features/settings/data/repository/settings_repository_impl.dart'
+    as _i522;
+import 'package:jeka/features/settings/presentation/blocs/bloc/settings_bloc.dart'
+    as _i551;
+import 'package:jeka/features/user/data/remote/user_data_remote.dart' as _i821;
+import 'package:jeka/features/user/data/remote/user_data_remote_impl.dart'
+    as _i683;
 import 'package:jeka/features/user/data/repository/user_repository.dart'
-    as _i28;
+    as _i65;
 import 'package:jeka/features/user/data/repository/user_repository_impl.dart'
-    as _i29;
-import 'package:jeka/utils/uploud_service.dart' as _i14;
-import 'package:shared_preferences/shared_preferences.dart' as _i3;
+    as _i417;
+import 'package:jeka/utils/uploud_service.dart' as _i132;
+import 'package:shared_preferences/shared_preferences.dart' as _i460;
 
-extension GetItInjectableX on _i1.GetIt {
+extension GetItInjectableX on _i174.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
-  Future<_i1.GetIt> init({
+  Future<_i174.GetIt> init({
     String? environment,
-    _i2.EnvironmentFilter? environmentFilter,
+    _i526.EnvironmentFilter? environmentFilter,
   }) async {
-    final gh = _i2.GetItHelper(
+    final gh = _i526.GetItHelper(
       this,
       environment,
       environmentFilter,
     );
     final registerModule = _$RegisterModule();
-    await gh.factoryAsync<_i3.SharedPreferences>(
+    await gh.factoryAsync<_i460.SharedPreferences>(
       () => registerModule.sharedPreferences,
       preResolve: true,
     );
-    await gh.factoryAsync<_i4.SearchDatabase>(
+    await gh.factoryAsync<_i401.SearchDatabase>(
       () => registerModule.searchDatabase,
       preResolve: true,
     );
-    gh.singleton<_i5.Reference>(() => registerModule.firebaseStorageReference);
-    gh.singleton<_i6.FirebaseAuth>(() => registerModule.firebaseAuth);
-    gh.singleton<_i7.FirebaseFirestore>(() => registerModule.firebaseFirestore);
-    gh.singleton<_i8.FirebaseMessaging>(() => registerModule.firebaseMessaging);
-    gh.singleton<_i9.GoogleSignIn>(() => registerModule.googleSignin);
-    gh.singleton<_i10.SettingsRepository>(
-        () => _i11.SettingsRepositoryImpl(gh<_i3.SharedPreferences>()));
-    gh.singleton<_i12.GeminiRemoteDataSource>(
-        () => _i13.GeminiRemoteDataSourceImpl());
-    gh.singleton<_i14.UploadService>(
-        () => _i14.UploadService(gh<_i5.Reference>()));
-    gh.singleton<_i15.CommunityLocalDataSource>(
-        () => _i16.CommunityLocalDataSourceImpl(gh<_i4.SearchDatabase>()));
-    gh.singleton<_i17.GeminiRepository>(
-        () => _i18.GeminiRepositoryImpl(gh<_i12.GeminiRemoteDataSource>()));
-    gh.singleton<_i19.CommunityRemoteDataSource>(
-        () => _i20.CommunityRemoteDataSourceImpl(
-              gh<_i7.FirebaseFirestore>(),
-              gh<_i14.UploadService>(),
-              gh<_i6.FirebaseAuth>(),
+    gh.singleton<_i457.Reference>(
+        () => registerModule.firebaseStorageReference);
+    gh.singleton<_i59.FirebaseAuth>(() => registerModule.firebaseAuth);
+    gh.singleton<_i974.FirebaseFirestore>(
+        () => registerModule.firebaseFirestore);
+    gh.singleton<_i892.FirebaseMessaging>(
+        () => registerModule.firebaseMessaging);
+    gh.singleton<_i116.GoogleSignIn>(() => registerModule.googleSignin);
+    gh.singleton<_i322.SettingsRepository>(
+        () => _i522.SettingsRepositoryImpl(gh<_i460.SharedPreferences>()));
+    gh.singleton<_i701.GeminiRemoteDataSource>(
+        () => _i431.GeminiRemoteDataSourceImpl());
+    gh.singleton<_i132.UploadService>(
+        () => _i132.UploadService(gh<_i457.Reference>()));
+    gh.singleton<_i741.CommunityLocalDataSource>(
+        () => _i369.CommunityLocalDataSourceImpl(gh<_i401.SearchDatabase>()));
+    gh.singleton<_i186.GeminiRepository>(
+        () => _i129.GeminiRepositoryImpl(gh<_i701.GeminiRemoteDataSource>()));
+    gh.singleton<_i329.CommunityRemoteDataSource>(
+        () => _i23.CommunityRemoteDataSourceImpl(
+              gh<_i974.FirebaseFirestore>(),
+              gh<_i132.UploadService>(),
+              gh<_i59.FirebaseAuth>(),
             ));
-    gh.singleton<_i21.SettingsBloc>(
-        () => _i21.SettingsBloc(gh<_i10.SettingsRepository>()));
-    gh.singleton<_i22.UserDataRemote>(() => _i23.UserDataRemoteImpl(
-          gh<_i7.FirebaseFirestore>(),
-          gh<_i8.FirebaseMessaging>(),
-          gh<_i6.FirebaseAuth>(),
-          gh<_i14.UploadService>(),
+    gh.singleton<_i551.SettingsBloc>(
+        () => _i551.SettingsBloc(gh<_i322.SettingsRepository>()));
+    gh.singleton<_i821.UserDataRemote>(() => _i683.UserDataRemoteImpl(
+          gh<_i974.FirebaseFirestore>(),
+          gh<_i892.FirebaseMessaging>(),
+          gh<_i59.FirebaseAuth>(),
+          gh<_i132.UploadService>(),
         ));
-    gh.singleton<_i24.AuthDataRemote>(() => _i25.AuthDataRemoteImpl(
-          gh<_i6.FirebaseAuth>(),
-          gh<_i22.UserDataRemote>(),
-          gh<_i9.GoogleSignIn>(),
+    gh.singleton<_i1021.AuthDataRemote>(() => _i65.AuthDataRemoteImpl(
+          gh<_i59.FirebaseAuth>(),
+          gh<_i821.UserDataRemote>(),
+          gh<_i116.GoogleSignIn>(),
         ));
-    gh.singleton<_i26.CommunityRepository>(() =>
-        _i27.CommunityRepositoryImpl(gh<_i19.CommunityRemoteDataSource>()));
-    gh.factory<_i28.UserRepository>(
-        () => _i29.UserRepositoryImpl(gh<_i22.UserDataRemote>()));
-    gh.singleton<_i30.AuthRepository>(
-        () => _i31.AuthRepositoryImpl(gh<_i24.AuthDataRemote>()));
-    gh.factory<_i32.CommunityBloc>(() => _i32.CommunityBloc(
-          gh<_i26.CommunityRepository>(),
-          gh<_i3.SharedPreferences>(),
-          gh<_i19.CommunityRemoteDataSource>(),
+    gh.singleton<_i936.CommunityRepository>(() =>
+        _i335.CommunityRepositoryImpl(gh<_i329.CommunityRemoteDataSource>()));
+    gh.factory<_i65.UserRepository>(
+        () => _i417.UserRepositoryImpl(gh<_i821.UserDataRemote>()));
+    gh.factory<_i1036.CommunityBloc>(() => _i1036.CommunityBloc(
+          gh<_i936.CommunityRepository>(),
+          gh<_i460.SharedPreferences>(),
+          gh<_i329.CommunityRemoteDataSource>(),
         ));
-    gh.factory<_i33.AuthBloc>(() => _i33.AuthBloc(
-          gh<_i30.AuthRepository>(),
-          gh<_i6.FirebaseAuth>(),
-          gh<_i28.UserRepository>(),
+    gh.singleton<_i365.AuthRepository>(
+        () => _i617.AuthRepositoryImpl(gh<_i1021.AuthDataRemote>()));
+    gh.factory<_i936.AuthBloc>(() => _i936.AuthBloc(
+          gh<_i365.AuthRepository>(),
+          gh<_i59.FirebaseAuth>(),
+          gh<_i65.UserRepository>(),
         ));
     return this;
   }
 }
 
-class _$RegisterModule extends _i34.RegisterModule {}
+class _$RegisterModule extends _i487.RegisterModule {}

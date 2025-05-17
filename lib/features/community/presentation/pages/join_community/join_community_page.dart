@@ -8,7 +8,7 @@ import 'package:jeka/common/widgets/reuseable_text.dart';
 import 'package:jeka/features/community/data/models/community.dart';
 import 'package:jeka/features/community/presentation/bloc/community_bloc.dart';
 
-@RoutePage<Community>()
+@RoutePage()
 class JoinCommunityPage extends StatelessWidget {
   final Community community;
   const JoinCommunityPage({super.key, required this.community});

@@ -20,7 +20,6 @@ class _HomePageState extends State<HomePage> {
   final controller = HomeController();
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((v) {
       toastification.show(

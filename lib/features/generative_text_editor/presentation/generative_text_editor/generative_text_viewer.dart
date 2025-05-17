@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_quill/flutter_quill.dart';
 import 'package:flutter_quill/quill_delta.dart';
-import 'package:flutter_quill_extensions/flutter_quill_embeds.dart';
+import 'package:flutter_quill_extensions/flutter_quill_extensions.dart';
 import 'package:jeka/utils/measure_size.dart';
 
 class GenerativeTextViewer extends StatefulWidget {
@@ -16,7 +16,7 @@ class GenerativeTextViewer extends StatefulWidget {
 }
 
 class _GenerativeTextViewerState extends State<GenerativeTextViewer> {
-  final _controller = QuillController.basic();
+  late QuillController _controller;
   final controller = ScrollController();
   Size size = const Size(0, 0);
 
@@ -26,8 +26,10 @@ class _GenerativeTextViewerState extends State<GenerativeTextViewer> {
   @override
   void initState() {
     super.initState();
-
-    _controller.setContents(Delta.fromJson(jsonDecode(widget.text)));
+    _controller = QuillController(
+      document: Document.fromJson(jsonDecode(widget.text)),
+      selection: const TextSelection.collapsed(offset: 0),
+    );
   }
 
   @override
@@ -42,14 +44,15 @@ class _GenerativeTextViewerState extends State<GenerativeTextViewer> {
           },
           child: QuillEditor.basic(
             focusNode: _focusNode,
-            configurations: QuillEditorConfigurations(
-              controller: _controller,
+            controller: _controller,
+            config: QuillEditorConfig(
               scrollable: true,
               autoFocus: false,
               expands: false,
               showCursor: false,
               padding: const EdgeInsets.all(16),
               embedBuilders: FlutterQuillEmbeds.editorBuilders(),
+
             ),
           ),
         ),
