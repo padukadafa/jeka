@@ -21,7 +21,7 @@ Map<String, dynamic> _$$MessageModelImplToJson(_$MessageModelImpl instance) =>
       'id': instance.id,
       'content': instance.content,
       'timestamp': instance.timestamp.toIso8601String(),
-      'sender': instance.sender.toJson(),
+      'sender': instance.sender,
       'communityId': instance.communityId,
     };
 

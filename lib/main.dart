@@ -8,6 +8,7 @@ import 'package:jeka/core/theme/theme.light.dart';
 import 'package:jeka/di.dart';
 import 'package:jeka/init.dart';
 import 'package:appflowy_editor/appflowy_editor.dart';
+import 'package:jeka/services/notification_service.dart';
 import 'package:toastification/toastification.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
@@ -31,10 +32,9 @@ class MainApp extends StatelessWidget {
               debugShowCheckedModeBanner: false,
               darkTheme: darkTheme,
               localizationsDelegates: const [
-                        GlobalMaterialLocalizations.delegate,
+                GlobalMaterialLocalizations.delegate,
                 GlobalWidgetsLocalizations.delegate,
                 GlobalCupertinoLocalizations.delegate,
-
                 AppFlowyEditorLocalizations.delegate,
                 FlutterQuillLocalizations.delegate
               ],

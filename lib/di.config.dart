@@ -59,6 +59,8 @@ import 'package:jeka/features/generative_text_editor/data/repository/gemini_repo
     as _i186;
 import 'package:jeka/features/generative_text_editor/data/repository/gemini_repository_impl.dart'
     as _i129;
+import 'package:jeka/features/notification/data/data_sources/database/notification_database.dart'
+    as _i35;
 import 'package:jeka/features/settings/data/repository/settings_repository.dart'
     as _i322;
 import 'package:jeka/features/settings/data/repository/settings_repository_impl.dart'
@@ -93,6 +95,10 @@ extension GetItInjectableX on _i174.GetIt {
     );
     await gh.factoryAsync<_i401.SearchDatabase>(
       () => registerModule.searchDatabase,
+      preResolve: true,
+    );
+    await gh.factoryAsync<_i35.NotificationDatabase>(
+      () => registerModule.notificationDatabase,
       preResolve: true,
     );
     gh.singleton<_i457.Reference>(
