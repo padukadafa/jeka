@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_expandable_fab/flutter_expandable_fab.dart';
@@ -5,6 +6,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:jeka/common/widgets/app_layout.dart';
 import 'package:jeka/common/widgets/avatars/avatar.dart';
 import 'package:jeka/common/widgets/reuseable_text.dart';
+import 'package:jeka/core/router/app_router.dart';
 import 'package:jeka/features/community/presentation/bloc/community_bloc.dart';
 import 'package:jeka/features/community/presentation/bloc/community_selector.dart';
 import 'package:jeka/features/community/presentation/pages/community/widgets/community_floating_action_button.dart';
@@ -91,8 +93,14 @@ class _CommunityPageState extends State<CommunityPage>
                 pinned: true,
                 actions: [
                   IconButton(
-                    onPressed: () {},
-                    icon: const FaIcon(FontAwesomeIcons.ellipsisVertical),
+                    onPressed: () {
+                      final community =
+                          context.read<CommunityBloc>().state.community;
+                      if (community == null) return;
+                      context.router
+                          .push(CommunityDetailRoute(community: community));
+                    },
+                    icon: const FaIcon(FontAwesomeIcons.circleInfo),
                   ),
                 ],
                 bottom: TabBar(

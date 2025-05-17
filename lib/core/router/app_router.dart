@@ -20,6 +20,7 @@ import 'package:jeka/features/community/presentation/pages/community_create_post
 import 'package:jeka/features/community/presentation/pages/community_detail/community_detail_page.dart';
 import 'package:jeka/features/community/presentation/pages/community_event_detail/community_event_detail_page.dart';
 import 'package:jeka/features/community/presentation/pages/community_feed_detail/comunity_feed_detail_page.dart';
+import 'package:jeka/features/community/presentation/pages/community_member/community_member_page.dart';
 import 'package:jeka/features/community/presentation/pages/create_community/create_community_page.dart';
 import 'package:jeka/features/community/presentation/pages/join_community/join_community_page.dart';
 import 'package:jeka/features/community/presentation/pages/search_community/search_community_page.dart';
@@ -65,5 +66,6 @@ class AppRouter extends RootStackRouter {
         AutoRoute(page: AddCommunityRoute.page),
         AutoRoute(page: SearchCommunityResultRoute.page),
         AutoRoute(page: JoinCommunityRoute.page),
+        AutoRoute(page: CommunityMemberRoute.page),
       ];
 }

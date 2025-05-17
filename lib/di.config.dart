@@ -103,12 +103,15 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i892.FirebaseMessaging>(
         () => registerModule.firebaseMessaging);
     gh.singleton<_i116.GoogleSignIn>(() => registerModule.googleSignin);
-    gh.singleton<_i322.SettingsRepository>(
-        () => _i522.SettingsRepositoryImpl(gh<_i460.SharedPreferences>()));
     gh.singleton<_i701.GeminiRemoteDataSource>(
         () => _i431.GeminiRemoteDataSourceImpl());
     gh.singleton<_i132.UploadService>(
         () => _i132.UploadService(gh<_i457.Reference>()));
+    gh.singleton<_i322.SettingsRepository>(() => _i522.SettingsRepositoryImpl(
+          gh<_i460.SharedPreferences>(),
+          gh<_i974.FirebaseFirestore>(),
+          gh<_i59.FirebaseAuth>(),
+        ));
     gh.singleton<_i1062.ChatRemoteDataSource>(
         () => _i1062.ChatRemoteDataSourceImpl(
               gh<_i974.FirebaseFirestore>(),

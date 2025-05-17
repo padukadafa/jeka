@@ -26,8 +26,8 @@ mixin _$CommunityEvent {
     required TResult Function(
             String communityId, void Function(Community)? onDone)
         joinCommunity,
-    required TResult Function(
-            String communityId, void Function(Community)? onDone)
+    required TResult Function(BuildContext context, String communityId,
+            void Function(Community)? onDone)
         leaveCommunity,
     required TResult Function(BuildContext context, PostComment comment,
             Post post, void Function(Post)? onDone)
@@ -43,7 +43,8 @@ mixin _$CommunityEvent {
     TResult? Function(String communityId)? changeCommunity,
     TResult? Function(String communityId, void Function(Community)? onDone)?
         joinCommunity,
-    TResult? Function(String communityId, void Function(Community)? onDone)?
+    TResult? Function(BuildContext context, String communityId,
+            void Function(Community)? onDone)?
         leaveCommunity,
     TResult? Function(BuildContext context, PostComment comment, Post post,
             void Function(Post)? onDone)?
@@ -59,7 +60,8 @@ mixin _$CommunityEvent {
     TResult Function(String communityId)? changeCommunity,
     TResult Function(String communityId, void Function(Community)? onDone)?
         joinCommunity,
-    TResult Function(String communityId, void Function(Community)? onDone)?
+    TResult Function(BuildContext context, String communityId,
+            void Function(Community)? onDone)?
         leaveCommunity,
     TResult Function(BuildContext context, PostComment comment, Post post,
             void Function(Post)? onDone)?
@@ -176,8 +178,8 @@ class _$StartedImpl implements _Started {
     required TResult Function(
             String communityId, void Function(Community)? onDone)
         joinCommunity,
-    required TResult Function(
-            String communityId, void Function(Community)? onDone)
+    required TResult Function(BuildContext context, String communityId,
+            void Function(Community)? onDone)
         leaveCommunity,
     required TResult Function(BuildContext context, PostComment comment,
             Post post, void Function(Post)? onDone)
@@ -196,7 +198,8 @@ class _$StartedImpl implements _Started {
     TResult? Function(String communityId)? changeCommunity,
     TResult? Function(String communityId, void Function(Community)? onDone)?
         joinCommunity,
-    TResult? Function(String communityId, void Function(Community)? onDone)?
+    TResult? Function(BuildContext context, String communityId,
+            void Function(Community)? onDone)?
         leaveCommunity,
     TResult? Function(BuildContext context, PostComment comment, Post post,
             void Function(Post)? onDone)?
@@ -215,7 +218,8 @@ class _$StartedImpl implements _Started {
     TResult Function(String communityId)? changeCommunity,
     TResult Function(String communityId, void Function(Community)? onDone)?
         joinCommunity,
-    TResult Function(String communityId, void Function(Community)? onDone)?
+    TResult Function(BuildContext context, String communityId,
+            void Function(Community)? onDone)?
         leaveCommunity,
     TResult Function(BuildContext context, PostComment comment, Post post,
             void Function(Post)? onDone)?
@@ -358,8 +362,8 @@ class _$ChangePageImpl implements ChangePage {
     required TResult Function(
             String communityId, void Function(Community)? onDone)
         joinCommunity,
-    required TResult Function(
-            String communityId, void Function(Community)? onDone)
+    required TResult Function(BuildContext context, String communityId,
+            void Function(Community)? onDone)
         leaveCommunity,
     required TResult Function(BuildContext context, PostComment comment,
             Post post, void Function(Post)? onDone)
@@ -378,7 +382,8 @@ class _$ChangePageImpl implements ChangePage {
     TResult? Function(String communityId)? changeCommunity,
     TResult? Function(String communityId, void Function(Community)? onDone)?
         joinCommunity,
-    TResult? Function(String communityId, void Function(Community)? onDone)?
+    TResult? Function(BuildContext context, String communityId,
+            void Function(Community)? onDone)?
         leaveCommunity,
     TResult? Function(BuildContext context, PostComment comment, Post post,
             void Function(Post)? onDone)?
@@ -397,7 +402,8 @@ class _$ChangePageImpl implements ChangePage {
     TResult Function(String communityId)? changeCommunity,
     TResult Function(String communityId, void Function(Community)? onDone)?
         joinCommunity,
-    TResult Function(String communityId, void Function(Community)? onDone)?
+    TResult Function(BuildContext context, String communityId,
+            void Function(Community)? onDone)?
         leaveCommunity,
     TResult Function(BuildContext context, PostComment comment, Post post,
             void Function(Post)? onDone)?
@@ -549,8 +555,8 @@ class _$ChangeCommunityTabImpl implements ChangeCommunityTab {
     required TResult Function(
             String communityId, void Function(Community)? onDone)
         joinCommunity,
-    required TResult Function(
-            String communityId, void Function(Community)? onDone)
+    required TResult Function(BuildContext context, String communityId,
+            void Function(Community)? onDone)
         leaveCommunity,
     required TResult Function(BuildContext context, PostComment comment,
             Post post, void Function(Post)? onDone)
@@ -569,7 +575,8 @@ class _$ChangeCommunityTabImpl implements ChangeCommunityTab {
     TResult? Function(String communityId)? changeCommunity,
     TResult? Function(String communityId, void Function(Community)? onDone)?
         joinCommunity,
-    TResult? Function(String communityId, void Function(Community)? onDone)?
+    TResult? Function(BuildContext context, String communityId,
+            void Function(Community)? onDone)?
         leaveCommunity,
     TResult? Function(BuildContext context, PostComment comment, Post post,
             void Function(Post)? onDone)?
@@ -588,7 +595,8 @@ class _$ChangeCommunityTabImpl implements ChangeCommunityTab {
     TResult Function(String communityId)? changeCommunity,
     TResult Function(String communityId, void Function(Community)? onDone)?
         joinCommunity,
-    TResult Function(String communityId, void Function(Community)? onDone)?
+    TResult Function(BuildContext context, String communityId,
+            void Function(Community)? onDone)?
         leaveCommunity,
     TResult Function(BuildContext context, PostComment comment, Post post,
             void Function(Post)? onDone)?
@@ -740,8 +748,8 @@ class _$UpdateCommunityListImpl implements UpdateCommunityList {
     required TResult Function(
             String communityId, void Function(Community)? onDone)
         joinCommunity,
-    required TResult Function(
-            String communityId, void Function(Community)? onDone)
+    required TResult Function(BuildContext context, String communityId,
+            void Function(Community)? onDone)
         leaveCommunity,
     required TResult Function(BuildContext context, PostComment comment,
             Post post, void Function(Post)? onDone)
@@ -760,7 +768,8 @@ class _$UpdateCommunityListImpl implements UpdateCommunityList {
     TResult? Function(String communityId)? changeCommunity,
     TResult? Function(String communityId, void Function(Community)? onDone)?
         joinCommunity,
-    TResult? Function(String communityId, void Function(Community)? onDone)?
+    TResult? Function(BuildContext context, String communityId,
+            void Function(Community)? onDone)?
         leaveCommunity,
     TResult? Function(BuildContext context, PostComment comment, Post post,
             void Function(Post)? onDone)?
@@ -779,7 +788,8 @@ class _$UpdateCommunityListImpl implements UpdateCommunityList {
     TResult Function(String communityId)? changeCommunity,
     TResult Function(String communityId, void Function(Community)? onDone)?
         joinCommunity,
-    TResult Function(String communityId, void Function(Community)? onDone)?
+    TResult Function(BuildContext context, String communityId,
+            void Function(Community)? onDone)?
         leaveCommunity,
     TResult Function(BuildContext context, PostComment comment, Post post,
             void Function(Post)? onDone)?
@@ -933,8 +943,8 @@ class _$ChangeCommunityImpl implements ChangeCommunity {
     required TResult Function(
             String communityId, void Function(Community)? onDone)
         joinCommunity,
-    required TResult Function(
-            String communityId, void Function(Community)? onDone)
+    required TResult Function(BuildContext context, String communityId,
+            void Function(Community)? onDone)
         leaveCommunity,
     required TResult Function(BuildContext context, PostComment comment,
             Post post, void Function(Post)? onDone)
@@ -953,7 +963,8 @@ class _$ChangeCommunityImpl implements ChangeCommunity {
     TResult? Function(String communityId)? changeCommunity,
     TResult? Function(String communityId, void Function(Community)? onDone)?
         joinCommunity,
-    TResult? Function(String communityId, void Function(Community)? onDone)?
+    TResult? Function(BuildContext context, String communityId,
+            void Function(Community)? onDone)?
         leaveCommunity,
     TResult? Function(BuildContext context, PostComment comment, Post post,
             void Function(Post)? onDone)?
@@ -972,7 +983,8 @@ class _$ChangeCommunityImpl implements ChangeCommunity {
     TResult Function(String communityId)? changeCommunity,
     TResult Function(String communityId, void Function(Community)? onDone)?
         joinCommunity,
-    TResult Function(String communityId, void Function(Community)? onDone)?
+    TResult Function(BuildContext context, String communityId,
+            void Function(Community)? onDone)?
         leaveCommunity,
     TResult Function(BuildContext context, PostComment comment, Post post,
             void Function(Post)? onDone)?
@@ -1133,8 +1145,8 @@ class _$JoinCommunityImpl implements JoinCommunity {
     required TResult Function(
             String communityId, void Function(Community)? onDone)
         joinCommunity,
-    required TResult Function(
-            String communityId, void Function(Community)? onDone)
+    required TResult Function(BuildContext context, String communityId,
+            void Function(Community)? onDone)
         leaveCommunity,
     required TResult Function(BuildContext context, PostComment comment,
             Post post, void Function(Post)? onDone)
@@ -1153,7 +1165,8 @@ class _$JoinCommunityImpl implements JoinCommunity {
     TResult? Function(String communityId)? changeCommunity,
     TResult? Function(String communityId, void Function(Community)? onDone)?
         joinCommunity,
-    TResult? Function(String communityId, void Function(Community)? onDone)?
+    TResult? Function(BuildContext context, String communityId,
+            void Function(Community)? onDone)?
         leaveCommunity,
     TResult? Function(BuildContext context, PostComment comment, Post post,
             void Function(Post)? onDone)?
@@ -1172,7 +1185,8 @@ class _$JoinCommunityImpl implements JoinCommunity {
     TResult Function(String communityId)? changeCommunity,
     TResult Function(String communityId, void Function(Community)? onDone)?
         joinCommunity,
-    TResult Function(String communityId, void Function(Community)? onDone)?
+    TResult Function(BuildContext context, String communityId,
+            void Function(Community)? onDone)?
         leaveCommunity,
     TResult Function(BuildContext context, PostComment comment, Post post,
             void Function(Post)? onDone)?
@@ -1255,7 +1269,10 @@ abstract class _$$LeaveCommunityImplCopyWith<$Res> {
           $Res Function(_$LeaveCommunityImpl) then) =
       __$$LeaveCommunityImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String communityId, void Function(Community)? onDone});
+  $Res call(
+      {BuildContext context,
+      String communityId,
+      void Function(Community)? onDone});
 }
 
 /// @nodoc
@@ -1271,10 +1288,15 @@ class __$$LeaveCommunityImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? context = null,
     Object? communityId = null,
     Object? onDone = freezed,
   }) {
     return _then(_$LeaveCommunityImpl(
+      null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
       null == communityId
           ? _value.communityId
           : communityId // ignore: cast_nullable_to_non_nullable
@@ -1290,8 +1312,10 @@ class __$$LeaveCommunityImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LeaveCommunityImpl implements LeaveCommunity {
-  const _$LeaveCommunityImpl(this.communityId, {this.onDone});
+  const _$LeaveCommunityImpl(this.context, this.communityId, {this.onDone});
 
+  @override
+  final BuildContext context;
   @override
   final String communityId;
   @override
@@ -1299,7 +1323,7 @@ class _$LeaveCommunityImpl implements LeaveCommunity {
 
   @override
   String toString() {
-    return 'CommunityEvent.leaveCommunity(communityId: $communityId, onDone: $onDone)';
+    return 'CommunityEvent.leaveCommunity(context: $context, communityId: $communityId, onDone: $onDone)';
   }
 
   @override
@@ -1307,13 +1331,14 @@ class _$LeaveCommunityImpl implements LeaveCommunity {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LeaveCommunityImpl &&
+            (identical(other.context, context) || other.context == context) &&
             (identical(other.communityId, communityId) ||
                 other.communityId == communityId) &&
             (identical(other.onDone, onDone) || other.onDone == onDone));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, communityId, onDone);
+  int get hashCode => Object.hash(runtimeType, context, communityId, onDone);
 
   /// Create a copy of CommunityEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -1335,14 +1360,14 @@ class _$LeaveCommunityImpl implements LeaveCommunity {
     required TResult Function(
             String communityId, void Function(Community)? onDone)
         joinCommunity,
-    required TResult Function(
-            String communityId, void Function(Community)? onDone)
+    required TResult Function(BuildContext context, String communityId,
+            void Function(Community)? onDone)
         leaveCommunity,
     required TResult Function(BuildContext context, PostComment comment,
             Post post, void Function(Post)? onDone)
         createPostComment,
   }) {
-    return leaveCommunity(communityId, onDone);
+    return leaveCommunity(context, communityId, onDone);
   }
 
   @override
@@ -1355,13 +1380,14 @@ class _$LeaveCommunityImpl implements LeaveCommunity {
     TResult? Function(String communityId)? changeCommunity,
     TResult? Function(String communityId, void Function(Community)? onDone)?
         joinCommunity,
-    TResult? Function(String communityId, void Function(Community)? onDone)?
+    TResult? Function(BuildContext context, String communityId,
+            void Function(Community)? onDone)?
         leaveCommunity,
     TResult? Function(BuildContext context, PostComment comment, Post post,
             void Function(Post)? onDone)?
         createPostComment,
   }) {
-    return leaveCommunity?.call(communityId, onDone);
+    return leaveCommunity?.call(context, communityId, onDone);
   }
 
   @override
@@ -1374,7 +1400,8 @@ class _$LeaveCommunityImpl implements LeaveCommunity {
     TResult Function(String communityId)? changeCommunity,
     TResult Function(String communityId, void Function(Community)? onDone)?
         joinCommunity,
-    TResult Function(String communityId, void Function(Community)? onDone)?
+    TResult Function(BuildContext context, String communityId,
+            void Function(Community)? onDone)?
         leaveCommunity,
     TResult Function(BuildContext context, PostComment comment, Post post,
             void Function(Post)? onDone)?
@@ -1382,7 +1409,7 @@ class _$LeaveCommunityImpl implements LeaveCommunity {
     required TResult orElse(),
   }) {
     if (leaveCommunity != null) {
-      return leaveCommunity(communityId, onDone);
+      return leaveCommunity(context, communityId, onDone);
     }
     return orElse();
   }
@@ -1438,9 +1465,11 @@ class _$LeaveCommunityImpl implements LeaveCommunity {
 }
 
 abstract class LeaveCommunity implements CommunityEvent {
-  const factory LeaveCommunity(final String communityId,
+  const factory LeaveCommunity(
+      final BuildContext context, final String communityId,
       {final void Function(Community)? onDone}) = _$LeaveCommunityImpl;
 
+  BuildContext get context;
   String get communityId;
   void Function(Community)? get onDone;
 
@@ -1580,8 +1609,8 @@ class _$CreatePostCommentImpl implements CreatePostComment {
     required TResult Function(
             String communityId, void Function(Community)? onDone)
         joinCommunity,
-    required TResult Function(
-            String communityId, void Function(Community)? onDone)
+    required TResult Function(BuildContext context, String communityId,
+            void Function(Community)? onDone)
         leaveCommunity,
     required TResult Function(BuildContext context, PostComment comment,
             Post post, void Function(Post)? onDone)
@@ -1600,7 +1629,8 @@ class _$CreatePostCommentImpl implements CreatePostComment {
     TResult? Function(String communityId)? changeCommunity,
     TResult? Function(String communityId, void Function(Community)? onDone)?
         joinCommunity,
-    TResult? Function(String communityId, void Function(Community)? onDone)?
+    TResult? Function(BuildContext context, String communityId,
+            void Function(Community)? onDone)?
         leaveCommunity,
     TResult? Function(BuildContext context, PostComment comment, Post post,
             void Function(Post)? onDone)?
@@ -1619,7 +1649,8 @@ class _$CreatePostCommentImpl implements CreatePostComment {
     TResult Function(String communityId)? changeCommunity,
     TResult Function(String communityId, void Function(Community)? onDone)?
         joinCommunity,
-    TResult Function(String communityId, void Function(Community)? onDone)?
+    TResult Function(BuildContext context, String communityId,
+            void Function(Community)? onDone)?
         leaveCommunity,
     TResult Function(BuildContext context, PostComment comment, Post post,
             void Function(Post)? onDone)?

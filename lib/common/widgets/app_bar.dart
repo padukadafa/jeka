@@ -20,6 +20,7 @@ AppBar ReuseableAppBar({
         : null,
     title: title,
     backgroundColor: backgroundColor,
+    surfaceTintColor: backgroundColor,
     actions: actions,
   );
 }

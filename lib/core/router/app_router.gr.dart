@@ -271,6 +271,25 @@ class CommunityGuidelinesRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [CommunityMemberPage]
+class CommunityMemberRoute extends PageRouteInfo<void> {
+  const CommunityMemberRoute({List<PageRouteInfo>? children})
+      : super(
+          CommunityMemberRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'CommunityMemberRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const CommunityMemberPage();
+    },
+  );
+}
+
+/// generated route for
 /// [CreateCommunityPage]
 class CreateCommunityRoute extends PageRouteInfo<CreateCommunityRouteArgs> {
   CreateCommunityRoute({
