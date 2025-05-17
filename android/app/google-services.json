@@ -1,0 +1,122 @@
+{
+  "project_info": {
+    "project_number": "867130052345",
+    "project_id": "jeka-85742",
+    "storage_bucket": "jeka-85742.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:867130052345:android:459428dca1e34b4650dc28",
+        "android_client_info": {
+          "package_name": "com.example.jeka"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "867130052345-1lfcg4pe75vui4ml9bpmekoo3vj2tlfq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.jeka",
+            "certificate_hash": "1113d012e9652063366b80d08cf0db96e2f07e7f"
+          }
+        },
+        {
+          "client_id": "867130052345-nu7ddgm51di15251d9uvp38lq31ur0u4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.jeka",
+            "certificate_hash": "9664d27e99f4f11303c409837884cb3d5d6ffc33"
+          }
+        },
+        {
+          "client_id": "867130052345-4ru2fhrk3ejbre46kbs4qede0jrcjl38.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDaUU9fGzVBn6pOytngxd4X7LKnEGNEYc8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "867130052345-4ru2fhrk3ejbre46kbs4qede0jrcjl38.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "867130052345-vl00lr3prc5jq7109vcvf4abjca4c2s7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.jeka"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:867130052345:android:cb0ef69e3284039050dc28",
+        "android_client_info": {
+          "package_name": "com.kuliinternet.jeka"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "867130052345-65csfif6sh5okbn70j3ltr8nnaac9933.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kuliinternet.jeka",
+            "certificate_hash": "1113d012e9652063366b80d08cf0db96e2f07e7f"
+          }
+        },
+        {
+          "client_id": "867130052345-enf042gtmmf3fts91h1omrhk3dappjn2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kuliinternet.jeka",
+            "certificate_hash": "9664d27e99f4f11303c409837884cb3d5d6ffc33"
+          }
+        },
+        {
+          "client_id": "867130052345-o3jale75nht3tqivjf1s2qm1q7r8juvh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kuliinternet.jeka",
+            "certificate_hash": "c4717ca9361a6db9ff19e736cfa79cb59ef0bfe2"
+          }
+        },
+        {
+          "client_id": "867130052345-4ru2fhrk3ejbre46kbs4qede0jrcjl38.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDaUU9fGzVBn6pOytngxd4X7LKnEGNEYc8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "867130052345-4ru2fhrk3ejbre46kbs4qede0jrcjl38.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "867130052345-vl00lr3prc5jq7109vcvf4abjca4c2s7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.jeka"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

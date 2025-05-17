@@ -28,7 +28,7 @@ class _LoginPageState extends State<LoginPage> {
       toastification.show(
         context: context,
         title: const Text(
-            'Hai dewan juri. Kami telah menyediakan akun demo untuk pengalaman pengujian yang lebih baik. Atau anda juga bisa mendaftarkan akun baru.'),
+            'Hai Pak Arkhan. Kami telah menyediakan akun demo untuk pengalaman pengujian yang lebih baik. Atau bapak juga bisa mendaftarkan akun baru.'),
         autoCloseDuration: const Duration(seconds: 5),
         style: ToastificationStyle.fillColored,
       );
@@ -64,7 +64,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   titleTextStyle: TextStyle(color: Colors.white, height: 1.4),
                   title: Text(
-                      "Akun Demo\nEmail : demojeka.juri@gmail.com\nPassword: demojuri01"),
+                      "Akun Demo\nEmail : demojeka.dosen@gmail.com\nPassword: demodosen01"),
                 ),
               ),
               const SizedBox(
