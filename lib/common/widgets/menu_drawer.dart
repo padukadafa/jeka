@@ -189,7 +189,9 @@ class MenuDrawer extends StatelessWidget {
               title: const Text("Share"),
             ),
             ListTile(
-              onTap: () {},
+              onTap: () {
+                context.router.push(const AboutRoute());
+              },
               contentPadding: const EdgeInsets.all(4),
               minTileHeight: 0,
               leading: Container(
