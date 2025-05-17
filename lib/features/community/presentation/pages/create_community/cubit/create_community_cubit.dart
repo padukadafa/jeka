@@ -9,7 +9,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:jeka/core/region.dart';
 import 'package:jeka/core/router/app_router.dart';
 import 'package:jeka/features/community/data/models/community.dart';
-import 'package:jeka/features/community/data/repository/community_repository.dart';
+import 'package:jeka/features/community/domain/repository/community_repository.dart';
 
 part 'create_community_state.dart';
 part 'create_community_cubit.freezed.dart';

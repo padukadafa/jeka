@@ -1,6 +1,5 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:jeka/common/widgets/avatars/avatar.dart';
 import 'package:jeka/common/widgets/reuseable_text.dart';
@@ -8,7 +7,6 @@ import 'package:jeka/core/router/app_router.dart';
 import 'package:jeka/features/community/data/models/post.dart';
 import 'package:jeka/features/community/presentation/widgets/post_attachment_widget.dart';
 import 'package:jeka/features/community/presentation/widgets/post_item_type.dart';
-import 'package:jeka/features/community/presentation/widgets/post_reaction_widget.dart';
 
 class CommunityFeedItem extends StatelessWidget {
   final Post post;
@@ -55,12 +53,6 @@ class CommunityFeedItem extends StatelessWidget {
                     ),
                     Row(
                       children: [
-                        PostReactionWidget(
-                          reactions: post.postReactions,
-                        ),
-                        const SizedBox(
-                          width: 12,
-                        ),
                         ReuseableText("${post.comments.length} comments"),
                       ],
                     )
@@ -136,9 +128,6 @@ class CommunityFeedItem extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      PostReactionWidget(
-                        reactions: post.postReactions,
-                      ),
                       const SizedBox(
                         width: 12,
                       ),

@@ -17,4 +17,5 @@ abstract class CommunityRepository {
   Future<Either<Failure, Post>> createPost(Post post, List<File> files);
   Future<Either<Failure, PostComment>> createPostComment(
       String postId, PostComment comment);
+  Future<Either<Failure, bool>> likePost(String postId);
 }

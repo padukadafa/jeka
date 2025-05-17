@@ -346,4 +346,20 @@ class CommunityRemoteDataSourceImpl extends CommunityRemoteDataSource {
       throw UnknownError();
     }
   }
+  
+  @override
+  Future<void> likePost(String postId) async {
+    try {
+      await _firestore.collection('posts').doc(postId).update({
+        "likes": FieldValue.arrayUnion([_auth.currentUser?.uid])
+      });
+      await _firestore
+          .collection('posts')
+          .doc(postId)
+          .update({"likesCount": FieldValue.increment(1)});
+    } catch (e) {
+      print(e);
+      throw UnknownError();
+    }
+  }
 }

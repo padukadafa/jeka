@@ -3,11 +3,10 @@ import 'dart:io';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 import 'package:jeka/core/error.dart';
-import 'package:jeka/features/community/data/data_source/local/communirt_local_data_source.dart';
 import 'package:jeka/features/community/data/data_source/remote/community_remote_data_source.dart';
 import 'package:jeka/features/community/data/models/community.dart';
 import 'package:jeka/features/community/data/models/post.dart';
-import 'package:jeka/features/community/data/repository/community_repository.dart';
+import 'package:jeka/features/community/domain/repository/community_repository.dart';
 
 @Singleton(as: CommunityRepository)
 class CommunityRepositoryImpl extends CommunityRepository {
@@ -103,6 +102,16 @@ class CommunityRepositoryImpl extends CommunityRepository {
     try {
       final response = await _dataSource.createPostComments(postId, comment);
       return Right(response);
+    } catch (e) {
+      return const Left(UnknownFailure());
+    }
+  }
+  
+  @override
+  Future<Either<Failure, bool>> likePost(String postId) async {
+    try {
+      await _dataSource.likePost(postId);
+      return Right(true);
     } catch (e) {
       return const Left(UnknownFailure());
     }

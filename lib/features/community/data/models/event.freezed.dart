@@ -33,8 +33,12 @@ mixin _$Event {
       throw _privateConstructorUsedError;
   DateTime? get createdAt => throw _privateConstructorUsedError;
 
+  /// Serializes this Event to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Event
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $EventCopyWith<Event> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -69,6 +73,8 @@ class _$EventCopyWithImpl<$Res, $Val extends Event>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Event
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -132,6 +138,8 @@ class _$EventCopyWithImpl<$Res, $Val extends Event>
     ) as $Val);
   }
 
+  /// Create a copy of Event
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $EventLocationCopyWith<$Res>? get eventLocation {
@@ -177,6 +185,8 @@ class __$$EventImplCopyWithImpl<$Res>
       _$EventImpl _value, $Res Function(_$EventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Event
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -346,7 +356,7 @@ class _$EventImpl implements _Event {
                 other.createdAt == createdAt));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -362,7 +372,9 @@ class _$EventImpl implements _Event {
       const DeepCollectionEquality().hash(_collaboration),
       createdAt);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Event
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EventImplCopyWith<_$EventImpl> get copyWith =>
@@ -414,8 +426,11 @@ abstract class _Event implements Event {
   List<EventCollaboration> get collaboration;
   @override
   DateTime? get createdAt;
+
+  /// Create a copy of Event
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EventImplCopyWith<_$EventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -429,8 +444,12 @@ mixin _$EventAttachment {
   String? get attachmentLocation => throw _privateConstructorUsedError;
   String? get attachmentType => throw _privateConstructorUsedError;
 
+  /// Serializes this EventAttachment to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EventAttachment
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $EventAttachmentCopyWith<EventAttachment> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -454,6 +473,8 @@ class _$EventAttachmentCopyWithImpl<$Res, $Val extends EventAttachment>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of EventAttachment
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -492,6 +513,8 @@ class __$$EventAttachmentImplCopyWithImpl<$Res>
       _$EventAttachmentImpl _value, $Res Function(_$EventAttachmentImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EventAttachment
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -540,12 +563,14 @@ class _$EventAttachmentImpl implements _EventAttachment {
                 other.attachmentType == attachmentType));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, attachmentLocation, attachmentType);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EventAttachment
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EventAttachmentImplCopyWith<_$EventAttachmentImpl> get copyWith =>
@@ -572,8 +597,11 @@ abstract class _EventAttachment implements EventAttachment {
   String? get attachmentLocation;
   @override
   String? get attachmentType;
+
+  /// Create a copy of EventAttachment
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EventAttachmentImplCopyWith<_$EventAttachmentImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -587,8 +615,12 @@ mixin _$EventLocation {
   String? get location => throw _privateConstructorUsedError;
   String? get locationType => throw _privateConstructorUsedError;
 
+  /// Serializes this EventLocation to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EventLocation
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $EventLocationCopyWith<EventLocation> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -612,6 +644,8 @@ class _$EventLocationCopyWithImpl<$Res, $Val extends EventLocation>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of EventLocation
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -650,6 +684,8 @@ class __$$EventLocationImplCopyWithImpl<$Res>
       _$EventLocationImpl _value, $Res Function(_$EventLocationImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EventLocation
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -698,11 +734,13 @@ class _$EventLocationImpl implements _EventLocation {
                 other.locationType == locationType));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, location, locationType);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EventLocation
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EventLocationImplCopyWith<_$EventLocationImpl> get copyWith =>
@@ -728,8 +766,11 @@ abstract class _EventLocation implements EventLocation {
   String? get location;
   @override
   String? get locationType;
+
+  /// Create a copy of EventLocation
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EventLocationImplCopyWith<_$EventLocationImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -745,8 +786,12 @@ mixin _$EventCollaboration {
   String? get desc => throw _privateConstructorUsedError;
   bool get approveStatus => throw _privateConstructorUsedError;
 
+  /// Serializes this EventCollaboration to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EventCollaboration
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $EventCollaborationCopyWith<EventCollaboration> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -774,6 +819,8 @@ class _$EventCollaborationCopyWithImpl<$Res, $Val extends EventCollaboration>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of EventCollaboration
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -826,6 +873,8 @@ class __$$EventCollaborationImplCopyWithImpl<$Res>
       $Res Function(_$EventCollaborationImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EventCollaboration
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -896,12 +945,14 @@ class _$EventCollaborationImpl implements _EventCollaboration {
                 other.approveStatus == approveStatus));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, communityId, communityName, desc, approveStatus);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EventCollaboration
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EventCollaborationImplCopyWith<_$EventCollaborationImpl> get copyWith =>
@@ -934,8 +985,11 @@ abstract class _EventCollaboration implements EventCollaboration {
   String? get desc;
   @override
   bool get approveStatus;
+
+  /// Create a copy of EventCollaboration
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EventCollaborationImplCopyWith<_$EventCollaborationImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -951,8 +1005,12 @@ mixin _$EventParticipant {
   String? get communityName => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
 
+  /// Serializes this EventParticipant to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EventParticipant
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $EventParticipantCopyWith<EventParticipant> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -980,6 +1038,8 @@ class _$EventParticipantCopyWithImpl<$Res, $Val extends EventParticipant>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of EventParticipant
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1032,6 +1092,8 @@ class __$$EventParticipantImplCopyWithImpl<$Res>
       $Res Function(_$EventParticipantImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EventParticipant
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1097,12 +1159,14 @@ class _$EventParticipantImpl implements _EventParticipant {
             (identical(other.name, name) || other.name == name));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, userId, communityId, communityName, name);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EventParticipant
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EventParticipantImplCopyWith<_$EventParticipantImpl> get copyWith =>
@@ -1135,8 +1199,11 @@ abstract class _EventParticipant implements EventParticipant {
   String? get communityName;
   @override
   String? get name;
+
+  /// Create a copy of EventParticipant
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EventParticipantImplCopyWith<_$EventParticipantImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

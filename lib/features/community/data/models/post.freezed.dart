@@ -28,13 +28,19 @@ mixin _$Post {
   String? get writerId => throw _privateConstructorUsedError;
   DateTime? get createdAt => throw _privateConstructorUsedError;
   List<PostReaction> get postReactions => throw _privateConstructorUsedError;
+  List<String> get likes => throw _privateConstructorUsedError;
+  int get likesCount => throw _privateConstructorUsedError;
   List<PostComment> get comments => throw _privateConstructorUsedError;
   List<PostReport> get reports => throw _privateConstructorUsedError;
   int get reportsCount => throw _privateConstructorUsedError;
   dynamic get postType => throw _privateConstructorUsedError;
 
+  /// Serializes this Post to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Post
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PostCopyWith<Post> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -52,6 +58,8 @@ abstract class $PostCopyWith<$Res> {
       String? writerId,
       DateTime? createdAt,
       List<PostReaction> postReactions,
+      List<String> likes,
+      int likesCount,
       List<PostComment> comments,
       List<PostReport> reports,
       int reportsCount,
@@ -68,6 +76,8 @@ class _$PostCopyWithImpl<$Res, $Val extends Post>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Post
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -79,6 +89,8 @@ class _$PostCopyWithImpl<$Res, $Val extends Post>
     Object? writerId = freezed,
     Object? createdAt = freezed,
     Object? postReactions = null,
+    Object? likes = null,
+    Object? likesCount = null,
     Object? comments = null,
     Object? reports = null,
     Object? reportsCount = null,
@@ -117,6 +129,14 @@ class _$PostCopyWithImpl<$Res, $Val extends Post>
           ? _value.postReactions
           : postReactions // ignore: cast_nullable_to_non_nullable
               as List<PostReaction>,
+      likes: null == likes
+          ? _value.likes
+          : likes // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      likesCount: null == likesCount
+          ? _value.likesCount
+          : likesCount // ignore: cast_nullable_to_non_nullable
+              as int,
       comments: null == comments
           ? _value.comments
           : comments // ignore: cast_nullable_to_non_nullable
@@ -153,6 +173,8 @@ abstract class _$$PostImplCopyWith<$Res> implements $PostCopyWith<$Res> {
       String? writerId,
       DateTime? createdAt,
       List<PostReaction> postReactions,
+      List<String> likes,
+      int likesCount,
       List<PostComment> comments,
       List<PostReport> reports,
       int reportsCount,
@@ -166,6 +188,8 @@ class __$$PostImplCopyWithImpl<$Res>
   __$$PostImplCopyWithImpl(_$PostImpl _value, $Res Function(_$PostImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Post
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -177,6 +201,8 @@ class __$$PostImplCopyWithImpl<$Res>
     Object? writerId = freezed,
     Object? createdAt = freezed,
     Object? postReactions = null,
+    Object? likes = null,
+    Object? likesCount = null,
     Object? comments = null,
     Object? reports = null,
     Object? reportsCount = null,
@@ -215,6 +241,14 @@ class __$$PostImplCopyWithImpl<$Res>
           ? _value._postReactions
           : postReactions // ignore: cast_nullable_to_non_nullable
               as List<PostReaction>,
+      likes: null == likes
+          ? _value._likes
+          : likes // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      likesCount: null == likesCount
+          ? _value.likesCount
+          : likesCount // ignore: cast_nullable_to_non_nullable
+              as int,
       comments: null == comments
           ? _value._comments
           : comments // ignore: cast_nullable_to_non_nullable
@@ -244,12 +278,15 @@ class _$PostImpl implements _Post {
       this.writerId,
       this.createdAt,
       final List<PostReaction> postReactions = const [],
+      final List<String> likes = const [],
+      this.likesCount = 0,
       final List<PostComment> comments = const [],
       final List<PostReport> reports = const [],
       this.reportsCount = 0,
       this.postType = 0})
       : _files = files,
         _postReactions = postReactions,
+        _likes = likes,
         _comments = comments,
         _reports = reports;
 
@@ -286,6 +323,18 @@ class _$PostImpl implements _Post {
     return EqualUnmodifiableListView(_postReactions);
   }
 
+  final List<String> _likes;
+  @override
+  @JsonKey()
+  List<String> get likes {
+    if (_likes is EqualUnmodifiableListView) return _likes;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_likes);
+  }
+
+  @override
+  @JsonKey()
+  final int likesCount;
   final List<PostComment> _comments;
   @override
   @JsonKey()
@@ -313,7 +362,7 @@ class _$PostImpl implements _Post {
 
   @override
   String toString() {
-    return 'Post(id: $id, communityId: $communityId, desc: $desc, files: $files, writer: $writer, writerId: $writerId, createdAt: $createdAt, postReactions: $postReactions, comments: $comments, reports: $reports, reportsCount: $reportsCount, postType: $postType)';
+    return 'Post(id: $id, communityId: $communityId, desc: $desc, files: $files, writer: $writer, writerId: $writerId, createdAt: $createdAt, postReactions: $postReactions, likes: $likes, likesCount: $likesCount, comments: $comments, reports: $reports, reportsCount: $reportsCount, postType: $postType)';
   }
 
   @override
@@ -333,6 +382,9 @@ class _$PostImpl implements _Post {
                 other.createdAt == createdAt) &&
             const DeepCollectionEquality()
                 .equals(other._postReactions, _postReactions) &&
+            const DeepCollectionEquality().equals(other._likes, _likes) &&
+            (identical(other.likesCount, likesCount) ||
+                other.likesCount == likesCount) &&
             const DeepCollectionEquality().equals(other._comments, _comments) &&
             const DeepCollectionEquality().equals(other._reports, _reports) &&
             (identical(other.reportsCount, reportsCount) ||
@@ -340,7 +392,7 @@ class _$PostImpl implements _Post {
             const DeepCollectionEquality().equals(other.postType, postType));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -352,12 +404,16 @@ class _$PostImpl implements _Post {
       writerId,
       createdAt,
       const DeepCollectionEquality().hash(_postReactions),
+      const DeepCollectionEquality().hash(_likes),
+      likesCount,
       const DeepCollectionEquality().hash(_comments),
       const DeepCollectionEquality().hash(_reports),
       reportsCount,
       const DeepCollectionEquality().hash(postType));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Post
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PostImplCopyWith<_$PostImpl> get copyWith =>
@@ -381,6 +437,8 @@ abstract class _Post implements Post {
       final String? writerId,
       final DateTime? createdAt,
       final List<PostReaction> postReactions,
+      final List<String> likes,
+      final int likesCount,
       final List<PostComment> comments,
       final List<PostReport> reports,
       final int reportsCount,
@@ -405,6 +463,10 @@ abstract class _Post implements Post {
   @override
   List<PostReaction> get postReactions;
   @override
+  List<String> get likes;
+  @override
+  int get likesCount;
+  @override
   List<PostComment> get comments;
   @override
   List<PostReport> get reports;
@@ -412,8 +474,11 @@ abstract class _Post implements Post {
   int get reportsCount;
   @override
   dynamic get postType;
+
+  /// Create a copy of Post
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PostImplCopyWith<_$PostImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -429,8 +494,12 @@ mixin _$PostReaction {
   String? get writerId => throw _privateConstructorUsedError;
   int get reaction => throw _privateConstructorUsedError;
 
+  /// Serializes this PostReaction to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PostReaction
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PostReactionCopyWith<PostReaction> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -455,6 +524,8 @@ class _$PostReactionCopyWithImpl<$Res, $Val extends PostReaction>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PostReaction
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -504,6 +575,8 @@ class __$$PostReactionImplCopyWithImpl<$Res>
       _$PostReactionImpl _value, $Res Function(_$PostReactionImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PostReaction
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -571,12 +644,14 @@ class _$PostReactionImpl implements _PostReaction {
                 other.reaction == reaction));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, createdAt, writer, writerId, reaction);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PostReaction
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PostReactionImplCopyWith<_$PostReactionImpl> get copyWith =>
@@ -608,8 +683,11 @@ abstract class _PostReaction implements PostReaction {
   String? get writerId;
   @override
   int get reaction;
+
+  /// Create a copy of PostReaction
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PostReactionImplCopyWith<_$PostReactionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -626,8 +704,12 @@ mixin _$PostComment {
   String? get writerId => throw _privateConstructorUsedError;
   String? get comment => throw _privateConstructorUsedError;
 
+  /// Serializes this PostComment to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PostComment
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PostCommentCopyWith<PostComment> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -656,6 +738,8 @@ class _$PostCommentCopyWithImpl<$Res, $Val extends PostComment>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PostComment
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -714,6 +798,8 @@ class __$$PostCommentImplCopyWithImpl<$Res>
       _$PostCommentImpl _value, $Res Function(_$PostCommentImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PostComment
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -787,12 +873,14 @@ class _$PostCommentImpl implements _PostComment {
             (identical(other.comment, comment) || other.comment == comment));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, id, createdAt, writer, writerId, comment);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PostComment
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PostCommentImplCopyWith<_$PostCommentImpl> get copyWith =>
@@ -827,8 +915,11 @@ abstract class _PostComment implements PostComment {
   String? get writerId;
   @override
   String? get comment;
+
+  /// Create a copy of PostComment
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PostCommentImplCopyWith<_$PostCommentImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -845,8 +936,12 @@ mixin _$PostReport {
   String? get writerId => throw _privateConstructorUsedError;
   String? get desc => throw _privateConstructorUsedError;
 
+  /// Serializes this PostReport to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PostReport
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PostReportCopyWith<PostReport> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -875,6 +970,8 @@ class _$PostReportCopyWithImpl<$Res, $Val extends PostReport>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PostReport
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -933,6 +1030,8 @@ class __$$PostReportImplCopyWithImpl<$Res>
       _$PostReportImpl _value, $Res Function(_$PostReportImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PostReport
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1006,12 +1105,14 @@ class _$PostReportImpl implements _PostReport {
             (identical(other.desc, desc) || other.desc == desc));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, id, createdAt, writer, writerId, desc);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PostReport
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PostReportImplCopyWith<_$PostReportImpl> get copyWith =>
@@ -1046,8 +1147,11 @@ abstract class _PostReport implements PostReport {
   String? get writerId;
   @override
   String? get desc;
+
+  /// Create a copy of PostReport
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PostReportImplCopyWith<_$PostReportImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1063,8 +1167,12 @@ mixin _$PostFile {
   String? get name => throw _privateConstructorUsedError;
   String? get fileSizeString => throw _privateConstructorUsedError;
 
+  /// Serializes this PostFile to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PostFile
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PostFileCopyWith<PostFile> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1091,6 +1199,8 @@ class _$PostFileCopyWithImpl<$Res, $Val extends PostFile>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PostFile
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1143,6 +1253,8 @@ class __$$PostFileImplCopyWithImpl<$Res>
       _$PostFileImpl _value, $Res Function(_$PostFileImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PostFile
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1209,12 +1321,14 @@ class _$PostFileImpl implements _PostFile {
                 other.fileSizeString == fileSizeString));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, fileLocation, fileType, name, fileSizeString);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PostFile
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PostFileImplCopyWith<_$PostFileImpl> get copyWith =>
@@ -1246,8 +1360,11 @@ abstract class _PostFile implements PostFile {
   String? get name;
   @override
   String? get fileSizeString;
+
+  /// Create a copy of PostFile
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PostFileImplCopyWith<_$PostFileImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -16,7 +16,6 @@ class ChatPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
     return AppLayout(
       brightness: Brightness.light,
       child: Scaffold(
@@ -53,33 +52,31 @@ class ChatPage extends StatelessWidget {
         body: SingleChildScrollView(
           child: Column(
             children: [
-              Container(
-                child: Column(
-                  children: [
-                    const SizedBox(
-                      height: 12,
-                    ),
-                    SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        children: List.generate(
-                          10,
-                          (index) {
-                            return Container(
-                              margin: const EdgeInsets.symmetric(horizontal: 6),
-                              child: const Avatar(
-                                size: 50,
-                              ),
-                            );
-                          },
-                        ),
+              Column(
+                children: [
+                  const SizedBox(
+                    height: 12,
+                  ),
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: List.generate(
+                        10,
+                        (index) {
+                          return Container(
+                            margin: const EdgeInsets.symmetric(horizontal: 6),
+                            child: const Avatar(
+                              size: 50,
+                            ),
+                          );
+                        },
                       ),
                     ),
-                    const SizedBox(
-                      height: 16,
-                    ),
-                  ],
-                ),
+                  ),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                ],
               ),
               Column(
                 children: List.generate(

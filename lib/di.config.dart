@@ -36,10 +36,12 @@ import 'package:jeka/features/community/data/data_source/remote/community_remote
     as _i329;
 import 'package:jeka/features/community/data/data_source/remote/community_remote_data_source_impl.dart'
     as _i23;
-import 'package:jeka/features/community/data/repository/community_repository.dart'
-    as _i936;
 import 'package:jeka/features/community/data/repository/community_repository_impl.dart'
     as _i335;
+import 'package:jeka/features/community/domain/repository/community_repository.dart'
+    as _i409;
+import 'package:jeka/features/community/domain/usecases/like_post_usecase.dart'
+    as _i611;
 import 'package:jeka/features/community/presentation/bloc/community_bloc.dart'
     as _i1036;
 import 'package:jeka/features/generative_text_editor/data/data_source/gemini_remote_data_source.dart'
@@ -112,6 +114,8 @@ extension GetItInjectableX on _i174.GetIt {
             ));
     gh.singleton<_i551.SettingsBloc>(
         () => _i551.SettingsBloc(gh<_i322.SettingsRepository>()));
+    gh.singleton<_i409.CommunityRepository>(() =>
+        _i335.CommunityRepositoryImpl(gh<_i329.CommunityRemoteDataSource>()));
     gh.singleton<_i821.UserDataRemote>(() => _i683.UserDataRemoteImpl(
           gh<_i974.FirebaseFirestore>(),
           gh<_i892.FirebaseMessaging>(),
@@ -123,15 +127,15 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i821.UserDataRemote>(),
           gh<_i116.GoogleSignIn>(),
         ));
-    gh.singleton<_i936.CommunityRepository>(() =>
-        _i335.CommunityRepositoryImpl(gh<_i329.CommunityRemoteDataSource>()));
-    gh.factory<_i65.UserRepository>(
-        () => _i417.UserRepositoryImpl(gh<_i821.UserDataRemote>()));
     gh.factory<_i1036.CommunityBloc>(() => _i1036.CommunityBloc(
-          gh<_i936.CommunityRepository>(),
+          gh<_i409.CommunityRepository>(),
           gh<_i460.SharedPreferences>(),
           gh<_i329.CommunityRemoteDataSource>(),
         ));
+    gh.singleton<_i611.LikePostUsecase>(
+        () => _i611.LikePostUsecase(gh<_i409.CommunityRepository>()));
+    gh.factory<_i65.UserRepository>(
+        () => _i417.UserRepositoryImpl(gh<_i821.UserDataRemote>()));
     gh.singleton<_i365.AuthRepository>(
         () => _i617.AuthRepositoryImpl(gh<_i1021.AuthDataRemote>()));
     gh.factory<_i936.AuthBloc>(() => _i936.AuthBloc(

@@ -19,7 +19,7 @@ class MenuDrawer extends StatelessWidget {
     final colorScheme = Theme.of(context).colorScheme;
     final communityBloc = context.read<CommunityBloc>();
     return Drawer(
-      backgroundColor: colorScheme.surfaceBright,
+      backgroundColor: colorScheme.surface,
       shape: const RoundedRectangleBorder(),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 12.0),

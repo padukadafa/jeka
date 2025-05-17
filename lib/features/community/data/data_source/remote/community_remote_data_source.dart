@@ -27,4 +27,5 @@ abstract class CommunityRemoteDataSource {
   Future<bool> joinEvent(String eventId);
   Future<bool> inviteCollaboration(String communityId);
   Future<bool> responseCollaboration(String communityId, bool response);
+  Future<void> likePost(String postId);
 }

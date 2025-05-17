@@ -1,7 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_expandable_fab/flutter_expandable_fab.dart';
 import 'package:jeka/common/pages/home/controller/home_controller.dart';
 import 'package:jeka/common/pages/home/cubit/home_cubit.dart';
 import 'package:jeka/common/pages/home/cubit/home_state_wrapper.dart';
@@ -10,7 +9,7 @@ import 'package:toastification/toastification.dart';
 
 @RoutePage()
 class HomePage extends StatefulWidget {
-  HomePage({super.key});
+  const HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -36,10 +35,12 @@ class _HomePageState extends State<HomePage> {
     return HomeStateWrapper(
       controller: controller,
       child: Scaffold(
+        backgroundColor: Theme.of(context).colorScheme.surface,
         key: controller.scaffoldKey,
         bottomNavigationBar: BlocBuilder<HomeCubit, HomeState>(
           builder: (context, state) {
             return BottomNavigationBar(
+              backgroundColor: Theme.of(context).colorScheme.surface,
               items: controller.bottomNavbarItems,
               currentIndex: state.pageIndex,
               onTap: controller.changePage,

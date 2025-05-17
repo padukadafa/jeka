@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:jeka/di.dart';
-import 'package:jeka/features/community/data/repository/community_repository.dart';
+import 'package:jeka/features/community/domain/repository/community_repository.dart';
 import 'package:jeka/features/community/presentation/bloc/community_bloc.dart';
 import 'package:path/path.dart';
 

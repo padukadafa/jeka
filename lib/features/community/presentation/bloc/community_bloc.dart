@@ -11,7 +11,7 @@ import 'package:jeka/core/router/app_router.dart';
 import 'package:jeka/features/community/data/data_source/remote/community_remote_data_source.dart';
 import 'package:jeka/features/community/data/models/community.dart';
 import 'package:jeka/features/community/data/models/post.dart';
-import 'package:jeka/features/community/data/repository/community_repository.dart';
+import 'package:jeka/features/community/domain/repository/community_repository.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:rxdart/rxdart.dart';
 

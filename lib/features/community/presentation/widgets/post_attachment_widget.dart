@@ -29,7 +29,7 @@ class PostAttachmentWidget extends StatelessWidget {
                   "/storage/emulated/0/Download/${postFiles[index].name}");
               return;
             }
-            final result = await FileDownloader.downloadFile(
+             await FileDownloader.downloadFile(
               url: postFiles[index].fileLocation!,
               name: postFiles[index].name,
               onProgress: (String? fileName, double progress) {

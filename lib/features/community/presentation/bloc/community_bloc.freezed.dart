@@ -122,6 +122,9 @@ class _$CommunityEventCopyWithImpl<$Res, $Val extends CommunityEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of CommunityEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -138,6 +141,9 @@ class __$$StartedImplCopyWithImpl<$Res>
   __$$StartedImplCopyWithImpl(
       _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CommunityEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -293,6 +299,8 @@ class __$$ChangePageImplCopyWithImpl<$Res>
       _$ChangePageImpl _value, $Res Function(_$ChangePageImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CommunityEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -331,7 +339,9 @@ class _$ChangePageImpl implements ChangePage {
   @override
   int get hashCode => Object.hash(runtimeType, index);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CommunityEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ChangePageImplCopyWith<_$ChangePageImpl> get copyWith =>
@@ -454,7 +464,10 @@ abstract class ChangePage implements CommunityEvent {
   const factory ChangePage(final int index) = _$ChangePageImpl;
 
   int get index;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CommunityEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ChangePageImplCopyWith<_$ChangePageImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -476,6 +489,8 @@ class __$$ChangeCommunityTabImplCopyWithImpl<$Res>
       $Res Function(_$ChangeCommunityTabImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CommunityEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -514,7 +529,9 @@ class _$ChangeCommunityTabImpl implements ChangeCommunityTab {
   @override
   int get hashCode => Object.hash(runtimeType, index);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CommunityEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ChangeCommunityTabImplCopyWith<_$ChangeCommunityTabImpl> get copyWith =>
@@ -638,7 +655,10 @@ abstract class ChangeCommunityTab implements CommunityEvent {
   const factory ChangeCommunityTab(final int index) = _$ChangeCommunityTabImpl;
 
   int get index;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CommunityEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ChangeCommunityTabImplCopyWith<_$ChangeCommunityTabImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -660,6 +680,8 @@ class __$$UpdateCommunityListImplCopyWithImpl<$Res>
       $Res Function(_$UpdateCommunityListImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CommunityEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -698,7 +720,9 @@ class _$UpdateCommunityListImpl implements UpdateCommunityList {
   @override
   int get hashCode => Object.hash(runtimeType, context);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CommunityEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$UpdateCommunityListImplCopyWith<_$UpdateCommunityListImpl> get copyWith =>
@@ -823,7 +847,10 @@ abstract class UpdateCommunityList implements CommunityEvent {
       _$UpdateCommunityListImpl;
 
   BuildContext get context;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CommunityEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UpdateCommunityListImplCopyWith<_$UpdateCommunityListImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -845,6 +872,8 @@ class __$$ChangeCommunityImplCopyWithImpl<$Res>
       _$ChangeCommunityImpl _value, $Res Function(_$ChangeCommunityImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CommunityEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -884,7 +913,9 @@ class _$ChangeCommunityImpl implements ChangeCommunity {
   @override
   int get hashCode => Object.hash(runtimeType, communityId);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CommunityEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ChangeCommunityImplCopyWith<_$ChangeCommunityImpl> get copyWith =>
@@ -1009,7 +1040,10 @@ abstract class ChangeCommunity implements CommunityEvent {
       _$ChangeCommunityImpl;
 
   String get communityId;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CommunityEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ChangeCommunityImplCopyWith<_$ChangeCommunityImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1031,6 +1065,8 @@ class __$$JoinCommunityImplCopyWithImpl<$Res>
       _$JoinCommunityImpl _value, $Res Function(_$JoinCommunityImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CommunityEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1078,7 +1114,9 @@ class _$JoinCommunityImpl implements JoinCommunity {
   @override
   int get hashCode => Object.hash(runtimeType, communityId, onDone);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CommunityEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$JoinCommunityImplCopyWith<_$JoinCommunityImpl> get copyWith =>
@@ -1203,7 +1241,10 @@ abstract class JoinCommunity implements CommunityEvent {
 
   String get communityId;
   void Function(Community)? get onDone;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CommunityEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$JoinCommunityImplCopyWith<_$JoinCommunityImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1225,6 +1266,8 @@ class __$$LeaveCommunityImplCopyWithImpl<$Res>
       _$LeaveCommunityImpl _value, $Res Function(_$LeaveCommunityImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CommunityEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1272,7 +1315,9 @@ class _$LeaveCommunityImpl implements LeaveCommunity {
   @override
   int get hashCode => Object.hash(runtimeType, communityId, onDone);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CommunityEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$LeaveCommunityImplCopyWith<_$LeaveCommunityImpl> get copyWith =>
@@ -1398,7 +1443,10 @@ abstract class LeaveCommunity implements CommunityEvent {
 
   String get communityId;
   void Function(Community)? get onDone;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CommunityEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LeaveCommunityImplCopyWith<_$LeaveCommunityImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1427,6 +1475,8 @@ class __$$CreatePostCommentImplCopyWithImpl<$Res>
       $Res Function(_$CreatePostCommentImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CommunityEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1455,6 +1505,8 @@ class __$$CreatePostCommentImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of CommunityEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PostCommentCopyWith<$Res> get comment {
@@ -1463,6 +1515,8 @@ class __$$CreatePostCommentImplCopyWithImpl<$Res>
     });
   }
 
+  /// Create a copy of CommunityEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PostCopyWith<$Res> get post {
@@ -1506,7 +1560,9 @@ class _$CreatePostCommentImpl implements CreatePostComment {
   @override
   int get hashCode => Object.hash(runtimeType, context, comment, post, onDone);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CommunityEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CreatePostCommentImplCopyWith<_$CreatePostCommentImpl> get copyWith =>
@@ -1635,7 +1691,10 @@ abstract class CreatePostComment implements CommunityEvent {
   PostComment get comment;
   Post get post;
   void Function(Post)? get onDone;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CommunityEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CreatePostCommentImplCopyWith<_$CreatePostCommentImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1685,7 +1744,9 @@ mixin _$CommunityState {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CommunityState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CommunityStateCopyWith<CommunityState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1715,6 +1776,8 @@ class _$CommunityStateCopyWithImpl<$Res, $Val extends CommunityState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CommunityState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1743,6 +1806,8 @@ class _$CommunityStateCopyWithImpl<$Res, $Val extends CommunityState>
     ) as $Val);
   }
 
+  /// Create a copy of CommunityState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $CommunityCopyWith<$Res>? get community {
@@ -1782,6 +1847,8 @@ class __$$InitialImplCopyWithImpl<$Res>
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CommunityState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1862,7 +1929,9 @@ class _$InitialImpl implements _Initial {
   int get hashCode => Object.hash(runtimeType, tabIndex, community,
       communityTabIndex, const DeepCollectionEquality().hash(_communities));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CommunityState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
@@ -1946,8 +2015,11 @@ abstract class _Initial implements CommunityState {
   int get communityTabIndex;
   @override
   List<Community> get communities;
+
+  /// Create a copy of CommunityState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

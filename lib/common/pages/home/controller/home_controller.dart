@@ -7,7 +7,6 @@ import 'package:jeka/features/chat/presentation/pages/chat/chat_page.dart';
 import 'package:jeka/features/community/presentation/bloc/community_selector.dart';
 import 'package:jeka/features/community/presentation/pages/community/community_page.dart';
 import 'package:jeka/features/notification/presentation/pages/notification/notification_page.dart';
-import 'package:jeka/features/search/presentation/pages/search/search_page.dart';
 import 'package:jeka/features/user/presentation/pages/user/user_page.dart';
 
 class HomeController {

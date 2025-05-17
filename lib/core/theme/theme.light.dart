@@ -6,7 +6,7 @@ ThemeData lightTheme = ThemeData(
     brightness: Brightness.light,
     colorScheme: ColorScheme.light(
       primary: const Color(0xff6F15F2),
-      surface: const Color(0xffF7F4FB),
+      surface: const Color(0xffffffff),
       onSurface: const Color(0xff0B1215),
       shadow: Colors.black.withOpacity(0.1),
       surfaceBright: const Color(0xffffffff),
