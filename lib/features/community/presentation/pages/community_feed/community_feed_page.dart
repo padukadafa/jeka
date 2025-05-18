@@ -18,6 +18,7 @@ class _CommunityFeedPageState extends State<CommunityFeedPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.surface,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 14),
         child: CurrentCommunitySelector(
@@ -59,6 +60,9 @@ class _CommunityFeedPageState extends State<CommunityFeedPage> {
                       itemBuilder: (context, index) {
                         return CommunityFeedItem(
                           post: data?[index] ?? const Post(),
+                          onClose: () {
+                            setState(() {});
+                          },
                         );
                       },
                     ),

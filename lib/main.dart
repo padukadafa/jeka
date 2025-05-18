@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:flutter_quill/flutter_quill.dart';
 import 'package:jeka/features/settings/presentation/blocs/bloc/settings_selector.dart';
 import 'package:jeka/core/router/app_router.dart';
 import 'package:jeka/core/theme/theme.dark.dart';
@@ -8,6 +9,7 @@ import 'package:jeka/di.dart';
 import 'package:jeka/init.dart';
 import 'package:appflowy_editor/appflowy_editor.dart';
 import 'package:toastification/toastification.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() async {
   await init();
@@ -29,7 +31,14 @@ class MainApp extends StatelessWidget {
               debugShowCheckedModeBanner: false,
               darkTheme: darkTheme,
               localizationsDelegates: const [
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
                 AppFlowyEditorLocalizations.delegate,
+                FlutterQuillLocalizations.delegate
+              ],
+              supportedLocales: [
+                Locale('id'),
               ],
               themeMode: theme,
               routerConfig: _appRouter.config(),

@@ -9,6 +9,6 @@ abstract class SettingsRepository {
   Future<void> toggleShowNotification();
   String getLanguage();
   Future<void> setLanguage(String lang);
-  bool getIsPrivate();
+  Future<bool> getIsPrivate();
   Future<void> toggleIsPrivate();
 }

@@ -13,6 +13,8 @@ class Post with _$Post {
     String? writerId,
     DateTime? createdAt,
     @Default([]) List<PostReaction> postReactions,
+    @Default([]) List<String> likes,
+    @Default(0) int likesCount,
     @Default([]) List<PostComment> comments,
     @Default([]) List<PostReport> reports,
     @Default(0) int reportsCount,

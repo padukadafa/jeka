@@ -36,8 +36,12 @@ mixin _$Community {
   List<Map<String, dynamic>> get events => throw _privateConstructorUsedError;
   DateTime? get createdAt => throw _privateConstructorUsedError;
 
+  /// Serializes this Community to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Community
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CommunityCopyWith<Community> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -75,6 +79,8 @@ class _$CommunityCopyWithImpl<$Res, $Val extends Community>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Community
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -193,6 +199,8 @@ class __$$CommunityImplCopyWithImpl<$Res>
       _$CommunityImpl _value, $Res Function(_$CommunityImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Community
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -404,7 +412,7 @@ class _$CommunityImpl implements _Community {
                 other.createdAt == createdAt));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -424,7 +432,9 @@ class _$CommunityImpl implements _Community {
       const DeepCollectionEquality().hash(_events),
       createdAt);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Community
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CommunityImplCopyWith<_$CommunityImpl> get copyWith =>
@@ -489,8 +499,11 @@ abstract class _Community implements Community {
   List<Map<String, dynamic>> get events;
   @override
   DateTime? get createdAt;
+
+  /// Create a copy of Community
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CommunityImplCopyWith<_$CommunityImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -502,10 +515,16 @@ CommunityMember _$CommunityMemberFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$CommunityMember {
   String? get userId => throw _privateConstructorUsedError;
+  DateTime? get joinedAt => throw _privateConstructorUsedError;
+  String? get role => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
 
+  /// Serializes this CommunityMember to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CommunityMember
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CommunityMemberCopyWith<CommunityMember> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -516,7 +535,7 @@ abstract class $CommunityMemberCopyWith<$Res> {
           CommunityMember value, $Res Function(CommunityMember) then) =
       _$CommunityMemberCopyWithImpl<$Res, CommunityMember>;
   @useResult
-  $Res call({String? userId, String? name});
+  $Res call({String? userId, DateTime? joinedAt, String? role, String? name});
 }
 
 /// @nodoc
@@ -529,16 +548,28 @@ class _$CommunityMemberCopyWithImpl<$Res, $Val extends CommunityMember>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CommunityMember
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? userId = freezed,
+    Object? joinedAt = freezed,
+    Object? role = freezed,
     Object? name = freezed,
   }) {
     return _then(_value.copyWith(
       userId: freezed == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      joinedAt: freezed == joinedAt
+          ? _value.joinedAt
+          : joinedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      role: freezed == role
+          ? _value.role
+          : role // ignore: cast_nullable_to_non_nullable
               as String?,
       name: freezed == name
           ? _value.name
@@ -556,7 +587,7 @@ abstract class _$$CommunityMemberImplCopyWith<$Res>
       __$$CommunityMemberImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? userId, String? name});
+  $Res call({String? userId, DateTime? joinedAt, String? role, String? name});
 }
 
 /// @nodoc
@@ -567,16 +598,28 @@ class __$$CommunityMemberImplCopyWithImpl<$Res>
       _$CommunityMemberImpl _value, $Res Function(_$CommunityMemberImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CommunityMember
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? userId = freezed,
+    Object? joinedAt = freezed,
+    Object? role = freezed,
     Object? name = freezed,
   }) {
     return _then(_$CommunityMemberImpl(
       userId: freezed == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      joinedAt: freezed == joinedAt
+          ? _value.joinedAt
+          : joinedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      role: freezed == role
+          ? _value.role
+          : role // ignore: cast_nullable_to_non_nullable
               as String?,
       name: freezed == name
           ? _value.name
@@ -589,7 +632,8 @@ class __$$CommunityMemberImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$CommunityMemberImpl implements _CommunityMember {
-  const _$CommunityMemberImpl({this.userId, this.name});
+  const _$CommunityMemberImpl(
+      {this.userId, this.joinedAt, this.role, this.name});
 
   factory _$CommunityMemberImpl.fromJson(Map<String, dynamic> json) =>
       _$$CommunityMemberImplFromJson(json);
@@ -597,11 +641,15 @@ class _$CommunityMemberImpl implements _CommunityMember {
   @override
   final String? userId;
   @override
+  final DateTime? joinedAt;
+  @override
+  final String? role;
+  @override
   final String? name;
 
   @override
   String toString() {
-    return 'CommunityMember(userId: $userId, name: $name)';
+    return 'CommunityMember(userId: $userId, joinedAt: $joinedAt, role: $role, name: $name)';
   }
 
   @override
@@ -610,14 +658,19 @@ class _$CommunityMemberImpl implements _CommunityMember {
         (other.runtimeType == runtimeType &&
             other is _$CommunityMemberImpl &&
             (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.joinedAt, joinedAt) ||
+                other.joinedAt == joinedAt) &&
+            (identical(other.role, role) || other.role == role) &&
             (identical(other.name, name) || other.name == name));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, userId, name);
+  int get hashCode => Object.hash(runtimeType, userId, joinedAt, role, name);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CommunityMember
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CommunityMemberImplCopyWith<_$CommunityMemberImpl> get copyWith =>
@@ -633,8 +686,11 @@ class _$CommunityMemberImpl implements _CommunityMember {
 }
 
 abstract class _CommunityMember implements CommunityMember {
-  const factory _CommunityMember({final String? userId, final String? name}) =
-      _$CommunityMemberImpl;
+  const factory _CommunityMember(
+      {final String? userId,
+      final DateTime? joinedAt,
+      final String? role,
+      final String? name}) = _$CommunityMemberImpl;
 
   factory _CommunityMember.fromJson(Map<String, dynamic> json) =
       _$CommunityMemberImpl.fromJson;
@@ -642,9 +698,16 @@ abstract class _CommunityMember implements CommunityMember {
   @override
   String? get userId;
   @override
-  String? get name;
+  DateTime? get joinedAt;
   @override
-  @JsonKey(ignore: true)
+  String? get role;
+  @override
+  String? get name;
+
+  /// Create a copy of CommunityMember
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CommunityMemberImplCopyWith<_$CommunityMemberImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -11,10 +11,13 @@ abstract class CommunityRepository {
   Future<Either<Failure, bool>> addCommunities(String communityId);
   Future<Either<Failure, bool>> leaveCommunity(String communityId);
   Future<Either<Failure, List<Community>>> getCommunity();
+  Future<Either<Failure, List<CommunityMember>>> getCommunityMembers(String communityId);
+  
   Future<Either<Failure, List<Community>>> getNewCommunities(int limit);
   Future<Either<Failure, List<Community>>> searchCommunity(String params);
   Future<Either<Failure, List<Community>>> searchCommunityByType(String type);
   Future<Either<Failure, Post>> createPost(Post post, List<File> files);
   Future<Either<Failure, PostComment>> createPostComment(
       String postId, PostComment comment);
+  Future<Either<Failure, bool>> likePost(String postId);
 }

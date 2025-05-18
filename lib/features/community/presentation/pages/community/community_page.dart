@@ -1,14 +1,14 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_expandable_fab/flutter_expandable_fab.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:jeka/common/widgets/app_layout.dart';
 import 'package:jeka/common/widgets/avatars/avatar.dart';
 import 'package:jeka/common/widgets/reuseable_text.dart';
+import 'package:jeka/core/router/app_router.dart';
 import 'package:jeka/features/community/presentation/bloc/community_bloc.dart';
 import 'package:jeka/features/community/presentation/bloc/community_selector.dart';
 import 'package:jeka/features/community/presentation/pages/community/widgets/community_floating_action_button.dart';
-import 'package:jeka/features/community/presentation/pages/community_event/community_event_page.dart';
 import 'package:jeka/features/community/presentation/pages/community_feed/community_feed_page.dart';
 import 'package:jeka/features/community/presentation/pages/community_member/community_member_page.dart';
 import 'package:skeletonizer/skeletonizer.dart';
@@ -29,7 +29,7 @@ class _CommunityPageState extends State<CommunityPage>
   late TabController tabController;
   @override
   void initState() {
-    tabController = TabController(length: 3, vsync: this);
+    tabController = TabController(length: 2, vsync: this);
 
     super.initState();
     tabController.addListener(() {
@@ -45,8 +45,11 @@ class _CommunityPageState extends State<CommunityPage>
 
     return AppLayout(
       child: Scaffold(
-        floatingActionButtonLocation: ExpandableFab.location,
-        floatingActionButton: const CommunityFloatingActionButton(),
+        floatingActionButton: CommunityFloatingActionButton(
+          onClose: () {
+            setState(() {});
+          },
+        ),
         body: NestedScrollView(
           headerSliverBuilder: (context, innerBoxIsScrolled) {
             return [
@@ -92,8 +95,14 @@ class _CommunityPageState extends State<CommunityPage>
                 pinned: true,
                 actions: [
                   IconButton(
-                    onPressed: () {},
-                    icon: const FaIcon(FontAwesomeIcons.ellipsisVertical),
+                    onPressed: () {
+                      final community =
+                          context.read<CommunityBloc>().state.community;
+                      if (community == null) return;
+                      context.router
+                          .push(CommunityDetailRoute(community: community));
+                    },
+                    icon: const FaIcon(FontAwesomeIcons.circleInfo),
                   ),
                 ],
                 bottom: TabBar(
@@ -101,9 +110,6 @@ class _CommunityPageState extends State<CommunityPage>
                   tabs: const [
                     Tab(
                       text: "Post",
-                    ),
-                    Tab(
-                      text: "Event",
                     ),
                     Tab(
                       text: "Members",
@@ -117,7 +123,6 @@ class _CommunityPageState extends State<CommunityPage>
             controller: tabController,
             children: [
               CommunityFeedPage(),
-              CommunityEventPage(),
               CommunityMemberPage(),
             ],
           ),

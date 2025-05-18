@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -18,6 +20,7 @@ AppBar ReuseableAppBar({
         : null,
     title: title,
     backgroundColor: backgroundColor,
+    surfaceTintColor: backgroundColor,
     actions: actions,
   );
 }

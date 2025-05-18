@@ -40,7 +40,7 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
 
   _onTogglePrivate(TogglePrivate event, Emitter<SettingsState> emit) async {
     await _settingsRepository.toggleIsPrivate();
-    final current = _settingsRepository.getIsPrivate();
+    final current = await _settingsRepository.getIsPrivate();
     emit(state.copyWith(isPrivate: current));
   }
 

@@ -63,6 +63,9 @@ class DefaultFirebaseOptions {
     messagingSenderId: '867130052345',
     projectId: 'jeka-85742',
     storageBucket: 'jeka-85742.appspot.com',
+    androidClientId: '867130052345-1lfcg4pe75vui4ml9bpmekoo3vj2tlfq.apps.googleusercontent.com',
+    iosClientId: '867130052345-vl00lr3prc5jq7109vcvf4abjca4c2s7.apps.googleusercontent.com',
     iosBundleId: 'com.example.jeka',
   );
+
 }

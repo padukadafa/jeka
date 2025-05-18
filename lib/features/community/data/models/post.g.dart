@@ -23,6 +23,10 @@ _$PostImpl _$$PostImplFromJson(Map<String, dynamic> json) => _$PostImpl(
               ?.map((e) => PostReaction.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
+      likes:
+          (json['likes'] as List<dynamic>?)?.map((e) => e as String).toList() ??
+              const [],
+      likesCount: (json['likesCount'] as num?)?.toInt() ?? 0,
       comments: (json['comments'] as List<dynamic>?)
               ?.map((e) => PostComment.fromJson(e as Map<String, dynamic>))
               .toList() ??
@@ -45,6 +49,8 @@ Map<String, dynamic> _$$PostImplToJson(_$PostImpl instance) =>
       'writerId': instance.writerId,
       'createdAt': instance.createdAt?.toIso8601String(),
       'postReactions': instance.postReactions,
+      'likes': instance.likes,
+      'likesCount': instance.likesCount,
       'comments': instance.comments,
       'reports': instance.reports,
       'reportsCount': instance.reportsCount,

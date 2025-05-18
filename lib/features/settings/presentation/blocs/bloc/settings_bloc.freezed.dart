@@ -84,6 +84,9 @@ class _$SettingsEventCopyWithImpl<$Res, $Val extends SettingsEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of SettingsEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -103,6 +106,8 @@ class __$$SettingsThemeChangedImplCopyWithImpl<$Res>
       $Res Function(_$SettingsThemeChangedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SettingsEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -141,7 +146,9 @@ class _$SettingsThemeChangedImpl implements SettingsThemeChanged {
   @override
   int get hashCode => Object.hash(runtimeType, theme);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SettingsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SettingsThemeChangedImplCopyWith<_$SettingsThemeChangedImpl>
@@ -229,7 +236,10 @@ abstract class SettingsThemeChanged implements SettingsEvent {
       _$SettingsThemeChangedImpl;
 
   ThemeMode get theme;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SettingsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SettingsThemeChangedImplCopyWith<_$SettingsThemeChangedImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -248,6 +258,9 @@ class __$$ToggleNotificationImplCopyWithImpl<$Res>
   __$$ToggleNotificationImplCopyWithImpl(_$ToggleNotificationImpl _value,
       $Res Function(_$ToggleNotificationImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SettingsEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -365,6 +378,8 @@ class __$$SetLanguageImplCopyWithImpl<$Res>
       _$SetLanguageImpl _value, $Res Function(_$SetLanguageImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SettingsEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -403,7 +418,9 @@ class _$SetLanguageImpl implements SetLanguage {
   @override
   int get hashCode => Object.hash(runtimeType, lang);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SettingsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SetLanguageImplCopyWith<_$SetLanguageImpl> get copyWith =>
@@ -488,7 +505,10 @@ abstract class SetLanguage implements SettingsEvent {
   const factory SetLanguage(final String lang) = _$SetLanguageImpl;
 
   String get lang;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SettingsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SetLanguageImplCopyWith<_$SetLanguageImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -507,6 +527,9 @@ class __$$TogglePrivateImplCopyWithImpl<$Res>
   __$$TogglePrivateImplCopyWithImpl(
       _$TogglePrivateImpl _value, $Res Function(_$TogglePrivateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SettingsEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -614,7 +637,9 @@ mixin _$SettingsState {
   String get language => throw _privateConstructorUsedError;
   bool get isPrivate => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SettingsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SettingsStateCopyWith<SettingsState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -642,6 +667,8 @@ class _$SettingsStateCopyWithImpl<$Res, $Val extends SettingsState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SettingsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -694,6 +721,8 @@ class __$$InitialImplCopyWithImpl<$Res>
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SettingsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -768,7 +797,9 @@ class _$InitialImpl implements _Initial {
   int get hashCode =>
       Object.hash(runtimeType, theme, isShowNotification, language, isPrivate);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SettingsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
@@ -790,8 +821,11 @@ abstract class _Initial implements SettingsState {
   String get language;
   @override
   bool get isPrivate;
+
+  /// Create a copy of SettingsState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

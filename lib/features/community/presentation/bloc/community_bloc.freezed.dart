@@ -26,8 +26,8 @@ mixin _$CommunityEvent {
     required TResult Function(
             String communityId, void Function(Community)? onDone)
         joinCommunity,
-    required TResult Function(
-            String communityId, void Function(Community)? onDone)
+    required TResult Function(BuildContext context, String communityId,
+            void Function(Community)? onDone)
         leaveCommunity,
     required TResult Function(BuildContext context, PostComment comment,
             Post post, void Function(Post)? onDone)
@@ -43,7 +43,8 @@ mixin _$CommunityEvent {
     TResult? Function(String communityId)? changeCommunity,
     TResult? Function(String communityId, void Function(Community)? onDone)?
         joinCommunity,
-    TResult? Function(String communityId, void Function(Community)? onDone)?
+    TResult? Function(BuildContext context, String communityId,
+            void Function(Community)? onDone)?
         leaveCommunity,
     TResult? Function(BuildContext context, PostComment comment, Post post,
             void Function(Post)? onDone)?
@@ -59,7 +60,8 @@ mixin _$CommunityEvent {
     TResult Function(String communityId)? changeCommunity,
     TResult Function(String communityId, void Function(Community)? onDone)?
         joinCommunity,
-    TResult Function(String communityId, void Function(Community)? onDone)?
+    TResult Function(BuildContext context, String communityId,
+            void Function(Community)? onDone)?
         leaveCommunity,
     TResult Function(BuildContext context, PostComment comment, Post post,
             void Function(Post)? onDone)?
@@ -122,6 +124,9 @@ class _$CommunityEventCopyWithImpl<$Res, $Val extends CommunityEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of CommunityEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -138,6 +143,9 @@ class __$$StartedImplCopyWithImpl<$Res>
   __$$StartedImplCopyWithImpl(
       _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CommunityEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -170,8 +178,8 @@ class _$StartedImpl implements _Started {
     required TResult Function(
             String communityId, void Function(Community)? onDone)
         joinCommunity,
-    required TResult Function(
-            String communityId, void Function(Community)? onDone)
+    required TResult Function(BuildContext context, String communityId,
+            void Function(Community)? onDone)
         leaveCommunity,
     required TResult Function(BuildContext context, PostComment comment,
             Post post, void Function(Post)? onDone)
@@ -190,7 +198,8 @@ class _$StartedImpl implements _Started {
     TResult? Function(String communityId)? changeCommunity,
     TResult? Function(String communityId, void Function(Community)? onDone)?
         joinCommunity,
-    TResult? Function(String communityId, void Function(Community)? onDone)?
+    TResult? Function(BuildContext context, String communityId,
+            void Function(Community)? onDone)?
         leaveCommunity,
     TResult? Function(BuildContext context, PostComment comment, Post post,
             void Function(Post)? onDone)?
@@ -209,7 +218,8 @@ class _$StartedImpl implements _Started {
     TResult Function(String communityId)? changeCommunity,
     TResult Function(String communityId, void Function(Community)? onDone)?
         joinCommunity,
-    TResult Function(String communityId, void Function(Community)? onDone)?
+    TResult Function(BuildContext context, String communityId,
+            void Function(Community)? onDone)?
         leaveCommunity,
     TResult Function(BuildContext context, PostComment comment, Post post,
             void Function(Post)? onDone)?
@@ -293,6 +303,8 @@ class __$$ChangePageImplCopyWithImpl<$Res>
       _$ChangePageImpl _value, $Res Function(_$ChangePageImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CommunityEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -331,7 +343,9 @@ class _$ChangePageImpl implements ChangePage {
   @override
   int get hashCode => Object.hash(runtimeType, index);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CommunityEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ChangePageImplCopyWith<_$ChangePageImpl> get copyWith =>
@@ -348,8 +362,8 @@ class _$ChangePageImpl implements ChangePage {
     required TResult Function(
             String communityId, void Function(Community)? onDone)
         joinCommunity,
-    required TResult Function(
-            String communityId, void Function(Community)? onDone)
+    required TResult Function(BuildContext context, String communityId,
+            void Function(Community)? onDone)
         leaveCommunity,
     required TResult Function(BuildContext context, PostComment comment,
             Post post, void Function(Post)? onDone)
@@ -368,7 +382,8 @@ class _$ChangePageImpl implements ChangePage {
     TResult? Function(String communityId)? changeCommunity,
     TResult? Function(String communityId, void Function(Community)? onDone)?
         joinCommunity,
-    TResult? Function(String communityId, void Function(Community)? onDone)?
+    TResult? Function(BuildContext context, String communityId,
+            void Function(Community)? onDone)?
         leaveCommunity,
     TResult? Function(BuildContext context, PostComment comment, Post post,
             void Function(Post)? onDone)?
@@ -387,7 +402,8 @@ class _$ChangePageImpl implements ChangePage {
     TResult Function(String communityId)? changeCommunity,
     TResult Function(String communityId, void Function(Community)? onDone)?
         joinCommunity,
-    TResult Function(String communityId, void Function(Community)? onDone)?
+    TResult Function(BuildContext context, String communityId,
+            void Function(Community)? onDone)?
         leaveCommunity,
     TResult Function(BuildContext context, PostComment comment, Post post,
             void Function(Post)? onDone)?
@@ -454,7 +470,10 @@ abstract class ChangePage implements CommunityEvent {
   const factory ChangePage(final int index) = _$ChangePageImpl;
 
   int get index;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CommunityEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ChangePageImplCopyWith<_$ChangePageImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -476,6 +495,8 @@ class __$$ChangeCommunityTabImplCopyWithImpl<$Res>
       $Res Function(_$ChangeCommunityTabImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CommunityEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -514,7 +535,9 @@ class _$ChangeCommunityTabImpl implements ChangeCommunityTab {
   @override
   int get hashCode => Object.hash(runtimeType, index);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CommunityEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ChangeCommunityTabImplCopyWith<_$ChangeCommunityTabImpl> get copyWith =>
@@ -532,8 +555,8 @@ class _$ChangeCommunityTabImpl implements ChangeCommunityTab {
     required TResult Function(
             String communityId, void Function(Community)? onDone)
         joinCommunity,
-    required TResult Function(
-            String communityId, void Function(Community)? onDone)
+    required TResult Function(BuildContext context, String communityId,
+            void Function(Community)? onDone)
         leaveCommunity,
     required TResult Function(BuildContext context, PostComment comment,
             Post post, void Function(Post)? onDone)
@@ -552,7 +575,8 @@ class _$ChangeCommunityTabImpl implements ChangeCommunityTab {
     TResult? Function(String communityId)? changeCommunity,
     TResult? Function(String communityId, void Function(Community)? onDone)?
         joinCommunity,
-    TResult? Function(String communityId, void Function(Community)? onDone)?
+    TResult? Function(BuildContext context, String communityId,
+            void Function(Community)? onDone)?
         leaveCommunity,
     TResult? Function(BuildContext context, PostComment comment, Post post,
             void Function(Post)? onDone)?
@@ -571,7 +595,8 @@ class _$ChangeCommunityTabImpl implements ChangeCommunityTab {
     TResult Function(String communityId)? changeCommunity,
     TResult Function(String communityId, void Function(Community)? onDone)?
         joinCommunity,
-    TResult Function(String communityId, void Function(Community)? onDone)?
+    TResult Function(BuildContext context, String communityId,
+            void Function(Community)? onDone)?
         leaveCommunity,
     TResult Function(BuildContext context, PostComment comment, Post post,
             void Function(Post)? onDone)?
@@ -638,7 +663,10 @@ abstract class ChangeCommunityTab implements CommunityEvent {
   const factory ChangeCommunityTab(final int index) = _$ChangeCommunityTabImpl;
 
   int get index;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CommunityEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ChangeCommunityTabImplCopyWith<_$ChangeCommunityTabImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -660,6 +688,8 @@ class __$$UpdateCommunityListImplCopyWithImpl<$Res>
       $Res Function(_$UpdateCommunityListImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CommunityEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -698,7 +728,9 @@ class _$UpdateCommunityListImpl implements UpdateCommunityList {
   @override
   int get hashCode => Object.hash(runtimeType, context);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CommunityEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$UpdateCommunityListImplCopyWith<_$UpdateCommunityListImpl> get copyWith =>
@@ -716,8 +748,8 @@ class _$UpdateCommunityListImpl implements UpdateCommunityList {
     required TResult Function(
             String communityId, void Function(Community)? onDone)
         joinCommunity,
-    required TResult Function(
-            String communityId, void Function(Community)? onDone)
+    required TResult Function(BuildContext context, String communityId,
+            void Function(Community)? onDone)
         leaveCommunity,
     required TResult Function(BuildContext context, PostComment comment,
             Post post, void Function(Post)? onDone)
@@ -736,7 +768,8 @@ class _$UpdateCommunityListImpl implements UpdateCommunityList {
     TResult? Function(String communityId)? changeCommunity,
     TResult? Function(String communityId, void Function(Community)? onDone)?
         joinCommunity,
-    TResult? Function(String communityId, void Function(Community)? onDone)?
+    TResult? Function(BuildContext context, String communityId,
+            void Function(Community)? onDone)?
         leaveCommunity,
     TResult? Function(BuildContext context, PostComment comment, Post post,
             void Function(Post)? onDone)?
@@ -755,7 +788,8 @@ class _$UpdateCommunityListImpl implements UpdateCommunityList {
     TResult Function(String communityId)? changeCommunity,
     TResult Function(String communityId, void Function(Community)? onDone)?
         joinCommunity,
-    TResult Function(String communityId, void Function(Community)? onDone)?
+    TResult Function(BuildContext context, String communityId,
+            void Function(Community)? onDone)?
         leaveCommunity,
     TResult Function(BuildContext context, PostComment comment, Post post,
             void Function(Post)? onDone)?
@@ -823,7 +857,10 @@ abstract class UpdateCommunityList implements CommunityEvent {
       _$UpdateCommunityListImpl;
 
   BuildContext get context;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CommunityEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UpdateCommunityListImplCopyWith<_$UpdateCommunityListImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -845,6 +882,8 @@ class __$$ChangeCommunityImplCopyWithImpl<$Res>
       _$ChangeCommunityImpl _value, $Res Function(_$ChangeCommunityImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CommunityEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -884,7 +923,9 @@ class _$ChangeCommunityImpl implements ChangeCommunity {
   @override
   int get hashCode => Object.hash(runtimeType, communityId);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CommunityEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ChangeCommunityImplCopyWith<_$ChangeCommunityImpl> get copyWith =>
@@ -902,8 +943,8 @@ class _$ChangeCommunityImpl implements ChangeCommunity {
     required TResult Function(
             String communityId, void Function(Community)? onDone)
         joinCommunity,
-    required TResult Function(
-            String communityId, void Function(Community)? onDone)
+    required TResult Function(BuildContext context, String communityId,
+            void Function(Community)? onDone)
         leaveCommunity,
     required TResult Function(BuildContext context, PostComment comment,
             Post post, void Function(Post)? onDone)
@@ -922,7 +963,8 @@ class _$ChangeCommunityImpl implements ChangeCommunity {
     TResult? Function(String communityId)? changeCommunity,
     TResult? Function(String communityId, void Function(Community)? onDone)?
         joinCommunity,
-    TResult? Function(String communityId, void Function(Community)? onDone)?
+    TResult? Function(BuildContext context, String communityId,
+            void Function(Community)? onDone)?
         leaveCommunity,
     TResult? Function(BuildContext context, PostComment comment, Post post,
             void Function(Post)? onDone)?
@@ -941,7 +983,8 @@ class _$ChangeCommunityImpl implements ChangeCommunity {
     TResult Function(String communityId)? changeCommunity,
     TResult Function(String communityId, void Function(Community)? onDone)?
         joinCommunity,
-    TResult Function(String communityId, void Function(Community)? onDone)?
+    TResult Function(BuildContext context, String communityId,
+            void Function(Community)? onDone)?
         leaveCommunity,
     TResult Function(BuildContext context, PostComment comment, Post post,
             void Function(Post)? onDone)?
@@ -1009,7 +1052,10 @@ abstract class ChangeCommunity implements CommunityEvent {
       _$ChangeCommunityImpl;
 
   String get communityId;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CommunityEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ChangeCommunityImplCopyWith<_$ChangeCommunityImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1031,6 +1077,8 @@ class __$$JoinCommunityImplCopyWithImpl<$Res>
       _$JoinCommunityImpl _value, $Res Function(_$JoinCommunityImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CommunityEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1078,7 +1126,9 @@ class _$JoinCommunityImpl implements JoinCommunity {
   @override
   int get hashCode => Object.hash(runtimeType, communityId, onDone);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CommunityEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$JoinCommunityImplCopyWith<_$JoinCommunityImpl> get copyWith =>
@@ -1095,8 +1145,8 @@ class _$JoinCommunityImpl implements JoinCommunity {
     required TResult Function(
             String communityId, void Function(Community)? onDone)
         joinCommunity,
-    required TResult Function(
-            String communityId, void Function(Community)? onDone)
+    required TResult Function(BuildContext context, String communityId,
+            void Function(Community)? onDone)
         leaveCommunity,
     required TResult Function(BuildContext context, PostComment comment,
             Post post, void Function(Post)? onDone)
@@ -1115,7 +1165,8 @@ class _$JoinCommunityImpl implements JoinCommunity {
     TResult? Function(String communityId)? changeCommunity,
     TResult? Function(String communityId, void Function(Community)? onDone)?
         joinCommunity,
-    TResult? Function(String communityId, void Function(Community)? onDone)?
+    TResult? Function(BuildContext context, String communityId,
+            void Function(Community)? onDone)?
         leaveCommunity,
     TResult? Function(BuildContext context, PostComment comment, Post post,
             void Function(Post)? onDone)?
@@ -1134,7 +1185,8 @@ class _$JoinCommunityImpl implements JoinCommunity {
     TResult Function(String communityId)? changeCommunity,
     TResult Function(String communityId, void Function(Community)? onDone)?
         joinCommunity,
-    TResult Function(String communityId, void Function(Community)? onDone)?
+    TResult Function(BuildContext context, String communityId,
+            void Function(Community)? onDone)?
         leaveCommunity,
     TResult Function(BuildContext context, PostComment comment, Post post,
             void Function(Post)? onDone)?
@@ -1203,7 +1255,10 @@ abstract class JoinCommunity implements CommunityEvent {
 
   String get communityId;
   void Function(Community)? get onDone;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CommunityEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$JoinCommunityImplCopyWith<_$JoinCommunityImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1214,7 +1269,10 @@ abstract class _$$LeaveCommunityImplCopyWith<$Res> {
           $Res Function(_$LeaveCommunityImpl) then) =
       __$$LeaveCommunityImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String communityId, void Function(Community)? onDone});
+  $Res call(
+      {BuildContext context,
+      String communityId,
+      void Function(Community)? onDone});
 }
 
 /// @nodoc
@@ -1225,13 +1283,20 @@ class __$$LeaveCommunityImplCopyWithImpl<$Res>
       _$LeaveCommunityImpl _value, $Res Function(_$LeaveCommunityImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CommunityEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? context = null,
     Object? communityId = null,
     Object? onDone = freezed,
   }) {
     return _then(_$LeaveCommunityImpl(
+      null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
       null == communityId
           ? _value.communityId
           : communityId // ignore: cast_nullable_to_non_nullable
@@ -1247,8 +1312,10 @@ class __$$LeaveCommunityImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LeaveCommunityImpl implements LeaveCommunity {
-  const _$LeaveCommunityImpl(this.communityId, {this.onDone});
+  const _$LeaveCommunityImpl(this.context, this.communityId, {this.onDone});
 
+  @override
+  final BuildContext context;
   @override
   final String communityId;
   @override
@@ -1256,7 +1323,7 @@ class _$LeaveCommunityImpl implements LeaveCommunity {
 
   @override
   String toString() {
-    return 'CommunityEvent.leaveCommunity(communityId: $communityId, onDone: $onDone)';
+    return 'CommunityEvent.leaveCommunity(context: $context, communityId: $communityId, onDone: $onDone)';
   }
 
   @override
@@ -1264,15 +1331,18 @@ class _$LeaveCommunityImpl implements LeaveCommunity {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LeaveCommunityImpl &&
+            (identical(other.context, context) || other.context == context) &&
             (identical(other.communityId, communityId) ||
                 other.communityId == communityId) &&
             (identical(other.onDone, onDone) || other.onDone == onDone));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, communityId, onDone);
+  int get hashCode => Object.hash(runtimeType, context, communityId, onDone);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CommunityEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$LeaveCommunityImplCopyWith<_$LeaveCommunityImpl> get copyWith =>
@@ -1290,14 +1360,14 @@ class _$LeaveCommunityImpl implements LeaveCommunity {
     required TResult Function(
             String communityId, void Function(Community)? onDone)
         joinCommunity,
-    required TResult Function(
-            String communityId, void Function(Community)? onDone)
+    required TResult Function(BuildContext context, String communityId,
+            void Function(Community)? onDone)
         leaveCommunity,
     required TResult Function(BuildContext context, PostComment comment,
             Post post, void Function(Post)? onDone)
         createPostComment,
   }) {
-    return leaveCommunity(communityId, onDone);
+    return leaveCommunity(context, communityId, onDone);
   }
 
   @override
@@ -1310,13 +1380,14 @@ class _$LeaveCommunityImpl implements LeaveCommunity {
     TResult? Function(String communityId)? changeCommunity,
     TResult? Function(String communityId, void Function(Community)? onDone)?
         joinCommunity,
-    TResult? Function(String communityId, void Function(Community)? onDone)?
+    TResult? Function(BuildContext context, String communityId,
+            void Function(Community)? onDone)?
         leaveCommunity,
     TResult? Function(BuildContext context, PostComment comment, Post post,
             void Function(Post)? onDone)?
         createPostComment,
   }) {
-    return leaveCommunity?.call(communityId, onDone);
+    return leaveCommunity?.call(context, communityId, onDone);
   }
 
   @override
@@ -1329,7 +1400,8 @@ class _$LeaveCommunityImpl implements LeaveCommunity {
     TResult Function(String communityId)? changeCommunity,
     TResult Function(String communityId, void Function(Community)? onDone)?
         joinCommunity,
-    TResult Function(String communityId, void Function(Community)? onDone)?
+    TResult Function(BuildContext context, String communityId,
+            void Function(Community)? onDone)?
         leaveCommunity,
     TResult Function(BuildContext context, PostComment comment, Post post,
             void Function(Post)? onDone)?
@@ -1337,7 +1409,7 @@ class _$LeaveCommunityImpl implements LeaveCommunity {
     required TResult orElse(),
   }) {
     if (leaveCommunity != null) {
-      return leaveCommunity(communityId, onDone);
+      return leaveCommunity(context, communityId, onDone);
     }
     return orElse();
   }
@@ -1393,12 +1465,17 @@ class _$LeaveCommunityImpl implements LeaveCommunity {
 }
 
 abstract class LeaveCommunity implements CommunityEvent {
-  const factory LeaveCommunity(final String communityId,
+  const factory LeaveCommunity(
+      final BuildContext context, final String communityId,
       {final void Function(Community)? onDone}) = _$LeaveCommunityImpl;
 
+  BuildContext get context;
   String get communityId;
   void Function(Community)? get onDone;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CommunityEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LeaveCommunityImplCopyWith<_$LeaveCommunityImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1427,6 +1504,8 @@ class __$$CreatePostCommentImplCopyWithImpl<$Res>
       $Res Function(_$CreatePostCommentImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CommunityEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1455,6 +1534,8 @@ class __$$CreatePostCommentImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of CommunityEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PostCommentCopyWith<$Res> get comment {
@@ -1463,6 +1544,8 @@ class __$$CreatePostCommentImplCopyWithImpl<$Res>
     });
   }
 
+  /// Create a copy of CommunityEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PostCopyWith<$Res> get post {
@@ -1506,7 +1589,9 @@ class _$CreatePostCommentImpl implements CreatePostComment {
   @override
   int get hashCode => Object.hash(runtimeType, context, comment, post, onDone);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CommunityEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CreatePostCommentImplCopyWith<_$CreatePostCommentImpl> get copyWith =>
@@ -1524,8 +1609,8 @@ class _$CreatePostCommentImpl implements CreatePostComment {
     required TResult Function(
             String communityId, void Function(Community)? onDone)
         joinCommunity,
-    required TResult Function(
-            String communityId, void Function(Community)? onDone)
+    required TResult Function(BuildContext context, String communityId,
+            void Function(Community)? onDone)
         leaveCommunity,
     required TResult Function(BuildContext context, PostComment comment,
             Post post, void Function(Post)? onDone)
@@ -1544,7 +1629,8 @@ class _$CreatePostCommentImpl implements CreatePostComment {
     TResult? Function(String communityId)? changeCommunity,
     TResult? Function(String communityId, void Function(Community)? onDone)?
         joinCommunity,
-    TResult? Function(String communityId, void Function(Community)? onDone)?
+    TResult? Function(BuildContext context, String communityId,
+            void Function(Community)? onDone)?
         leaveCommunity,
     TResult? Function(BuildContext context, PostComment comment, Post post,
             void Function(Post)? onDone)?
@@ -1563,7 +1649,8 @@ class _$CreatePostCommentImpl implements CreatePostComment {
     TResult Function(String communityId)? changeCommunity,
     TResult Function(String communityId, void Function(Community)? onDone)?
         joinCommunity,
-    TResult Function(String communityId, void Function(Community)? onDone)?
+    TResult Function(BuildContext context, String communityId,
+            void Function(Community)? onDone)?
         leaveCommunity,
     TResult Function(BuildContext context, PostComment comment, Post post,
             void Function(Post)? onDone)?
@@ -1635,7 +1722,10 @@ abstract class CreatePostComment implements CommunityEvent {
   PostComment get comment;
   Post get post;
   void Function(Post)? get onDone;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CommunityEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CreatePostCommentImplCopyWith<_$CreatePostCommentImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1685,7 +1775,9 @@ mixin _$CommunityState {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CommunityState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CommunityStateCopyWith<CommunityState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1715,6 +1807,8 @@ class _$CommunityStateCopyWithImpl<$Res, $Val extends CommunityState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CommunityState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1743,6 +1837,8 @@ class _$CommunityStateCopyWithImpl<$Res, $Val extends CommunityState>
     ) as $Val);
   }
 
+  /// Create a copy of CommunityState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $CommunityCopyWith<$Res>? get community {
@@ -1782,6 +1878,8 @@ class __$$InitialImplCopyWithImpl<$Res>
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CommunityState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1862,7 +1960,9 @@ class _$InitialImpl implements _Initial {
   int get hashCode => Object.hash(runtimeType, tabIndex, community,
       communityTabIndex, const DeepCollectionEquality().hash(_communities));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CommunityState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
@@ -1946,8 +2046,11 @@ abstract class _Initial implements CommunityState {
   int get communityTabIndex;
   @override
   List<Community> get communities;
+
+  /// Create a copy of CommunityState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

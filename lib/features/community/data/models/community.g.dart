@@ -63,6 +63,10 @@ _$CommunityMemberImpl _$$CommunityMemberImplFromJson(
         Map<String, dynamic> json) =>
     _$CommunityMemberImpl(
       userId: json['userId'] as String?,
+      joinedAt: json['joinedAt'] == null
+          ? null
+          : DateTime.parse(json['joinedAt'] as String),
+      role: json['role'] as String?,
       name: json['name'] as String?,
     );
 
@@ -70,5 +74,7 @@ Map<String, dynamic> _$$CommunityMemberImplToJson(
         _$CommunityMemberImpl instance) =>
     <String, dynamic>{
       'userId': instance.userId,
+      'joinedAt': instance.joinedAt?.toIso8601String(),
+      'role': instance.role,
       'name': instance.name,
     };

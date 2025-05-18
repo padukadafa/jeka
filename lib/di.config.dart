@@ -26,6 +26,11 @@ import 'package:jeka/features/auth/data/repository/auth_repository_impl.dart'
     as _i617;
 import 'package:jeka/features/auth/presentation/blocs/bloc/auth_bloc.dart'
     as _i936;
+import 'package:jeka/features/chat/data/data_sources/chat_remote_data_source.dart'
+    as _i1062;
+import 'package:jeka/features/chat/data/repository/chat_repository.dart'
+    as _i376;
+import 'package:jeka/features/chat/presentation/bloc/chat_bloc.dart' as _i232;
 import 'package:jeka/features/community/data/data_source/local/communirt_local_data_source.dart'
     as _i741;
 import 'package:jeka/features/community/data/data_source/local/community_local_data_source_impl.dart'
@@ -36,10 +41,14 @@ import 'package:jeka/features/community/data/data_source/remote/community_remote
     as _i329;
 import 'package:jeka/features/community/data/data_source/remote/community_remote_data_source_impl.dart'
     as _i23;
-import 'package:jeka/features/community/data/repository/community_repository.dart'
-    as _i936;
 import 'package:jeka/features/community/data/repository/community_repository_impl.dart'
     as _i335;
+import 'package:jeka/features/community/domain/repository/community_repository.dart'
+    as _i409;
+import 'package:jeka/features/community/domain/usecases/get_community_members_usecase.dart'
+    as _i868;
+import 'package:jeka/features/community/domain/usecases/like_post_usecase.dart'
+    as _i611;
 import 'package:jeka/features/community/presentation/bloc/community_bloc.dart'
     as _i1036;
 import 'package:jeka/features/generative_text_editor/data/data_source/gemini_remote_data_source.dart'
@@ -50,6 +59,8 @@ import 'package:jeka/features/generative_text_editor/data/repository/gemini_repo
     as _i186;
 import 'package:jeka/features/generative_text_editor/data/repository/gemini_repository_impl.dart'
     as _i129;
+import 'package:jeka/features/notification/data/data_sources/database/notification_database.dart'
+    as _i35;
 import 'package:jeka/features/settings/data/repository/settings_repository.dart'
     as _i322;
 import 'package:jeka/features/settings/data/repository/settings_repository_impl.dart'
@@ -86,6 +97,10 @@ extension GetItInjectableX on _i174.GetIt {
       () => registerModule.searchDatabase,
       preResolve: true,
     );
+    await gh.factoryAsync<_i35.NotificationDatabase>(
+      () => registerModule.notificationDatabase,
+      preResolve: true,
+    );
     gh.singleton<_i457.Reference>(
         () => registerModule.firebaseStorageReference);
     gh.singleton<_i59.FirebaseAuth>(() => registerModule.firebaseAuth);
@@ -94,12 +109,22 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i892.FirebaseMessaging>(
         () => registerModule.firebaseMessaging);
     gh.singleton<_i116.GoogleSignIn>(() => registerModule.googleSignin);
-    gh.singleton<_i322.SettingsRepository>(
-        () => _i522.SettingsRepositoryImpl(gh<_i460.SharedPreferences>()));
     gh.singleton<_i701.GeminiRemoteDataSource>(
         () => _i431.GeminiRemoteDataSourceImpl());
     gh.singleton<_i132.UploadService>(
         () => _i132.UploadService(gh<_i457.Reference>()));
+    gh.singleton<_i322.SettingsRepository>(() => _i522.SettingsRepositoryImpl(
+          gh<_i460.SharedPreferences>(),
+          gh<_i974.FirebaseFirestore>(),
+          gh<_i59.FirebaseAuth>(),
+        ));
+    gh.singleton<_i1062.ChatRemoteDataSource>(
+        () => _i1062.ChatRemoteDataSourceImpl(
+              gh<_i974.FirebaseFirestore>(),
+              gh<_i59.FirebaseAuth>(),
+            ));
+    gh.singleton<_i376.ChatRepository>(
+        () => _i376.ChatRepositoryImpl(gh<_i1062.ChatRemoteDataSource>()));
     gh.singleton<_i741.CommunityLocalDataSource>(
         () => _i369.CommunityLocalDataSourceImpl(gh<_i401.SearchDatabase>()));
     gh.singleton<_i186.GeminiRepository>(
@@ -112,6 +137,8 @@ extension GetItInjectableX on _i174.GetIt {
             ));
     gh.singleton<_i551.SettingsBloc>(
         () => _i551.SettingsBloc(gh<_i322.SettingsRepository>()));
+    gh.singleton<_i409.CommunityRepository>(() =>
+        _i335.CommunityRepositoryImpl(gh<_i329.CommunityRemoteDataSource>()));
     gh.singleton<_i821.UserDataRemote>(() => _i683.UserDataRemoteImpl(
           gh<_i974.FirebaseFirestore>(),
           gh<_i892.FirebaseMessaging>(),
@@ -123,15 +150,19 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i821.UserDataRemote>(),
           gh<_i116.GoogleSignIn>(),
         ));
-    gh.singleton<_i936.CommunityRepository>(() =>
-        _i335.CommunityRepositoryImpl(gh<_i329.CommunityRemoteDataSource>()));
-    gh.factory<_i65.UserRepository>(
-        () => _i417.UserRepositoryImpl(gh<_i821.UserDataRemote>()));
+    gh.factory<_i232.ChatBloc>(
+        () => _i232.ChatBloc(gh<_i376.ChatRepository>()));
     gh.factory<_i1036.CommunityBloc>(() => _i1036.CommunityBloc(
-          gh<_i936.CommunityRepository>(),
+          gh<_i409.CommunityRepository>(),
           gh<_i460.SharedPreferences>(),
           gh<_i329.CommunityRemoteDataSource>(),
         ));
+    gh.singleton<_i868.GetCommunityMembersUsecase>(() =>
+        _i868.GetCommunityMembersUsecase(gh<_i409.CommunityRepository>()));
+    gh.singleton<_i611.LikePostUsecase>(
+        () => _i611.LikePostUsecase(gh<_i409.CommunityRepository>()));
+    gh.factory<_i65.UserRepository>(
+        () => _i417.UserRepositoryImpl(gh<_i821.UserDataRemote>()));
     gh.singleton<_i365.AuthRepository>(
         () => _i617.AuthRepositoryImpl(gh<_i1021.AuthDataRemote>()));
     gh.factory<_i936.AuthBloc>(() => _i936.AuthBloc(

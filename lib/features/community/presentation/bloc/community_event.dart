@@ -12,7 +12,8 @@ class CommunityEvent with _$CommunityEvent {
       ChangeCommunity;
   const factory CommunityEvent.joinCommunity(String communityId,
       {void Function(Community)? onDone}) = JoinCommunity;
-  const factory CommunityEvent.leaveCommunity(String communityId,
+  const factory CommunityEvent.leaveCommunity(
+      BuildContext context, String communityId,
       {void Function(Community)? onDone}) = LeaveCommunity;
   const factory CommunityEvent.createPostComment(
       BuildContext context, PostComment comment, Post post,

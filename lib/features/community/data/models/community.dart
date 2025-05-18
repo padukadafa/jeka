@@ -29,6 +29,8 @@ class Community with _$Community {
 class CommunityMember with _$CommunityMember {
   const factory CommunityMember({
     String? userId,
+    DateTime? joinedAt,
+    String? role,
     String? name,
   }) = _CommunityMember;
   factory CommunityMember.fromJson(Map<String, dynamic> json) =>

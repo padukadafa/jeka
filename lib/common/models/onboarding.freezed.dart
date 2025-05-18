@@ -20,7 +20,9 @@ mixin _$Onboarding {
   String get title => throw _privateConstructorUsedError;
   String get desc => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Onboarding
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $OnboardingCopyWith<Onboarding> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -44,6 +46,8 @@ class _$OnboardingCopyWithImpl<$Res, $Val extends Onboarding>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Onboarding
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -87,6 +91,8 @@ class __$$OnboardingImplCopyWithImpl<$Res>
       _$OnboardingImpl _value, $Res Function(_$OnboardingImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Onboarding
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -143,7 +149,9 @@ class _$OnboardingImpl implements _Onboarding {
   @override
   int get hashCode => Object.hash(runtimeType, imagePath, title, desc);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Onboarding
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$OnboardingImplCopyWith<_$OnboardingImpl> get copyWith =>
@@ -162,8 +170,11 @@ abstract class _Onboarding implements Onboarding {
   String get title;
   @override
   String get desc;
+
+  /// Create a copy of Onboarding
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OnboardingImplCopyWith<_$OnboardingImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

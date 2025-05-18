@@ -5,7 +5,7 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:jeka/common/widgets/app_bar.dart';
 import 'package:jeka/common/widgets/app_layout.dart';
 import 'package:jeka/di.dart';
-import 'package:jeka/features/community/data/repository/community_repository.dart';
+import 'package:jeka/features/community/domain/repository/community_repository.dart';
 import 'package:jeka/features/community/presentation/pages/create_community/create_community_detail.dart';
 import 'package:jeka/features/community/presentation/pages/create_community/create_community_rules.dart';
 import 'package:jeka/features/community/presentation/pages/create_community/create_community_types.dart';

@@ -1,6 +1,5 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:jeka/common/widgets/app_layout.dart';
 import 'package:jeka/common/widgets/reuseable_text.dart';
 import 'package:jeka/core/router/app_router.dart';
@@ -13,7 +12,7 @@ import 'package:toastification/toastification.dart';
 
 @RoutePage()
 class LoginPage extends StatefulWidget {
-  LoginPage({super.key});
+  const LoginPage({super.key});
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -29,7 +28,7 @@ class _LoginPageState extends State<LoginPage> {
       toastification.show(
         context: context,
         title: const Text(
-            'Hai dewan juri. Kami telah menyediakan akun demo untuk pengalaman pengujian yang lebih baik. Atau anda juga bisa mendaftarkan akun baru.'),
+            'Hai Pak Arkhan. Kami telah menyediakan akun demo untuk pengalaman pengujian yang lebih baik. Atau bapak juga bisa mendaftarkan akun baru.'),
         autoCloseDuration: const Duration(seconds: 5),
         style: ToastificationStyle.fillColored,
       );
@@ -65,7 +64,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   titleTextStyle: TextStyle(color: Colors.white, height: 1.4),
                   title: Text(
-                      "Akun Demo\nEmail : demojeka.juri@gmail.com\nPassword: demojuri01"),
+                      "Akun Demo\nEmail : demojeka.dosen@gmail.com\nPassword: demodosen01"),
                 ),
               ),
               const SizedBox(

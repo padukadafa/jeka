@@ -2,7 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:jeka/common/widgets/app_bar.dart';
@@ -11,10 +10,9 @@ import 'package:jeka/common/widgets/avatars/avatar.dart';
 import 'package:jeka/common/widgets/reuseable_text.dart';
 import 'package:jeka/core/router/app_router.dart';
 import 'package:jeka/di.dart';
-import 'package:jeka/features/auth/presentation/blocs/bloc/auth_bloc.dart';
 import 'package:jeka/features/community/data/models/community.dart';
 import 'package:jeka/features/community/presentation/bloc/community_bloc.dart';
-import 'package:jeka/features/community/presentation/pages/community_detail/widgets/community_upcoming_event.dart';
+import 'package:jeka/features/community/presentation/pages/community_member/community_member_page.dart';
 
 @RoutePage()
 class CommunityDetailPage extends StatelessWidget {
@@ -32,12 +30,14 @@ class CommunityDetailPage extends StatelessWidget {
         backgroundColor: colorScheme.surface,
         appBar: ReuseableAppBar(
           context: context,
-          actions: [
-            IconButton(
-              onPressed: () {},
-              icon: const FaIcon(FontAwesomeIcons.ellipsisVertical),
-            ),
-          ],
+          backgroundColor: colorScheme.surface,
+
+          // actions: [
+          //   IconButton(
+          //     onPressed: () {},
+          //     icon: const FaIcon(FontAwesomeIcons.ellipsisVertical),
+          //   ),
+          // ],
         ),
         body: SingleChildScrollView(
           child: Column(
@@ -91,26 +91,31 @@ class CommunityDetailPage extends StatelessWidget {
                     const SizedBox(
                       height: 12,
                     ),
-                    Row(
-                      children: community.types.map(
-                        (f) {
-                          return Container(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 12,
-                              vertical: 2,
-                            ),
-                            margin: const EdgeInsets.symmetric(horizontal: 6),
-                            decoration: BoxDecoration(
-                              color: colorScheme.primary,
-                              borderRadius: BorderRadius.circular(6),
-                            ),
-                            child: ReuseableText(
-                              f,
-                              color: colorScheme.onPrimary,
-                            ),
-                          );
-                        },
-                      ).toList(),
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: community.types.map(
+                          (f) {
+                            return Container(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 12,
+                                vertical: 2,
+                              ),
+                              margin: const EdgeInsets.symmetric(horizontal: 6),
+                              decoration: BoxDecoration(
+                                color: colorScheme.primary,
+                                borderRadius: BorderRadius.circular(6),
+                              ),
+                              child: ReuseableText(
+                                f,
+                                color: colorScheme.onPrimary,
+                              ),
+                            );
+                          },
+                        ).toList(),
+                      ),
                     ),
                     const SizedBox(
                       height: 12,
@@ -229,7 +234,7 @@ class CommunityDetailPage extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const CommunityUpcomingEvent(),
+                    // const CommunityUpcomingEvent(),s
                     const SizedBox(
                       height: 12,
                     ),
@@ -241,6 +246,21 @@ class CommunityDetailPage extends StatelessWidget {
                     ),
                     ListTile(
                       title: const Text("Members"),
+                      onTap: () {
+                        showModalBottomSheet(
+                          context: context,
+                          builder: (context) {
+                            return Column(
+                              children: [
+                                SizedBox(
+                                  height: 24,
+                                ),
+                                Expanded(child: CommunityMemberPage()),
+                              ],
+                            );
+                          },
+                        );
+                      },
                       leading: Container(
                         height: 40,
                         width: 40,
@@ -263,33 +283,6 @@ class CommunityDetailPage extends StatelessWidget {
                       ),
                       trailing: ReuseableText(
                         community.members.length.toString(),
-                        fontSize: 16,
-                      ),
-                    ),
-                    ListTile(
-                      title: const Text("Events"),
-                      leading: Container(
-                        height: 40,
-                        width: 40,
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(4),
-                          color: Colors.red,
-                          boxShadow: [
-                            BoxShadow(
-                              color: colorScheme.shadow,
-                              blurRadius: 4,
-                            )
-                          ],
-                        ),
-                        child: const FaIcon(
-                          FontAwesomeIcons.calendarCheck,
-                          size: 19,
-                          color: Colors.white,
-                        ),
-                      ),
-                      trailing: const ReuseableText(
-                        "14",
                         fontSize: 16,
                       ),
                     ),
@@ -322,7 +315,7 @@ class JoinCommunityStatus extends StatelessWidget {
           onPressed: () async {
             context
                 .read<CommunityBloc>()
-                .add(LeaveCommunity(community.id!, onDone: (v) {
+                .add(LeaveCommunity(context, community.id!, onDone: (v) {
                   context
                       .read<CommunityBloc>()
                       .add(UpdateCommunityList(context));

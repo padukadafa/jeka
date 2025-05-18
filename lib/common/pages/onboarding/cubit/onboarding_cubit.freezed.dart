@@ -16,9 +16,11 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$OnboardingState {
-  dynamic get pageIndex => throw _privateConstructorUsedError;
+  int get pageIndex => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OnboardingState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $OnboardingStateCopyWith<OnboardingState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -29,7 +31,7 @@ abstract class $OnboardingStateCopyWith<$Res> {
           OnboardingState value, $Res Function(OnboardingState) then) =
       _$OnboardingStateCopyWithImpl<$Res, OnboardingState>;
   @useResult
-  $Res call({dynamic pageIndex});
+  $Res call({int pageIndex});
 }
 
 /// @nodoc
@@ -42,16 +44,18 @@ class _$OnboardingStateCopyWithImpl<$Res, $Val extends OnboardingState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of OnboardingState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? pageIndex = freezed,
+    Object? pageIndex = null,
   }) {
     return _then(_value.copyWith(
-      pageIndex: freezed == pageIndex
+      pageIndex: null == pageIndex
           ? _value.pageIndex
           : pageIndex // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as int,
     ) as $Val);
   }
 }
@@ -64,7 +68,7 @@ abstract class _$$InitialImplCopyWith<$Res>
       __$$InitialImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({dynamic pageIndex});
+  $Res call({int pageIndex});
 }
 
 /// @nodoc
@@ -75,13 +79,18 @@ class __$$InitialImplCopyWithImpl<$Res>
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of OnboardingState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? pageIndex = freezed,
+    Object? pageIndex = null,
   }) {
     return _then(_$InitialImpl(
-      pageIndex: freezed == pageIndex ? _value.pageIndex! : pageIndex,
+      pageIndex: null == pageIndex
+          ? _value.pageIndex
+          : pageIndex // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -93,7 +102,7 @@ class _$InitialImpl implements _Initial {
 
   @override
   @JsonKey()
-  final dynamic pageIndex;
+  final int pageIndex;
 
   @override
   String toString() {
@@ -105,14 +114,16 @@ class _$InitialImpl implements _Initial {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InitialImpl &&
-            const DeepCollectionEquality().equals(other.pageIndex, pageIndex));
+            (identical(other.pageIndex, pageIndex) ||
+                other.pageIndex == pageIndex));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(pageIndex));
+  int get hashCode => Object.hash(runtimeType, pageIndex);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OnboardingState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
@@ -120,12 +131,15 @@ class _$InitialImpl implements _Initial {
 }
 
 abstract class _Initial implements OnboardingState {
-  const factory _Initial({final dynamic pageIndex}) = _$InitialImpl;
+  const factory _Initial({final int pageIndex}) = _$InitialImpl;
 
   @override
-  dynamic get pageIndex;
+  int get pageIndex;
+
+  /// Create a copy of OnboardingState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

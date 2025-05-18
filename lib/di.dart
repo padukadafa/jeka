@@ -9,6 +9,7 @@ import 'package:injectable/injectable.dart';
 import 'package:get_it/get_it.dart';
 import 'package:jeka/features/community/data/data_source/local/search_database.dart';
 import 'package:jeka/features/community/presentation/bloc/community_bloc.dart';
+import 'package:jeka/features/notification/data/data_sources/database/notification_database.dart';
 import 'package:jeka/features/settings/presentation/blocs/bloc/settings_bloc.dart';
 import 'package:jeka/features/auth/presentation/blocs/bloc/auth_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -37,7 +38,12 @@ abstract class RegisterModule {
       SharedPreferences.getInstance();
   @preResolve
   Future<SearchDatabase> get searchDatabase =>
-      $FloorSearchDatabase.databaseBuilder("search_database").build();
+      $FloorSearchDatabase.databaseBuilder("search_database.db").build();
+  @preResolve
+  Future<NotificationDatabase> get notificationDatabase =>
+      $FloorNotificationDatabase
+          .databaseBuilder('notification_database.db')
+          .build();
 }
 
 class GlobalBlocProviders extends StatelessWidget {

@@ -11,7 +11,7 @@ import 'package:jeka/core/router/app_router.dart';
 import 'package:jeka/features/community/data/data_source/remote/community_remote_data_source.dart';
 import 'package:jeka/features/community/data/models/community.dart';
 import 'package:jeka/features/community/data/models/post.dart';
-import 'package:jeka/features/community/data/repository/community_repository.dart';
+import 'package:jeka/features/community/domain/repository/community_repository.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:rxdart/rxdart.dart';
 
@@ -28,10 +28,16 @@ class CommunityBloc extends Bloc<CommunityEvent, CommunityState> {
       : super(const _Initial()) {
     on<ChangePage>(_changePageHandler);
     on<ChangeCommunityTab>(_changeCommunityTabHandler);
-    on<UpdateCommunityList>(_updateCommunityListHandler,transformer:(events, mapper) => events.switchMap(mapper),);
+    on<UpdateCommunityList>(
+      _updateCommunityListHandler,
+      transformer: (events, mapper) => events.switchMap(mapper),
+    );
     on<ChangeCommunity>(_changeCommunityHandler);
     on<JoinCommunity>(_joinCommunityHandler);
-    on<LeaveCommunity>(_onLeaveCommunityHandler);
+    on<LeaveCommunity>(
+      _onLeaveCommunityHandler,
+      transformer: (events, mapper) => events.switchMap(mapper),
+    );
     on<CreatePostComment>(_createPostCommentHandler);
   }
 
@@ -126,10 +132,47 @@ class CommunityBloc extends Bloc<CommunityEvent, CommunityState> {
     result.fold((l) {
       EasyLoading.showError(l.message);
     }, (r) async {
-      if (event.onDone != null) {
-        final community = await _dataSource.getCommunity(event.communityId);
-        event.onDone!(community);
-      }
+      final result = await _repository.getCommunity();
+      result.fold((l) {
+        EasyLoading.showError(l.message);
+      }, (r) async {
+        if (r.isEmpty) {
+          event.context.router.replaceAll([const SearchCommunityRoute()]);
+        }
+        final currentCommunityId =
+            _sharedPreferences.getString(AppConstants.SELECTED_COMMUNITY_ID);
+        if (currentCommunityId == null || currentCommunityId == "") {
+          await _sharedPreferences.setString(
+              AppConstants.SELECTED_COMMUNITY_ID, r[0].id ?? "");
+          emit(
+            state.copyWith(
+              communities: r,
+              community: r[0],
+            ),
+          );
+          return;
+        }
+
+        final selectedCommunityIndex =
+            r.indexWhere((e) => e.id == currentCommunityId);
+        if (selectedCommunityIndex == -1) {
+          await _sharedPreferences.setString(
+              AppConstants.SELECTED_COMMUNITY_ID, r[0].id ?? "");
+          emit(
+            state.copyWith(
+              communities: r,
+              community: r[0],
+            ),
+          );
+          return;
+        }
+        final selectedCommunity = r[selectedCommunityIndex];
+        r.removeAt(selectedCommunityIndex);
+
+        emit(state.copyWith(
+            communities: [selectedCommunity, ...r],
+            community: selectedCommunity));
+      });
       EasyLoading.showSuccess("Success Leave this community");
     });
   }

@@ -19,7 +19,7 @@ class MenuDrawer extends StatelessWidget {
     final colorScheme = Theme.of(context).colorScheme;
     final communityBloc = context.read<CommunityBloc>();
     return Drawer(
-      backgroundColor: colorScheme.surfaceBright,
+      backgroundColor: colorScheme.surface,
       shape: const RoundedRectangleBorder(),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 12.0),
@@ -130,34 +130,6 @@ class MenuDrawer extends StatelessWidget {
                 ),
               );
             }),
-            ListTile(
-              onTap: () {},
-              contentPadding: const EdgeInsets.all(4),
-              minTileHeight: 0,
-              leading: Container(
-                alignment: Alignment.center,
-                width: 26,
-                child: const FaIcon(
-                  FontAwesomeIcons.solidUser,
-                  size: 21,
-                ),
-              ),
-              title: const Text("My Profile"),
-            ),
-            ListTile(
-              onTap: () {},
-              contentPadding: const EdgeInsets.all(4),
-              minTileHeight: 0,
-              leading: Container(
-                alignment: Alignment.center,
-                width: 26,
-                child: const FaIcon(
-                  FontAwesomeIcons.solidBookmark,
-                  size: 21,
-                ),
-              ),
-              title: const Text("Saved"),
-            ),
             ListTile(
               onTap: () {
                 context.router.push(const SettingsRoute());

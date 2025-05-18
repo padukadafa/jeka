@@ -9,13 +9,10 @@ import 'package:jeka/common/widgets/avatars/avatar.dart';
 import 'package:jeka/common/widgets/avatars/user_avatar.dart';
 import 'package:jeka/common/widgets/reuseable_text.dart';
 import 'package:jeka/core/router/app_router.dart';
-import 'package:jeka/di.dart';
-import 'package:jeka/features/community/data/data_source/remote/community_remote_data_source.dart';
 import 'package:jeka/features/community/data/models/post.dart';
 import 'package:jeka/features/community/presentation/bloc/community_bloc.dart';
 import 'package:jeka/features/community/presentation/widgets/post_attachment_widget.dart';
 import 'package:jeka/features/community/presentation/widgets/post_item_type.dart';
-import 'package:jeka/features/community/presentation/widgets/post_reaction_widget.dart';
 
 @RoutePage()
 class CommunityFeedDetailPage extends StatefulWidget {
@@ -106,8 +103,6 @@ class _CommunityFeedDetailPageState extends State<CommunityFeedDetailPage> {
                               const SizedBox(
                                 height: 12,
                               ),
-                              PostReactionWidget(
-                                  reactions: widget.post.postReactions),
                             ],
                           ),
                         ),

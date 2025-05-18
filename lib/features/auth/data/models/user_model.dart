@@ -16,6 +16,7 @@ class UserModel with _$UserModel {
     int? following,
     DateTime? createdAt,
     String? imageProfileUrl,
+    @Default(false) bool isPrivate,
   }) = _UserModel;
   factory UserModel.fromJson(Map<String, dynamic> json) =>
       _$UserModelFromJson(json);

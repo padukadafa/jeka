@@ -31,9 +31,14 @@ mixin _$UserModel {
   int? get following => throw _privateConstructorUsedError;
   DateTime? get createdAt => throw _privateConstructorUsedError;
   String? get imageProfileUrl => throw _privateConstructorUsedError;
+  bool get isPrivate => throw _privateConstructorUsedError;
 
+  /// Serializes this UserModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of UserModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $UserModelCopyWith<UserModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -54,7 +59,8 @@ abstract class $UserModelCopyWith<$Res> {
       int? follower,
       int? following,
       DateTime? createdAt,
-      String? imageProfileUrl});
+      String? imageProfileUrl,
+      bool isPrivate});
 }
 
 /// @nodoc
@@ -67,6 +73,8 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of UserModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -81,6 +89,7 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
     Object? following = freezed,
     Object? createdAt = freezed,
     Object? imageProfileUrl = freezed,
+    Object? isPrivate = null,
   }) {
     return _then(_value.copyWith(
       uid: null == uid
@@ -127,6 +136,10 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
           ? _value.imageProfileUrl
           : imageProfileUrl // ignore: cast_nullable_to_non_nullable
               as String?,
+      isPrivate: null == isPrivate
+          ? _value.isPrivate
+          : isPrivate // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -150,7 +163,8 @@ abstract class _$$UserModelImplCopyWith<$Res>
       int? follower,
       int? following,
       DateTime? createdAt,
-      String? imageProfileUrl});
+      String? imageProfileUrl,
+      bool isPrivate});
 }
 
 /// @nodoc
@@ -161,6 +175,8 @@ class __$$UserModelImplCopyWithImpl<$Res>
       _$UserModelImpl _value, $Res Function(_$UserModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of UserModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -175,6 +191,7 @@ class __$$UserModelImplCopyWithImpl<$Res>
     Object? following = freezed,
     Object? createdAt = freezed,
     Object? imageProfileUrl = freezed,
+    Object? isPrivate = null,
   }) {
     return _then(_$UserModelImpl(
       uid: null == uid
@@ -221,6 +238,10 @@ class __$$UserModelImplCopyWithImpl<$Res>
           ? _value.imageProfileUrl
           : imageProfileUrl // ignore: cast_nullable_to_non_nullable
               as String?,
+      isPrivate: null == isPrivate
+          ? _value.isPrivate
+          : isPrivate // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -239,7 +260,8 @@ class _$UserModelImpl implements _UserModel {
       this.follower,
       this.following,
       this.createdAt,
-      this.imageProfileUrl});
+      this.imageProfileUrl,
+      this.isPrivate = false});
 
   factory _$UserModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserModelImplFromJson(json);
@@ -266,10 +288,13 @@ class _$UserModelImpl implements _UserModel {
   final DateTime? createdAt;
   @override
   final String? imageProfileUrl;
+  @override
+  @JsonKey()
+  final bool isPrivate;
 
   @override
   String toString() {
-    return 'UserModel(uid: $uid, name: $name, email: $email, job: $job, fcmToken: $fcmToken, desc: $desc, website: $website, follower: $follower, following: $following, createdAt: $createdAt, imageProfileUrl: $imageProfileUrl)';
+    return 'UserModel(uid: $uid, name: $name, email: $email, job: $job, fcmToken: $fcmToken, desc: $desc, website: $website, follower: $follower, following: $following, createdAt: $createdAt, imageProfileUrl: $imageProfileUrl, isPrivate: $isPrivate)';
   }
 
   @override
@@ -292,15 +317,31 @@ class _$UserModelImpl implements _UserModel {
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.imageProfileUrl, imageProfileUrl) ||
-                other.imageProfileUrl == imageProfileUrl));
+                other.imageProfileUrl == imageProfileUrl) &&
+            (identical(other.isPrivate, isPrivate) ||
+                other.isPrivate == isPrivate));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, uid, name, email, job, fcmToken,
-      desc, website, follower, following, createdAt, imageProfileUrl);
+  int get hashCode => Object.hash(
+      runtimeType,
+      uid,
+      name,
+      email,
+      job,
+      fcmToken,
+      desc,
+      website,
+      follower,
+      following,
+      createdAt,
+      imageProfileUrl,
+      isPrivate);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UserModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$UserModelImplCopyWith<_$UserModelImpl> get copyWith =>
@@ -326,7 +367,8 @@ abstract class _UserModel implements UserModel {
       final int? follower,
       final int? following,
       final DateTime? createdAt,
-      final String? imageProfileUrl}) = _$UserModelImpl;
+      final String? imageProfileUrl,
+      final bool isPrivate}) = _$UserModelImpl;
 
   factory _UserModel.fromJson(Map<String, dynamic> json) =
       _$UserModelImpl.fromJson;
@@ -354,7 +396,12 @@ abstract class _UserModel implements UserModel {
   @override
   String? get imageProfileUrl;
   @override
-  @JsonKey(ignore: true)
+  bool get isPrivate;
+
+  /// Create a copy of UserModel
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UserModelImplCopyWith<_$UserModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
