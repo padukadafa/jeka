@@ -13,7 +13,6 @@ import 'package:jeka/features/community/data/models/post.dart';
 import 'package:jeka/features/community/presentation/bloc/community_bloc.dart';
 import 'package:jeka/features/community/presentation/widgets/post_attachment_widget.dart';
 import 'package:jeka/features/community/presentation/widgets/post_item_type.dart';
-import 'package:jeka/features/community/presentation/widgets/post_reaction_widget.dart';
 
 @RoutePage()
 class CommunityFeedDetailPage extends StatefulWidget {

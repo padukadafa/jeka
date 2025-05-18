@@ -1,11 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:jeka/common/widgets/avatars/avatar.dart';
 import 'package:jeka/common/widgets/avatars/user_avatar.dart';
 import 'package:jeka/common/widgets/reuseable_text.dart';
-import 'package:jeka/di.dart';
-import 'package:jeka/features/community/domain/usecases/get_community_members_usecase.dart';
 import 'package:jeka/features/community/presentation/bloc/community_bloc.dart';
 
 @RoutePage()

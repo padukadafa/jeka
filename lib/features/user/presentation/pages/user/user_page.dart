@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:jeka/common/widgets/app_layout.dart';
-import 'package:jeka/common/widgets/reuseable_text.dart';
 import 'package:jeka/features/user/presentation/pages/user/widgets/user_background.dart';
 import 'package:jeka/features/user/presentation/pages/user/widgets/user_first_detail.dart';
 import 'package:jeka/features/user/presentation/pages/user/widgets/user_second_detail.dart';

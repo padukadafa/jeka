@@ -1,7 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_expandable_fab/flutter_expandable_fab.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:jeka/common/widgets/app_layout.dart';
 import 'package:jeka/common/widgets/avatars/avatar.dart';
@@ -10,7 +9,6 @@ import 'package:jeka/core/router/app_router.dart';
 import 'package:jeka/features/community/presentation/bloc/community_bloc.dart';
 import 'package:jeka/features/community/presentation/bloc/community_selector.dart';
 import 'package:jeka/features/community/presentation/pages/community/widgets/community_floating_action_button.dart';
-import 'package:jeka/features/community/presentation/pages/community_event/community_event_page.dart';
 import 'package:jeka/features/community/presentation/pages/community_feed/community_feed_page.dart';
 import 'package:jeka/features/community/presentation/pages/community_member/community_member_page.dart';
 import 'package:skeletonizer/skeletonizer.dart';

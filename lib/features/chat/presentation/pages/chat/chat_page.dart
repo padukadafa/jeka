@@ -1,14 +1,11 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:jeka/common/widgets/app_layout.dart';
-import 'package:jeka/common/widgets/avatars/avatar.dart';
 import 'package:jeka/common/widgets/reuseable_text.dart';
 import 'package:jeka/common/widgets/reuseable_text_form.dart';
 import 'package:jeka/di.dart';
-import 'package:jeka/features/auth/presentation/blocs/bloc/auth_bloc.dart';
 import 'package:jeka/features/chat/data/models/message_model.dart';
 import 'package:jeka/features/chat/presentation/bloc/chat_bloc.dart';
 import 'package:jeka/features/community/presentation/bloc/community_bloc.dart';
