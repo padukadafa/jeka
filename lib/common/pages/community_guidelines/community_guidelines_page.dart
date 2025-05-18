@@ -7,9 +7,6 @@ class CommunityGuidelinesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-<<<<<<< HEAD
-    return const Placeholder();
-=======
     return Scaffold(
       appBar: AppBar(
         title: const Text('Community Guidelines'),
@@ -44,6 +41,5 @@ class CommunityGuidelinesPage extends StatelessWidget {
         ),
       ),
     );
->>>>>>> aditya
   }
 }

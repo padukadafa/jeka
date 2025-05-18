@@ -1,9 +1,5 @@
 import 'package:auto_route/auto_route.dart';
-<<<<<<< HEAD
-import 'package:flutter/widgets.dart';
-=======
 import 'package:flutter/material.dart';
->>>>>>> aditya
 
 @RoutePage()
 class RulesAndAgreementPage extends StatelessWidget {
@@ -11,9 +7,6 @@ class RulesAndAgreementPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-<<<<<<< HEAD
-    return const Placeholder();
-=======
     return Scaffold(
       appBar: AppBar(
         title: const Text('Rules and Agreement'),
@@ -47,6 +40,5 @@ class RulesAndAgreementPage extends StatelessWidget {
         ),
       ),
     );
->>>>>>> aditya
   }
 }

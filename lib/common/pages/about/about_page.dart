@@ -7,9 +7,6 @@ class AboutPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-<<<<<<< HEAD
-    return const Placeholder();
-=======
     return Scaffold(
       appBar: AppBar(
         title: const Text('Tentang JeKa'),
@@ -95,6 +92,5 @@ class AboutPage extends StatelessWidget {
         ),
       ),
     );
->>>>>>> aditya
   }
 }
