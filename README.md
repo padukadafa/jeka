@@ -213,7 +213,7 @@ Project ini menggunakan lisensi MIT. Lihat file `LICENSE` untuk detail lebih lan
 ## 📞 Kontak & Dukungan
 
 - **GitHub Issues**: [Laporkan Bug](https://github.com/padukadafa/jeka/issues)
-- **Email**: support@jeka.app
+- **Email**: danielferryalzuhri@gmail.com
 - **Documentation**: [Wiki](https://github.com/padukadafa/jeka/wiki)
 
 ## 🗺️ Roadmap
